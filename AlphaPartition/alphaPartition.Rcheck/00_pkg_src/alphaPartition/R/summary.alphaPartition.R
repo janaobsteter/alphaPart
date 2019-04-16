@@ -1,0 +1,150 @@
+#' summary.alphaPartition.R
+#'
+#' A function to summarize alphaPartition object.
+#'
+#' Additive genetic values of individuals are often summarized, either by year of
+#' birth or some other classification. Function \code{summary.alphaPartition} provides
+#' a way to ease the computation of such summaries on partitions of additive
+#' genetic values.
+#'
+#' @seealso
+#' \code{\link[alphaPartition]{alphaPartition}} for partitioning additive genetic values,
+#' \code{\link[alphaPartition]{plot.summaryAlphaPartition}} for plotting output of summary method
+#'
+#' @param object alphaPartition, output object from \code{\link[alphaPartition]{alphaPartition}} function.
+#' @param by Character, the name of a column by which summary function FUN should
+#' be applied; if \code{NULL} (default) summary is given for the whole table.
+#' @param FUN Function, which function should be used in summary; function should
+#' return single value per each level of by.
+#' @param labelSum Character, label used for the overall additive genetic value.
+#' @param subset Logical, perform summary only on a subset of \code{object} subsetted by
+#' this argument.
+#' @param sums Logical, link between \code{\link[alphaPartition]{alphaPartition}} and
+#' \code{summary.alphaPartition()} (only for internal use!).
+#' @param ...  Arguments passed to other functions (not used at the moment).
+#'
+#' @example inst/examples//examples_summary.alphaPartition.R
+#'
+#' @useDynLib alphaPartition, .registration = TRUE
+#' @importFrom Rcpp sourceCpp
+#'
+#' @export
+
+
+summary.alphaPartition <-
+  
+function  
+
+(
+  object,
+  by=NULL,
+  FUN=mean,
+  labelSum="Sum",
+  subset=NULL,
+  sums=FALSE,
+  ...
+) {
+
+
+  ## --- Setup ---
+
+  groupSummary <- sums
+
+  test <- !("alphaPartition" %in% class(object))
+  if(test) {
+    stop("'object' must be of a alphaPartition class")
+  }
+
+  if(groupSummary) by <- object$by
+
+  if(!groupSummary) {
+    test <- !is.null(by) && !(by %in% colnames(object[[1]]))
+    if(test) {
+      stop("argument 'by' must be NULL or one of column names in object")
+    }
+    test <- do.call(what=FUN, args=list(x=1:3, ...))
+    if(length(test) > 1) {
+      stop("function FUN must return a single value (scalar)")
+    }
+  }
+
+  nC <- ncol(object[[1]]) ## number of columns
+  nP <- object$info$nP    ## number of paths
+  lP <- object$info$lP    ## names  of paths
+  nT <- object$info$nT    ## number of traits
+  lT <- object$info$lT    ## names  of traits
+  ret <- vector(mode="list", length=nT+1)
+  names(ret) <- c(lT, "info")
+    
+  ## Subset
+  if(!is.null(subset)) {
+    object[1:nT] <- lapply(object[1:nT], FUN=function(z) z[subset, ])
+  }
+
+  ret$info <- list(path=object$info$path, nP=nP, lP=lP, nT=nT, lT=lT, by=by, warn=object$info$warn, labelSum=labelSum)
+
+  ## --- Compute ---
+
+  z <- ifelse(groupSummary, 1, 2)
+  for(i in 1:nT) { ## for each trait
+     ## Setup
+     cols <- c(lT[i], paste(lT[i], lP, sep="_"))
+     paths <- cols
+     paths[2:length(paths)] <- ret$info$lP
+     paths[1] <- labelSum
+
+     ## Summarize
+     if(!groupSummary) {
+       if(is.null(by)) {
+         tmp <- rep(1, times=nrow(object[[i]]))
+         tmpM <- aggregate(x=object[[i]][, cols],    by=list(by=tmp),               FUN=FUN)
+         tmpN <- aggregate(x=object[[i]][, cols[1]], by=list(by=tmp),               FUN=length)
+       } else {
+         tmpM <- aggregate(x=object[[i]][, cols],    by=list(by=object[[i]][, by]), FUN=FUN)
+         tmpN <- aggregate(x=object[[i]][, cols[1]], by=list(by=object[[i]][, by]), FUN=length)
+       }
+     } else {
+       tmpN <- object$N[, c(1, i+1)]
+       tmpM <- object[[i]][, -(1:2)]
+       tmpM <- cbind(rowSums(tmpM), tmpM)
+       tmpM <- tmpM / tmpN[, 2]
+     }
+     ## Add nice column names
+     colnames(tmpN) <- c(by, "N")
+     colnames(tmpM)[z:ncol(tmpM)] <- paths
+     ## Combine FUN and number of records
+     tmp <- cbind(tmpN, tmpM[, z:ncol(tmpM)])
+     ## Relative
+     tmp2 <- tmp
+     tmp2[, 3:ncol(tmp2)] <- (tmp2[, 3:ncol(tmp2)] / abs(tmp2[, 3]))
+     ## Store
+     ret[[i]] <- vector(mode="list", length=2)
+     names(ret[[i]]) <- c("abs", "rel")
+     ret[[i]]$abs <- tmp
+     ret[[i]]$rel <- tmp2
+  }
+      
+  ## --- Return ---
+    
+  class(ret) <- c("summaryAlphaPartition", class(ret))
+  ret
+
+  ##value<< An object of class \code{summaryalphaPartition}, which is a list of data frames
+  ## with summary statistics on additive genetic value partitions. For each trait there
+  ## is a list component holding two dataframes. The first data.frame is called \code{abs}
+  ## and holds summary for the "whole/original" additive genetic value and its partitions,
+  ## while the second data.frame is called \code{rel} and holds relative values of \code{abs}
+  ## counterpart. In addition another list is added (named \code{info}) with the following
+  ## components holdinfg meta info:
+  ##   \item{path}{column name holding path information}
+  ##   \item{nP}{number of paths}
+  ##   \item{lP}{path labels}
+  ##   \item{nT}{number of traits}
+  ##   \item{lT}{trait labels}
+  ##   \item{by}{column name of variable by which summary was performed}
+  ##   \item{warn}{potential warning messages associated with this object}
+  ##   \item{labelSum}{column name of summary for "whole/original" additive genetic values}
+  ##
+  ## There is a handy plot method (\code{\link[alphaPartition]{plot.summaryAlphaPartition}}) for output.
+
+}

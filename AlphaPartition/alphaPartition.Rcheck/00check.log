@@ -1,0 +1,330 @@
+* using log directory ‘/home/jana/AlphaPartition/alphaPartition.Rcheck’
+* using R version 3.4.4 (2018-03-15)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* using options ‘--no-manual --as-cran’
+* checking for file ‘alphaPartition/DESCRIPTION’ ... OK
+* this is package ‘alphaPartition’ version ‘0.6.0’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+* checking package dependencies ... OK
+* checking if this is a source package ... OK
+* checking if there is a namespace ... OK
+* checking for executable files ... OK
+* checking for hidden files and directories ... NOTE
+Found the following hidden files and directories:
+  .idea
+These were most likely included in error. See section ‘Package
+structure’ in the ‘Writing R Extensions’ manual.
+* checking for portable file names ... OK
+* checking for sufficient/correct file permissions ... OK
+* checking whether package ‘alphaPartition’ can be installed ... OK
+* checking installed package size ... OK
+* checking package directory ... OK
+* checking ‘build’ directory ... OK
+* checking DESCRIPTION meta-information ... OK
+* checking top-level files ... OK
+* checking for left-over files ... OK
+* checking index information ... OK
+* checking package subdirectories ... OK
+* checking R files for non-ASCII characters ... OK
+* checking R files for syntax errors ... OK
+* checking whether the package can be loaded ... OK
+* checking whether the package can be loaded with stated dependencies ... OK
+* checking whether the package can be unloaded cleanly ... OK
+* checking whether the namespace can be loaded with stated dependencies ... OK
+* checking whether the namespace can be unloaded cleanly ... OK
+* checking loading without being on the library search path ... OK
+* checking dependencies in R code ... OK
+* checking S3 generic/method consistency ... OK
+* checking replacement functions ... OK
+* checking foreign function calls ... OK
+* checking R code for possible problems ... OK
+* checking Rd files ... OK
+* checking Rd metadata ... OK
+* checking Rd line widths ... OK
+* checking Rd cross-references ... OK
+* checking for missing documentation entries ... OK
+* checking for code/documentation mismatches ... OK
+* checking Rd \usage sections ... OK
+* checking Rd contents ... OK
+* checking for unstated dependencies in examples ... OK
+* checking contents of ‘data’ directory ... OK
+* checking data for non-ASCII characters ... OK
+* checking data for ASCII and uncompressed saves ... OK
+* checking line endings in C/C++/Fortran sources/headers ... OK
+* checking line endings in Makefiles ... OK
+* checking compilation flags in Makevars ... OK
+* checking for GNU extensions in Makefiles ... OK
+* checking for portable use of $(BLAS_LIBS) and $(LAPACK_LIBS) ... OK
+* checking compiled code ... OK
+* checking installed files from ‘inst/doc’ ... OK
+* checking files in ‘vignettes’ ... OK
+* checking examples ... ERROR
+Running examples in ‘alphaPartition-Ex.R’ failed
+The error most likely occurred in:
+
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: plot.summaryAlphaPartition
+> ### Title: plot.summaryAlphaPartition.R
+> ### Aliases: plot.summaryAlphaPartition
+> 
+> ### ** Examples
+> 
+> ## Load an example data
+> data("alphaPartition.ped")
+> 
+> ## Partition additive genetic values by location
+> (res <- alphaPartition(x=alphaPartition.ped, colPath="loc", colAGV=c("agv1", "agv2")))
+
+Size:
+ - individuals: 48 
+ - traits: 2 (agv1, agv2)
+ - paths: 2 (1, 2)
+ - unknown (missing) values:
+agv1 agv2 
+   0    0 
+
+
+ Partitions of additive genetic values 
+   - individuals: 48 
+   - paths: 2 (1, 2)
+   - traits: 2 (agv1, agv2)
+
+ Trait: agv1 
+
+  id  fid  mid loc gen sex loc.gen agv1 agv1_pa agv1_w agv1_1 agv1_2
+1 01 <NA> <NA>   1   0   2     1-0    2       0      2      2      0
+2 02 <NA> <NA>   1   0   1     1-0    2       0      2      2      0
+3 03 <NA> <NA>   1   0   2     1-0    2       0      2      2      0
+4 04 <NA> <NA>   1   0   2     1-0    2       0      2      2      0
+5 05 <NA> <NA>   2   0   2     2-0    0       0      0      0      0
+6 06 <NA> <NA>   2   0   1     2-0    0       0      0      0      0
+...
+   id fid mid loc gen sex loc.gen agv1 agv1_pa agv1_w agv1_1 agv1_2
+43 53  44  43   1   5   2     1-5  5.3    4.15   1.15   5.30   0.00
+44 54  44  43   1   5   2     1-5  4.2    4.15   0.05   4.20   0.00
+45 55  44  45   2   5   2     2-5  4.1    3.15   0.95   3.35   0.75
+46 56  44  46   2   5   2     2-5  2.7    3.20  -0.50   3.35  -0.65
+47 57  44  47   2   5   2     2-5  3.5    3.20   0.30   3.35   0.15
+48 58  44  48   2   5   2     2-5  3.8    4.35  -0.55   3.35   0.45
+
+ Trait: agv2 
+
+  id  fid  mid loc gen sex loc.gen agv2 agv2_pa agv2_w agv2_1 agv2_2
+1 01 <NA> <NA>   1   0   2     1-0    2       0      2      2      0
+2 02 <NA> <NA>   1   0   1     1-0    2       0      2      2      0
+3 03 <NA> <NA>   1   0   2     1-0    2       0      2      2      0
+4 04 <NA> <NA>   1   0   2     1-0    2       0      2      2      0
+5 05 <NA> <NA>   2   0   2     2-0    0       0      0      0      0
+6 06 <NA> <NA>   2   0   1     2-0    0       0      0      0      0
+...
+   id fid mid loc gen sex loc.gen agv2 agv2_pa agv2_w agv2_1 agv2_2
+43 53  44  43   1   5   2     1-5  5.3    4.15   1.15   5.30   0.00
+44 54  44  43   1   5   2     1-5  4.2    4.15   0.05   4.20   0.00
+45 55  44  45   2   5   2     2-5  3.7    3.65   0.05   3.35   0.35
+46 56  44  46   2   5   2     2-5  5.2    4.00   1.20   3.35   1.85
+47 57  44  47   2   5   2     2-5  4.1    3.90   0.20   3.35   0.75
+48 58  44  48   2   5   2     2-5  4.3    3.60   0.70   3.35   0.95
+
+> 
+> ## Summarize population by generation (=trend)
+> (ret <- summary(res, by="gen"))
+
+
+ Summary of partitions of additive genetic values 
+   - paths: 2 (1, 2)
+   - traits: 2 (agv1, agv2)
+
+ Trait: agv1 (absolute) 
+
+  gen N    Sum      1       2
+1   0 8 1.0000 1.0000  0.0000
+2   1 8 1.4875 1.2125  0.2750
+3   2 8 1.8875 2.0500 -0.1625
+4   3 8 2.7500 2.6250  0.1250
+5   4 8 3.6125 3.4875  0.1250
+6   5 8 4.0625 3.9750  0.0875
+
+ Trait: agv1 (relative) 
+
+  gen N Sum         1           2
+1   0 8   1 1.0000000  0.00000000
+2   1 8   1 0.8151261  0.18487395
+3   2 8   1 1.0860927 -0.08609272
+4   3 8   1 0.9545455  0.04545455
+5   4 8   1 0.9653979  0.03460208
+6   5 8   1 0.9784615  0.02153846
+
+ Trait: agv2 (absolute) 
+
+  gen N    Sum      1      2
+1   0 8 1.0000 1.0000 0.0000
+2   1 8 1.5500 1.2125 0.3375
+3   2 8 2.7125 2.0500 0.6625
+4   3 8 3.2750 2.6250 0.6500
+5   4 8 3.9250 3.4875 0.4375
+6   5 8 4.4625 3.9750 0.4875
+
+ Trait: agv2 (relative) 
+
+  gen N Sum         1         2
+1   0 8   1 1.0000000 0.0000000
+2   1 8   1 0.7822581 0.2177419
+3   2 8   1 0.7557604 0.2442396
+4   3 8   1 0.8015267 0.1984733
+5   4 8   1 0.8885350 0.1114650
+6   5 8   1 0.8907563 0.1092437
+
+> 
+> ## Plot the partitions
+> p <- plot(ret, ylab=c("AGV for trait 1", "AGV for trait 2"), xlab="Generation")
+> print(p[[1]]$abs)
+> print(p[[1]]$rel)
+> print(p[[2]])
+$abs
+
+$rel
+
+> print(p)
+> 
+> ## Partition additive genetic values by location and sex
+> alphaPartition.ped$loc.sex <- with(alphaPartition.ped, paste(loc, sex, sep="-"))
+> (res <- alphaPartition(x=alphaPartition.ped, colPath="loc.sex", colAGV=c("agv1", "agv2")))
+
+Size:
+ - individuals: 48 
+ - traits: 2 (agv1, agv2)
+ - paths: 4 (1-1, 1-2, 2-1, 2-2)
+ - unknown (missing) values:
+agv1 agv2 
+   0    0 
+
+
+ Partitions of additive genetic values 
+   - individuals: 48 
+   - paths: 4 (1-1, 1-2, 2-1, 2-2)
+   - traits: 2 (agv1, agv2)
+
+ Trait: agv1 
+
+  id  fid  mid loc gen sex loc.gen loc.sex agv1 agv1_pa agv1_w agv1_1-1 agv1_1-2 agv1_2-1 agv1_2-2
+1 01 <NA> <NA>   1   0   2     1-0     1-2    2       0      2        0        2        0        0
+2 02 <NA> <NA>   1   0   1     1-0     1-1    2       0      2        2        0        0        0
+3 03 <NA> <NA>   1   0   2     1-0     1-2    2       0      2        0        2        0        0
+4 04 <NA> <NA>   1   0   2     1-0     1-2    2       0      2        0        2        0        0
+5 05 <NA> <NA>   2   0   2     2-0     2-2    0       0      0        0        0        0        0
+6 06 <NA> <NA>   2   0   1     2-0     2-1    0       0      0        0        0        0        0
+...
+   id fid mid loc gen sex loc.gen loc.sex agv1 agv1_pa agv1_w agv1_1-1 agv1_1-2 agv1_2-1 agv1_2-2
+43 53  44  43   1   5   2     1-5     1-2  5.3    4.15   1.15   2.3250   2.9750        0     0.00
+44 54  44  43   1   5   2     1-5     1-2  4.2    4.15   0.05   2.3250   1.8750        0     0.00
+45 55  44  45   2   5   2     2-5     2-2  4.1    3.15   0.95   2.2625   1.0875        0     0.75
+46 56  44  46   2   5   2     2-5     2-2  2.7    3.20  -0.50   2.2625   1.0875        0    -0.65
+47 57  44  47   2   5   2     2-5     2-2  3.5    3.20   0.30   2.2625   1.0875        0     0.15
+48 58  44  48   2   5   2     2-5     2-2  3.8    4.35  -0.55   2.2625   1.0875        0     0.45
+
+ Trait: agv2 
+
+  id  fid  mid loc gen sex loc.gen loc.sex agv2 agv2_pa agv2_w agv2_1-1 agv2_1-2 agv2_2-1 agv2_2-2
+1 01 <NA> <NA>   1   0   2     1-0     1-2    2       0      2        0        2        0        0
+2 02 <NA> <NA>   1   0   1     1-0     1-1    2       0      2        2        0        0        0
+3 03 <NA> <NA>   1   0   2     1-0     1-2    2       0      2        0        2        0        0
+4 04 <NA> <NA>   1   0   2     1-0     1-2    2       0      2        0        2        0        0
+5 05 <NA> <NA>   2   0   2     2-0     2-2    0       0      0        0        0        0        0
+6 06 <NA> <NA>   2   0   1     2-0     2-1    0       0      0        0        0        0        0
+...
+   id fid mid loc gen sex loc.gen loc.sex agv2 agv2_pa agv2_w agv2_1-1 agv2_1-2 agv2_2-1 agv2_2-2
+43 53  44  43   1   5   2     1-5     1-2  5.3    4.15   1.15   2.3250   2.9750        0     0.00
+44 54  44  43   1   5   2     1-5     1-2  4.2    4.15   0.05   2.3250   1.8750        0     0.00
+45 55  44  45   2   5   2     2-5     2-2  3.7    3.65   0.05   2.2625   1.0875        0     0.35
+46 56  44  46   2   5   2     2-5     2-2  5.2    4.00   1.20   2.2625   1.0875        0     1.85
+47 57  44  47   2   5   2     2-5     2-2  4.1    3.90   0.20   2.2625   1.0875        0     0.75
+48 58  44  48   2   5   2     2-5     2-2  4.3    3.60   0.70   2.2625   1.0875        0     0.95
+
+> 
+> ## Summarize population by generation (=trend)
+> (ret <- summary(res, by="gen"))
+
+
+ Summary of partitions of additive genetic values 
+   - paths: 4 (1-1, 1-2, 2-1, 2-2)
+   - traits: 2 (agv1, agv2)
+
+ Trait: agv1 (absolute) 
+
+  gen N    Sum     1-1     1-2 2-1     2-2
+1   0 8 1.0000 0.25000 0.75000   0  0.0000
+2   1 8 1.4875 0.60000 0.61250   0  0.2750
+3   2 8 1.8875 1.16875 0.88125   0 -0.1625
+4   3 8 2.7500 1.45000 1.17500   0  0.1250
+5   4 8 3.6125 1.92500 1.56250   0  0.1250
+6   5 8 4.0625 2.29375 1.68125   0  0.0875
+
+ Trait: agv1 (relative) 
+
+  gen N Sum       1-1       1-2 2-1         2-2
+1   0 8   1 0.2500000 0.7500000   0  0.00000000
+2   1 8   1 0.4033613 0.4117647   0  0.18487395
+3   2 8   1 0.6192053 0.4668874   0 -0.08609272
+4   3 8   1 0.5272727 0.4272727   0  0.04545455
+5   4 8   1 0.5328720 0.4325260   0  0.03460208
+6   5 8   1 0.5646154 0.4138462   0  0.02153846
+
+ Trait: agv2 (absolute) 
+
+  gen N    Sum     1-1     1-2 2-1    2-2
+1   0 8 1.0000 0.25000 0.75000   0 0.0000
+2   1 8 1.5500 0.60000 0.61250   0 0.3375
+3   2 8 2.7125 1.16875 0.88125   0 0.6625
+4   3 8 3.2750 1.45000 1.17500   0 0.6500
+5   4 8 3.9250 1.92500 1.56250   0 0.4375
+6   5 8 4.4625 2.29375 1.68125   0 0.4875
+
+ Trait: agv2 (relative) 
+
+  gen N Sum       1-1       1-2 2-1       2-2
+1   0 8   1 0.2500000 0.7500000   0 0.0000000
+2   1 8   1 0.3870968 0.3951613   0 0.2177419
+3   2 8   1 0.4308756 0.3248848   0 0.2442396
+4   3 8   1 0.4427481 0.3587786   0 0.1984733
+5   4 8   1 0.4904459 0.3980892   0 0.1114650
+6   5 8   1 0.5140056 0.3767507   0 0.1092437
+
+> 
+> ## Plot the partitions
+> p <- plot(ret, ylab=c("AGV for trait 1", "AGV for trait 2"), xlab="Generation")
+> print(p)
+> p <- plot(ret, ylab=c("AGV for trait 1", "AGV for trait 2"), xlab="Generation",
++         lineTypeList=list("-1"=1, "-2"=2, def=3))
+> print(p)
+> p <- plot(ret, ylab=c("AGV for trait 1", "AGV for trait 2"), xlab="Generation",
++         lineTypeList=list("-1"=1, "-2"=2, def=3), useGgplot2=FALSE)
+Error in get(p$panel) : object 'panel.xyplot' not found
+Calls: plot ... plot.summaryAlphaPartition -> <Anonymous> -> direct.label.trellis -> get
+Execution halted
+* checking for unstated dependencies in ‘tests’ ... OK
+* checking tests ... ERROR
+  Running ‘testthat.R’
+Running the tests in ‘tests/testthat.R’ failed.
+Last 13 lines of output:
+   - traits: 2 (agv1, agv2)
+   - paths: 2 (1, 2)
+   - unknown (missing) values:
+  agv1 agv2 
+     0    0 
+  /tmp/RtmpX2z1Z5/agv1/alphaPartition_agv1_abs.csv 
+  /tmp/RtmpX2z1Z5/agv1/alphaPartition_agv1_rel.csv 
+  /tmp/RtmpX2z1Z5/agv2/alphaPartition_agv2_abs.csv 
+  /tmp/RtmpX2z1Z5/agv2/alphaPartition_agv2_rel.csv 
+  ══ testthat results  ════════════════════════════════════════════════════════════════════════════════
+  OK: 145 SKIPPED: 0 FAILED: 1
+  1. Failure: Test pedFixBirthYear (@test-pedfixbirthyear.R#21) 
+  
+  Error: testthat unit tests failed
+  Execution halted
+* checking for unstated dependencies in vignettes ... OK
+* checking package vignettes in ‘inst/doc’ ... OK
+* checking re-building of vignette outputs ... OK
+* DONE
+Status: 2 ERRORs, 1 NOTE

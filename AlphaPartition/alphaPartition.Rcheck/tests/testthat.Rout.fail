@@ -1,0 +1,131 @@
+
+R version 3.4.4 (2018-03-15) -- "Someone to Lean On"
+Copyright (C) 2018 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> library(testthat)
+> library(alphaPartition)
+> 
+> test_check("alphaPartition")
+
+Size:
+ - individuals: 6 
+ - traits: 2 (trt1, trt2)
+ - paths: 3 (A, B, C)
+ - unknown (missing) values:
+trt1 trt2 
+   0    0 
+
+Size:
+ - individuals: 6 
+ - traits: 2 (trt1, trt2)
+ - paths: 2 (A, B)
+ - unknown (missing) values:
+trt1 trt2 
+   0    0 
+
+Size:
+ - individuals: 6 
+ - traits: 2 (trt1, trt2)
+ - paths: 2 (A, B)
+ - unknown (missing) values:
+trt1 trt2 
+   0    0 
+
+Size:
+ - individuals: 6 
+ - traits: 2 (trt1, trt2)
+ - paths: 2 (A, B)
+ - unknown (missing) values:
+trt1 trt2 
+   0    0 
+[31m──[39m [31m1. Failure: Test pedFixBirthYear (@test-pedfixbirthyear.R#21) [39m [31m───────────────────────────────────[39m
+`pedFixBirthYear(...)` did not throw an error.
+
+
+Size:
+ - individuals: 6 
+ - traits: 2 (trt1, trt2)
+ - paths: 3 (A, B, C)
+ - unknown (missing) values:
+trt1 trt2 
+   0    0 
+
+Size:
+ - individuals: 6 
+ - traits: 2 (trt1, trt2)
+ - paths: 3 (A, B, C)
+ - unknown (missing) values:
+trt1 trt2 
+   0    0 
+
+Size:
+ - individuals: 6 
+ - traits: 2 (trt1, trt2)
+ - paths: 3 (A, B, C)
+ - groups: 3 (1, 2, 3)
+ - unknown (missing) values:
+trt1 trt2 
+   0    0 
+
+Size:
+ - individuals: 48 
+ - traits: 2 (agv1, agv2)
+ - paths: 2 (1, 2)
+ - unknown (missing) values:
+agv1 agv2 
+   0    0 
+/tmp/RtmpX2z1Z5/alphaPartition_agv1.csv 
+/tmp/RtmpX2z1Z5/alphaPartition_agv2.csv 
+
+Size:
+ - individuals: 48 
+ - traits: 2 (agv1, agv2)
+ - paths: 2 (1, 2)
+ - unknown (missing) values:
+agv1 agv2 
+   0    0 
+/tmp/RtmpX2z1Z5/agv1/alphaPartition_agv1.csv 
+/tmp/RtmpX2z1Z5/agv2/alphaPartition_agv2.csv 
+
+Size:
+ - individuals: 48 
+ - traits: 2 (agv1, agv2)
+ - paths: 2 (1, 2)
+ - unknown (missing) values:
+agv1 agv2 
+   0    0 
+/tmp/RtmpX2z1Z5/alphaPartition_agv1_abs.csv 
+/tmp/RtmpX2z1Z5/alphaPartition_agv1_rel.csv 
+/tmp/RtmpX2z1Z5/alphaPartition_agv2_abs.csv 
+/tmp/RtmpX2z1Z5/alphaPartition_agv2_rel.csv 
+
+Size:
+ - individuals: 48 
+ - traits: 2 (agv1, agv2)
+ - paths: 2 (1, 2)
+ - unknown (missing) values:
+agv1 agv2 
+   0    0 
+/tmp/RtmpX2z1Z5/agv1/alphaPartition_agv1_abs.csv 
+/tmp/RtmpX2z1Z5/agv1/alphaPartition_agv1_rel.csv 
+/tmp/RtmpX2z1Z5/agv2/alphaPartition_agv2_abs.csv 
+/tmp/RtmpX2z1Z5/agv2/alphaPartition_agv2_rel.csv 
+══ testthat results  ════════════════════════════════════════════════════════════════════════════════
+OK: 145 SKIPPED: 0 FAILED: 1
+1. Failure: Test pedFixBirthYear (@test-pedfixbirthyear.R#21) 
+
+Error: testthat unit tests failed
+Execution halted

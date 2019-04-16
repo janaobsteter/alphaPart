@@ -1,0 +1,6 @@
+name	user	system	elapsed
+alphaPartition	10.980	 0.036	11.022	
+alphaPartitionSubset	0.092	0.000	0.091	
+alphaPartitionSum	0.020	0.000	0.021	
+pedFixBirthYear	0.040	0.000	0.041	
+pedSetBase	0.000	0.000	0.002	

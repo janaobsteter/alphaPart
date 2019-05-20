@@ -51,9 +51,6 @@ Size:
  - unknown (missing) values:
 trt1 trt2 
    0    0 
-[31m──[39m [31m1. Failure: Test pedFixBirthYear (@test-pedfixbirthyear.R#21) [39m [31m───────────────────────────────────[39m
-`pedFixBirthYear(...)` did not throw an error.
-
 
 Size:
  - individuals: 6 
@@ -87,8 +84,8 @@ Size:
  - unknown (missing) values:
 agv1 agv2 
    0    0 
-/tmp/RtmpX2z1Z5/alphaPartition_agv1.csv 
-/tmp/RtmpX2z1Z5/alphaPartition_agv2.csv 
+/tmp/RtmpfNyTq8/alphaPartition_agv1.csv 
+/tmp/RtmpfNyTq8/alphaPartition_agv2.csv 
 
 Size:
  - individuals: 48 
@@ -97,8 +94,8 @@ Size:
  - unknown (missing) values:
 agv1 agv2 
    0    0 
-/tmp/RtmpX2z1Z5/agv1/alphaPartition_agv1.csv 
-/tmp/RtmpX2z1Z5/agv2/alphaPartition_agv2.csv 
+/tmp/RtmpfNyTq8/agv1/alphaPartition_agv1.csv 
+/tmp/RtmpfNyTq8/agv2/alphaPartition_agv2.csv 
 
 Size:
  - individuals: 48 
@@ -107,10 +104,10 @@ Size:
  - unknown (missing) values:
 agv1 agv2 
    0    0 
-/tmp/RtmpX2z1Z5/alphaPartition_agv1_abs.csv 
-/tmp/RtmpX2z1Z5/alphaPartition_agv1_rel.csv 
-/tmp/RtmpX2z1Z5/alphaPartition_agv2_abs.csv 
-/tmp/RtmpX2z1Z5/alphaPartition_agv2_rel.csv 
+/tmp/RtmpfNyTq8/alphaPartition_agv1_abs.csv 
+/tmp/RtmpfNyTq8/alphaPartition_agv1_rel.csv 
+/tmp/RtmpfNyTq8/alphaPartition_agv2_abs.csv 
+/tmp/RtmpfNyTq8/alphaPartition_agv2_rel.csv 
 
 Size:
  - individuals: 48 
@@ -119,13 +116,14 @@ Size:
  - unknown (missing) values:
 agv1 agv2 
    0    0 
-/tmp/RtmpX2z1Z5/agv1/alphaPartition_agv1_abs.csv 
-/tmp/RtmpX2z1Z5/agv1/alphaPartition_agv1_rel.csv 
-/tmp/RtmpX2z1Z5/agv2/alphaPartition_agv2_abs.csv 
-/tmp/RtmpX2z1Z5/agv2/alphaPartition_agv2_rel.csv 
+/tmp/RtmpfNyTq8/agv1/alphaPartition_agv1_abs.csv 
+/tmp/RtmpfNyTq8/agv1/alphaPartition_agv1_rel.csv 
+/tmp/RtmpfNyTq8/agv2/alphaPartition_agv2_abs.csv 
+/tmp/RtmpfNyTq8/agv2/alphaPartition_agv2_rel.csv 
 ══ testthat results  ════════════════════════════════════════════════════════════════════════════════
-OK: 145 SKIPPED: 0 FAILED: 1
-1. Failure: Test pedFixBirthYear (@test-pedfixbirthyear.R#21) 
-
-Error: testthat unit tests failed
-Execution halted
+OK: 128 SKIPPED: 0 FAILED: 0
+> 
+> 
+> proc.time()
+   user  system elapsed 
+  1.640   0.060   1.705 

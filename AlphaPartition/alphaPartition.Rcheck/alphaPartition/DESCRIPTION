@@ -16,8 +16,8 @@ LinkingTo: Rcpp
 Version: 0.6.0
 Date: Check NEWS file for changes: news(package='alphaPartition')
 NeedsCompilation: yes
-Packaged: 2019-04-08 10:10:02 UTC; jana
+Packaged: 2019-05-08 06:12:15 UTC; jana
 VignetteBuilder: knitr
 RoxygenNote: 6.1.1
 Encoding: UTF-8
-Built: R 3.4.4; x86_64-pc-linux-gnu; 2019-04-08 10:10:21 UTC; unix
+Built: R 3.4.4; x86_64-pc-linux-gnu; 2019-05-08 06:12:21 UTC; unix

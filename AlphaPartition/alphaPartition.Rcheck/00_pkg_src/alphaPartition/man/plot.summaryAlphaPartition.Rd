@@ -89,7 +89,7 @@ p <- plot(ret, ylab=c("AGV for trait 1", "AGV for trait 2"), xlab="Generation")
 print(p[[1]]$abs)
 print(p[[1]]$rel)
 print(p[[2]])
-print(p)
+#print(p)
 
 ## Partition additive genetic values by location and sex
 alphaPartition.ped$loc.sex <- with(alphaPartition.ped, paste(loc, sex, sep="-"))
@@ -105,7 +105,7 @@ p <- plot(ret, ylab=c("AGV for trait 1", "AGV for trait 2"), xlab="Generation",
         lineTypeList=list("-1"=1, "-2"=2, def=3))
 print(p)
 p <- plot(ret, ylab=c("AGV for trait 1", "AGV for trait 2"), xlab="Generation",
-        lineTypeList=list("-1"=1, "-2"=2, def=3), useGgplot2=FALSE)
+        lineTypeList=list("-1"=1, "-2"=2, def=3), useGgplot2=FALSE, useDirectLabels = FALSE)
 print(p)
 
 ## Plot control (color and type of lines + limits)

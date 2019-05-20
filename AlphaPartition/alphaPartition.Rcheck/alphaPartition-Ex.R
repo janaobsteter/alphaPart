@@ -46,8 +46,8 @@ print(tmp)
 summary(tmp, by="gen")
 
 ## There are also two demos
-demo(topic="alphaPartition_deterministic", package="alphaPartition", ask=interactive())
-demo(topic="alphaPartition_stochastic",     package="alphaPartition", ask=interactive())
+#demo(topic="alphaPartition_deterministic", package="alphaPartition", ask=interactive())
+#demo(topic="alphaPartition_stochastic",     package="alphaPartition", ask=interactive())
 
 
 
@@ -151,9 +151,9 @@ base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 
 ## Example pedigree with missing (unknown) birth year for some individuals
 ped0 <- data.frame(     id=c( 1, 2, 3,  4, 5, 6, 7,  8, 9, 10, 11, 12, 13, 14),
-                     fid=c( 0, 0, 0,  1, 1, 1, 3,  3, 3,  5,  0,  0,  0, 12),
-                     mid=c( 0, 0, 0,  2, 0, 2, 2,  2, 5,  0,  0,  0,  0, 13),
-                birth_dt=c(NA, 0, 1, NA, 3, 3, 3, NA, 4, NA, NA, NA, NA, NA) + 2000)
+                        fid=c( 0, 0, 0,  1, 1, 1, 3,  3, 3,  5,  4,  0,  0, 12),
+                        mid=c( 0, 0, 0,  2, 0, 2, 2,  2, 5,  0,  0,  0,  0, 13),
+                        birth_dt=c(NA, 0, 1, NA, 3, 3, 3, 3, 4, 4, 5, NA, 6, 6) + 2000)
 
 ## First run - using information from children
 ped1 <- pedFixBirthYear(x=ped0, interval=1)
@@ -222,7 +222,7 @@ p <- plot(ret, ylab=c("AGV for trait 1", "AGV for trait 2"), xlab="Generation")
 print(p[[1]]$abs)
 print(p[[1]]$rel)
 print(p[[2]])
-print(p)
+#print(p)
 
 ## Partition additive genetic values by location and sex
 alphaPartition.ped$loc.sex <- with(alphaPartition.ped, paste(loc, sex, sep="-"))
@@ -238,7 +238,7 @@ p <- plot(ret, ylab=c("AGV for trait 1", "AGV for trait 2"), xlab="Generation",
         lineTypeList=list("-1"=1, "-2"=2, def=3))
 print(p)
 p <- plot(ret, ylab=c("AGV for trait 1", "AGV for trait 2"), xlab="Generation",
-        lineTypeList=list("-1"=1, "-2"=2, def=3), useGgplot2=FALSE)
+        lineTypeList=list("-1"=1, "-2"=2, def=3), useGgplot2=FALSE, useDirectLabels = FALSE)
 print(p)
 
 ## Plot control (color and type of lines + limits)
@@ -283,8 +283,8 @@ print(tmp)
 summary(tmp, by="gen")
 
 ## There are also two demos
-demo(topic="alphaPartition_deterministic", package="alphaPartition", ask=interactive())
-demo(topic="alphaPartition_stochastic",     package="alphaPartition", ask=interactive())
+#demo(topic="alphaPartition_deterministic", package="alphaPartition", ask=interactive())
+#demo(topic="alphaPartition_stochastic",     package="alphaPartition", ask=interactive())
 
 
 

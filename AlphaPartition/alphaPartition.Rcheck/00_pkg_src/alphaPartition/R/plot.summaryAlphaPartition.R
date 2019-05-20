@@ -55,7 +55,7 @@
 
 plot.summaryAlphaPartition <-
 
-function 
+function
 
 (
   x,
@@ -96,7 +96,7 @@ function
 '
 
   if(!("summaryAlphaPartition" %in% class(x))) stop("'x' must be of a summaryAlphaPartition class")
-    
+
   by    <- x$info$by
   path  <- x$info$path
   lT    <- x$info$lT
@@ -106,11 +106,11 @@ function
   names(ret) <- x$info$lT
   for(i in 1:nT) {
     ret[[i]] <- vector(mode="list", length=2)
-    names(ret[[i]]) <- c("abs", "rel") 
+    names(ret[[i]]) <- c("abs", "rel")
   }
 
   ## Axis labels
-  if(!is.null(xlab) && length(xlab) > 1) stop("you can provide only one value for 'xlab'")  
+  if(!is.null(xlab) && length(xlab) > 1) stop("you can provide only one value for 'xlab'")
   if(!is.null(ylab) && length(ylab) < nT) ylab <- rep(ylab, length=nT)
 
   ## Colors
@@ -131,7 +131,7 @@ function
       }
       color <- unique(color)
     }
-    color <- c("black", 
+    color <- c("black",
                "#E41A1C", "#377EB8", "#4DAF4A", "#984EA3", "#FF7F00", "#FFFF33",
                "#A65628", "#F781BF", "#999999", "#1B9E77", "#D95F02", "#7570B3",
                "#E7298A", "#66A61E", "#E6AB02", "#A6761D", "#666666", "#7FC97F",
@@ -150,7 +150,7 @@ function
       lineType <- c(1, rep(x=lineType, times=nP))
     } else {
       lineType <- c(1, lineType)
-    } 
+    }
   }
 
   ## --- Create plots ---
@@ -190,7 +190,7 @@ function
             levs1 <- levs2 <- levs
               for(k in levs2X) {
               j <- paste(k, "$", sep="") ## lower label mark needs to be at the end of path name!!!
-              levs2[grep(pattern=j, x=levs1)] <- k 
+              levs2[grep(pattern=j, x=levs1)] <- k
               levs1 <- sub(pattern=j, replacement="", x=levs1)
             }
             levs2[!levs2 %in% levs2X] <- "def"
@@ -224,7 +224,7 @@ function
 
         if(!is.null(xlim)) {
           if(is.list(xlim)) {
-            xlimI <- xlim[[i]]  
+            xlimI <- xlim[[i]]
           } else {
             xlimI <- xlim
           }
@@ -233,7 +233,7 @@ function
 
         if(!is.null(ylimT)) {
           if(is.list(ylimT)) {
-            ylimI <- ylimT[[i]] 
+            ylimI <- ylimT[[i]]
           } else {
             ylimI <- ylimT
           }
@@ -243,10 +243,10 @@ function
         if(useDirectLabels) p <- directlabels::direct.label(p=p, method=method)
 
         ## This needs to follow direct.label
-        p <- p + scale_colour_manual(values=colorI, 
+        p <- p + scale_colour_manual(values=colorI,
         name=ifelse(is.null(labelPath), path, labelPath))
 
-        p <- p + scale_linetype_manual(values=lineTypeI, 
+        p <- p + scale_linetype_manual(values=lineTypeI,
         name=ifelse(is.null(labelPath), path, labelPath))
 
       } else { ## using lattice
@@ -275,25 +275,25 @@ function
             ylimI <- ylimT
           }
         }
-        lattice.options(panel.error=NULL)
-        p <- lattice::xyplot(trait ~ by, group=path, data=tmp, type="l",
-                    col=colorI, lty=lineTypeI, lwd=lineSize, 
+        p <- xyplot(trait ~ by, group=path, data=tmp, type="l",
+                    col=colorI, lty=lineTypeI, lwd=lineSize,
                     xlab=xlab, ylab=ylab[i],
                     xlim=xlimI, ylim=ylimI,
                     panel = lattice.getOption("panel.xyplot"))
-        if(useDirectLabels) p <- directlabels::direct.label(p=p, method=method)
+
+        if(useDirectLabels) p <- directlabels::direct.label(p=p, method=method, debug=TRUE)
 
 
       }
       ret[[i]][[rel + 1]] <- p
     }
   }
-        
+
   ## --- Return ---
 
   class(ret) <- c("plotSummaryAlphaPartition", class(ret))
-  ret  
-  
+  ret
+
   ##value A list of ggplot or lattice objects that can be further modified or displayed.
   ## For each trait in \code{x} there are two plots (one for absolute values and one for
   ## relative values).

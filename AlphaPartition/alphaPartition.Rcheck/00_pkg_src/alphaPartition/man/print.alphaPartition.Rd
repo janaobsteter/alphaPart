@@ -42,8 +42,8 @@ print(tmp)
 summary(tmp, by="gen")
 
 ## There are also two demos
-demo(topic="alphaPartition_deterministic", package="alphaPartition", ask=interactive())
-demo(topic="alphaPartition_stochastic",     package="alphaPartition", ask=interactive())
+#demo(topic="alphaPartition_deterministic", package="alphaPartition", ask=interactive())
+#demo(topic="alphaPartition_stochastic",     package="alphaPartition", ask=interactive())
 
 }
 \seealso{

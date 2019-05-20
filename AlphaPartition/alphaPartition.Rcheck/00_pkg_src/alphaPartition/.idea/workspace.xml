@@ -5,21 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9ed4a3a1-61e9-437b-9d49-6bb1f067ce02" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/jana.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DESCRIPTION" beforeDir="false" afterPath="$PROJECT_DIR$/DESCRIPTION" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NAMESPACE" beforeDir="false" afterPath="$PROJECT_DIR$/NAMESPACE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/R/alphaPartition.R" beforeDir="false" afterPath="$PROJECT_DIR$/R/alphaPartition.R" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/R/alphaPartitionSubset.R" beforeDir="false" afterPath="$PROJECT_DIR$/R/alphaPartitionSubset.R" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/R/alphaPartitionSum.R" beforeDir="false" afterPath="$PROJECT_DIR$/R/alphaPartitionSum.R" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/R/pedFixBirthYear.R" beforeDir="false" afterPath="$PROJECT_DIR$/R/pedFixBirthYear.R" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/R/pedSetBase.R" beforeDir="false" afterPath="$PROJECT_DIR$/R/pedSetBase.R" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/R/plot.summaryAlphaPartition.R" beforeDir="false" afterPath="$PROJECT_DIR$/R/plot.summaryAlphaPartition.R" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/R/print.alphaPartition.R" beforeDir="false" afterPath="$PROJECT_DIR$/R/print.alphaPartition.R" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/R/print.plotSummaryPartAGV.R" beforeDir="false" afterPath="$PROJECT_DIR$/R/print.plotSummaryPartAGV.R" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/R/print.summaryPartAGV.R" beforeDir="false" afterPath="$PROJECT_DIR$/R/print.summaryPartAGV.R" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/R/savePlot.plotSummaryPartAGV.R" beforeDir="false" afterPath="$PROJECT_DIR$/R/savePlot.plotSummaryPartAGV.R" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/R/summary.alphaPartition.R" beforeDir="false" afterPath="$PROJECT_DIR$/R/summary.alphaPartition.R" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/R/write.csv.R" beforeDir="false" afterPath="$PROJECT_DIR$/R/write.csv.R" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/examples/examples_alphaPartition.R" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/examples/examples_alphaPartitionSubset.R" beforeDir="false" />
@@ -33,13 +19,11 @@
       <change beforePath="$PROJECT_DIR$/examples/examples_summary.alphaPartition.R" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/examples/examples_write.csv.R" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/getLoadedDLLs().Rproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/inst/examples/examples_alphaPartition.R" beforeDir="false" afterPath="$PROJECT_DIR$/inst/examples/examples_alphaPartition.R" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inst/examples/examples_plotSummaryAlphaPartition.R" beforeDir="false" afterPath="$PROJECT_DIR$/inst/examples/examples_plotSummaryAlphaPartition.R" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/man/alphaPartition.Rd" beforeDir="false" afterPath="$PROJECT_DIR$/man/alphaPartition.Rd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/man/alphaPartitionSum.Rd" beforeDir="false" afterPath="$PROJECT_DIR$/man/alphaPartitionSum.Rd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/man/pedFixBirthYear.Rd" beforeDir="false" afterPath="$PROJECT_DIR$/man/pedFixBirthYear.Rd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/man/plot.summaryAlphaPartition.Rd" beforeDir="false" afterPath="$PROJECT_DIR$/man/plot.summaryAlphaPartition.Rd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/man/print.alphaPartition.Rd" beforeDir="false" afterPath="$PROJECT_DIR$/man/print.alphaPartition.Rd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/man/print.plotSummaryAlphaPartition.Rd" beforeDir="false" afterPath="$PROJECT_DIR$/man/print.plotSummaryAlphaPartition.Rd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/man/write.csv.Rd" beforeDir="false" afterPath="$PROJECT_DIR$/man/write.csv.Rd" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -52,35 +36,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/R/plot.summaryAlphaPartition.R">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="52" column="18" selection-start-line="52" selection-start-column="18" selection-end-line="52" selection-end-column="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/inst/examples/examples_plotSummaryAlphaPartition.R">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="483">
-              <caret line="23" column="14" selection-start-line="23" selection-start-column="14" selection-end-line="23" selection-end-column="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/testthat/test-pedfixbirthyear.R">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="6" column="81" lean-forward="true" selection-start-line="6" selection-start-column="81" selection-end-line="6" selection-end-column="81" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/inst/examples/examples_alphaPartitionSum.R">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="8" selection-start-line="8" selection-end-line="8" />
+            <state relative-caret-position="339">
+              <caret line="277" column="2" selection-start-line="277" selection-start-column="2" selection-end-line="277" selection-end-column="2" />
             </state>
           </provider>
         </entry>
@@ -95,19 +52,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DESCRIPTION">
+        <entry file="file://$PROJECT_DIR$/inst/examples/examples_write.csv.R">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="11" column="58" selection-start-line="11" selection-start-column="58" selection-end-line="11" selection-end-column="58" />
+            <state relative-caret-position="147">
+              <caret line="7" column="20" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/R/print.summaryPartAGV.R">
+        <entry file="file://$PROJECT_DIR$/inst/examples/examples_plotSummaryAlphaPartition.R">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="273">
-              <caret line="13" column="26" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
+            <state relative-caret-position="483">
+              <caret line="23" column="14" selection-start-line="23" selection-start-column="14" selection-end-line="23" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -124,8 +81,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/R/pedFixBirthYear.R">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="118" column="26" lean-forward="true" selection-start-line="118" selection-start-column="13" selection-end-line="118" selection-end-column="26" />
+            <state relative-caret-position="2604">
+              <caret line="124" column="45" selection-start-line="124" selection-start-column="45" selection-end-line="124" selection-end-column="45" />
             </state>
           </provider>
         </entry>
@@ -141,10 +98,15 @@
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>sort1</find>
-      <find>call</find>
       <find>ylimrel</find>
       <find>sort</find>
       <find>str</find>
@@ -161,7 +123,6 @@
       <find>test</find>
       <find>unitte</find>
       <find>xyplot</find>
-      <find>lattice</find>
       <find>lattice::</find>
       <find>direct.label</find>
       <find>ylab</find>
@@ -172,7 +133,10 @@
       <find>panel</find>
       <find>np</find>
       <find>ggplot2</find>
+      <find>xy</find>
       <find>method</find>
+      <find>lattice</find>
+      <find>lattice,</find>
     </findStrings>
     <replaceStrings>
       <replace>expect_equals</replace>
@@ -189,9 +153,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/examples/examples_write.csv.R" />
-        <option value="$PROJECT_DIR$/examples/examples_savePlot.plotsummaryAlphaPartition.R" />
-        <option value="$PROJECT_DIR$/examples/examples_print.plotSummaryAlphaPartition.R" />
         <option value="$PROJECT_DIR$/examples/examples_plotSummaryAlphaPartition.R" />
         <option value="$PROJECT_DIR$/examples/examples_alphaPartitionSum.R" />
         <option value="$PROJECT_DIR$/examples/examples_alphaPartitionSubset.R" />
@@ -239,6 +200,9 @@
         <option value="$PROJECT_DIR$/inst/examples/examples_alphaPartitionSum.R" />
         <option value="$PROJECT_DIR$/inst/examples/examples_pedFixBirthYear.R" />
         <option value="$PROJECT_DIR$/DESCRIPTION" />
+        <option value="$PROJECT_DIR$/R/df.py" />
+        <option value="$USER_HOME$/GenomicStrategies_SireUse/selection10.py" />
+        <option value="$PROJECT_DIR$/inst/examples/examples_alphaPartition.R" />
         <option value="$PROJECT_DIR$/R/plot.summaryAlphaPartition.R" />
       </list>
     </option>
@@ -246,7 +210,7 @@
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="1920" />
     <option name="y" value="24" />
-    <option name="width" value="1918" />
+    <option name="width" value="1916" />
     <option name="height" value="999" />
   </component>
   <component name="ProjectView">
@@ -296,13 +260,14 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/bin/partAGV_folder/partAGV/R/write.csv.R" />
+    <property name="last_opened_file_path" value="$USER_HOME$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$USER_HOME$" />
       <recent name="$PROJECT_DIR$/R" />
       <recent name="$PROJECT_DIR$/tests/testthat" />
     </key>
@@ -339,18 +304,20 @@
       <workItem from="1551866093618" duration="4006000" />
       <workItem from="1551944001476" duration="49292000" />
       <workItem from="1552467328359" duration="43870000" />
-      <workItem from="1554712263589" duration="5452000" />
+      <workItem from="1554712263589" duration="9067000" />
+      <workItem from="1555183490119" duration="605000" />
+      <workItem from="1556179738192" duration="8259000" />
+      <workItem from="1556259559623" duration="1197000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="102666000" />
+    <option name="totallyTimeSpent" value="116342000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1919" y="-11" width="1922" height="1035" extended-state="6" />
-    <editor active="true" />
+    <frame x="1920" y="24" width="1920" height="999" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26040554" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26947704" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -404,14 +371,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/tests/testthat/test-partagvpathsum.R" />
-    <entry file="file://$PROJECT_DIR$/tests/testthat/test-alphapartitionsum.R">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="33" selection-start-column="33" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/testthat/test-plot-summaryAlphaPartition.R" />
     <entry file="file://$PROJECT_DIR$/tests/testthat/test-plot-summaryalphapartition.R" />
     <entry file="file://$PROJECT_DIR$/tests/testthat/test-summary-alphaPartition.R" />
@@ -556,13 +515,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/inst/examples/examples_alphaPartition.R">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="1" selection-end-line="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/inst/examples/examples_print.alphaPartition.R">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -587,20 +539,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/inst/examples/examples_write.csv.R">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/inst/examples/examples_alphaPartitionSubset.R">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
           <caret line="9" column="36" selection-start-line="9" selection-start-column="36" selection-end-line="9" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/R/alphaPartition.R">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="66" column="12" selection-start-line="66" selection-start-column="12" selection-end-line="66" selection-end-column="25" />
         </state>
       </provider>
     </entry>
@@ -625,10 +567,54 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/inst/examples/examples_plotSummaryAlphaPartition.R">
+    <entry file="file://$USER_HOME$/GenomicStrategies_SireUse/selection10.py" />
+    <entry file="file://$PROJECT_DIR$/R/df.py" />
+    <entry file="file://$PROJECT_DIR$/DESCRIPTION">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="23" column="14" selection-start-line="23" selection-start-column="14" selection-end-line="23" selection-end-column="14" />
+        <state relative-caret-position="231">
+          <caret line="11" column="58" selection-start-line="11" selection-start-column="58" selection-end-line="11" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/R/print.summaryPartAGV.R">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="281">
+          <caret line="26" column="3" selection-start-line="26" selection-start-column="3" selection-end-line="26" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inst/examples/examples_alphaPartitionSum.R">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="22" column="34" lean-forward="true" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/testthat/test-pedfixbirthyear.R">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inst/examples/examples_alphaPartition.R">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="13" column="26" lean-forward="true" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/R/alphaPartition.R">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="66" column="12" selection-start-line="66" selection-start-column="12" selection-end-line="66" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/R/plot.summaryAlphaPartition.R">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="339">
+          <caret line="277" column="2" selection-start-line="277" selection-start-column="2" selection-end-line="277" selection-end-column="2" />
         </state>
       </provider>
     </entry>
@@ -639,10 +625,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/R/print.summaryPartAGV.R">
+    <entry file="file://$PROJECT_DIR$/inst/examples/examples_write.csv.R">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="13" column="26" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
+        <state relative-caret-position="147">
+          <caret line="7" column="20" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inst/examples/examples_plotSummaryAlphaPartition.R">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="23" column="14" selection-start-line="23" selection-start-column="14" selection-end-line="23" selection-end-column="14" />
         </state>
       </provider>
     </entry>
@@ -653,45 +646,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/R/pedFixBirthYear.R">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2604">
+          <caret line="124" column="45" selection-start-line="124" selection-start-column="45" selection-end-line="124" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/inst/examples/examples_pedFixBirthYear.R">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="273">
           <caret line="13" selection-start-line="13" selection-end-line="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DESCRIPTION">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="11" column="58" selection-start-line="11" selection-start-column="58" selection-end-line="11" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/R/pedFixBirthYear.R">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="118" column="26" lean-forward="true" selection-start-line="118" selection-start-column="13" selection-end-line="118" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/testthat/test-pedfixbirthyear.R">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="6" column="81" lean-forward="true" selection-start-line="6" selection-start-column="81" selection-end-line="6" selection-end-column="81" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inst/examples/examples_alphaPartitionSum.R">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/R/plot.summaryAlphaPartition.R">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="52" column="18" selection-start-line="52" selection-start-column="18" selection-end-line="52" selection-end-column="18" />
         </state>
       </provider>
     </entry>

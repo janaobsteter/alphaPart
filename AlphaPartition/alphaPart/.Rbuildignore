@@ -1,0 +1,7 @@
+^\.travis\.yml$
+^getLoadedDLLs()\.Rproj$
+^alphaPart\.Rproj$
+^\.idea/*$
+^\.idea$
+^.*\.Rproj$
+^\.Rproj\.user$

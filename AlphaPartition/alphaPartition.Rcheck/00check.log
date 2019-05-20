@@ -186,7 +186,7 @@ $abs
 
 $rel
 
-> print(p)
+> #print(p)
 > 
 > ## Partition additive genetic values by location and sex
 > alphaPartition.ped$loc.sex <- with(alphaPartition.ped, paste(loc, sex, sep="-"))
@@ -208,39 +208,67 @@ agv1 agv2
 
  Trait: agv1 
 
-  id  fid  mid loc gen sex loc.gen loc.sex agv1 agv1_pa agv1_w agv1_1-1 agv1_1-2 agv1_2-1 agv1_2-2
-1 01 <NA> <NA>   1   0   2     1-0     1-2    2       0      2        0        2        0        0
-2 02 <NA> <NA>   1   0   1     1-0     1-1    2       0      2        2        0        0        0
-3 03 <NA> <NA>   1   0   2     1-0     1-2    2       0      2        0        2        0        0
-4 04 <NA> <NA>   1   0   2     1-0     1-2    2       0      2        0        2        0        0
-5 05 <NA> <NA>   2   0   2     2-0     2-2    0       0      0        0        0        0        0
-6 06 <NA> <NA>   2   0   1     2-0     2-1    0       0      0        0        0        0        0
+  id  fid  mid loc gen sex loc.gen loc.sex agv1 agv1_pa agv1_w agv1_1-1
+1 01 <NA> <NA>   1   0   2     1-0     1-2    2       0      2        0
+2 02 <NA> <NA>   1   0   1     1-0     1-1    2       0      2        2
+3 03 <NA> <NA>   1   0   2     1-0     1-2    2       0      2        0
+4 04 <NA> <NA>   1   0   2     1-0     1-2    2       0      2        0
+5 05 <NA> <NA>   2   0   2     2-0     2-2    0       0      0        0
+6 06 <NA> <NA>   2   0   1     2-0     2-1    0       0      0        0
+  agv1_1-2 agv1_2-1 agv1_2-2
+1        2        0        0
+2        0        0        0
+3        2        0        0
+4        2        0        0
+5        0        0        0
+6        0        0        0
 ...
-   id fid mid loc gen sex loc.gen loc.sex agv1 agv1_pa agv1_w agv1_1-1 agv1_1-2 agv1_2-1 agv1_2-2
-43 53  44  43   1   5   2     1-5     1-2  5.3    4.15   1.15   2.3250   2.9750        0     0.00
-44 54  44  43   1   5   2     1-5     1-2  4.2    4.15   0.05   2.3250   1.8750        0     0.00
-45 55  44  45   2   5   2     2-5     2-2  4.1    3.15   0.95   2.2625   1.0875        0     0.75
-46 56  44  46   2   5   2     2-5     2-2  2.7    3.20  -0.50   2.2625   1.0875        0    -0.65
-47 57  44  47   2   5   2     2-5     2-2  3.5    3.20   0.30   2.2625   1.0875        0     0.15
-48 58  44  48   2   5   2     2-5     2-2  3.8    4.35  -0.55   2.2625   1.0875        0     0.45
+   id fid mid loc gen sex loc.gen loc.sex agv1 agv1_pa agv1_w agv1_1-1 agv1_1-2
+43 53  44  43   1   5   2     1-5     1-2  5.3    4.15   1.15   2.3250   2.9750
+44 54  44  43   1   5   2     1-5     1-2  4.2    4.15   0.05   2.3250   1.8750
+45 55  44  45   2   5   2     2-5     2-2  4.1    3.15   0.95   2.2625   1.0875
+46 56  44  46   2   5   2     2-5     2-2  2.7    3.20  -0.50   2.2625   1.0875
+47 57  44  47   2   5   2     2-5     2-2  3.5    3.20   0.30   2.2625   1.0875
+48 58  44  48   2   5   2     2-5     2-2  3.8    4.35  -0.55   2.2625   1.0875
+   agv1_2-1 agv1_2-2
+43        0     0.00
+44        0     0.00
+45        0     0.75
+46        0    -0.65
+47        0     0.15
+48        0     0.45
 
  Trait: agv2 
 
-  id  fid  mid loc gen sex loc.gen loc.sex agv2 agv2_pa agv2_w agv2_1-1 agv2_1-2 agv2_2-1 agv2_2-2
-1 01 <NA> <NA>   1   0   2     1-0     1-2    2       0      2        0        2        0        0
-2 02 <NA> <NA>   1   0   1     1-0     1-1    2       0      2        2        0        0        0
-3 03 <NA> <NA>   1   0   2     1-0     1-2    2       0      2        0        2        0        0
-4 04 <NA> <NA>   1   0   2     1-0     1-2    2       0      2        0        2        0        0
-5 05 <NA> <NA>   2   0   2     2-0     2-2    0       0      0        0        0        0        0
-6 06 <NA> <NA>   2   0   1     2-0     2-1    0       0      0        0        0        0        0
+  id  fid  mid loc gen sex loc.gen loc.sex agv2 agv2_pa agv2_w agv2_1-1
+1 01 <NA> <NA>   1   0   2     1-0     1-2    2       0      2        0
+2 02 <NA> <NA>   1   0   1     1-0     1-1    2       0      2        2
+3 03 <NA> <NA>   1   0   2     1-0     1-2    2       0      2        0
+4 04 <NA> <NA>   1   0   2     1-0     1-2    2       0      2        0
+5 05 <NA> <NA>   2   0   2     2-0     2-2    0       0      0        0
+6 06 <NA> <NA>   2   0   1     2-0     2-1    0       0      0        0
+  agv2_1-2 agv2_2-1 agv2_2-2
+1        2        0        0
+2        0        0        0
+3        2        0        0
+4        2        0        0
+5        0        0        0
+6        0        0        0
 ...
-   id fid mid loc gen sex loc.gen loc.sex agv2 agv2_pa agv2_w agv2_1-1 agv2_1-2 agv2_2-1 agv2_2-2
-43 53  44  43   1   5   2     1-5     1-2  5.3    4.15   1.15   2.3250   2.9750        0     0.00
-44 54  44  43   1   5   2     1-5     1-2  4.2    4.15   0.05   2.3250   1.8750        0     0.00
-45 55  44  45   2   5   2     2-5     2-2  3.7    3.65   0.05   2.2625   1.0875        0     0.35
-46 56  44  46   2   5   2     2-5     2-2  5.2    4.00   1.20   2.2625   1.0875        0     1.85
-47 57  44  47   2   5   2     2-5     2-2  4.1    3.90   0.20   2.2625   1.0875        0     0.75
-48 58  44  48   2   5   2     2-5     2-2  4.3    3.60   0.70   2.2625   1.0875        0     0.95
+   id fid mid loc gen sex loc.gen loc.sex agv2 agv2_pa agv2_w agv2_1-1 agv2_1-2
+43 53  44  43   1   5   2     1-5     1-2  5.3    4.15   1.15   2.3250   2.9750
+44 54  44  43   1   5   2     1-5     1-2  4.2    4.15   0.05   2.3250   1.8750
+45 55  44  45   2   5   2     2-5     2-2  3.7    3.65   0.05   2.2625   1.0875
+46 56  44  46   2   5   2     2-5     2-2  5.2    4.00   1.20   2.2625   1.0875
+47 57  44  47   2   5   2     2-5     2-2  4.1    3.90   0.20   2.2625   1.0875
+48 58  44  48   2   5   2     2-5     2-2  4.3    3.60   0.70   2.2625   1.0875
+   agv2_2-1 agv2_2-2
+43        0     0.00
+44        0     0.00
+45        0     0.35
+46        0     1.85
+47        0     0.75
+48        0     0.95
 
 > 
 > ## Summarize population by generation (=trend)
@@ -299,32 +327,22 @@ agv1 agv2
 +         lineTypeList=list("-1"=1, "-2"=2, def=3))
 > print(p)
 > p <- plot(ret, ylab=c("AGV for trait 1", "AGV for trait 2"), xlab="Generation",
-+         lineTypeList=list("-1"=1, "-2"=2, def=3), useGgplot2=FALSE)
++         lineTypeList=list("-1"=1, "-2"=2, def=3), useGgplot2=FALSE, useDirectLabels = FALSE)
+> print(p)
+> 
+> ## Plot control (color and type of lines + limits)
+> p <- plot(ret, ylab=c("AGV for trait 1", "AGV for trait 2"), xlab="Generation",
++         useGgplot2=FALSE, color=c("green", "gray"), lineType=c(2, 3),
++         sortValue=FALSE, lineSize=4,
++         xlim=c(-1, 7), ylim=list(c(0, 5), c(-5, 5)), ylimRel=list(c(0, 100), c(0, 50)))
 Error in get(p$panel) : object 'panel.xyplot' not found
 Calls: plot ... plot.summaryAlphaPartition -> <Anonymous> -> direct.label.trellis -> get
 Execution halted
 * checking for unstated dependencies in ‘tests’ ... OK
-* checking tests ... ERROR
+* checking tests ... OK
   Running ‘testthat.R’
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-   - traits: 2 (agv1, agv2)
-   - paths: 2 (1, 2)
-   - unknown (missing) values:
-  agv1 agv2 
-     0    0 
-  /tmp/RtmpX2z1Z5/agv1/alphaPartition_agv1_abs.csv 
-  /tmp/RtmpX2z1Z5/agv1/alphaPartition_agv1_rel.csv 
-  /tmp/RtmpX2z1Z5/agv2/alphaPartition_agv2_abs.csv 
-  /tmp/RtmpX2z1Z5/agv2/alphaPartition_agv2_rel.csv 
-  ══ testthat results  ════════════════════════════════════════════════════════════════════════════════
-  OK: 145 SKIPPED: 0 FAILED: 1
-  1. Failure: Test pedFixBirthYear (@test-pedfixbirthyear.R#21) 
-  
-  Error: testthat unit tests failed
-  Execution halted
 * checking for unstated dependencies in vignettes ... OK
 * checking package vignettes in ‘inst/doc’ ... OK
 * checking re-building of vignette outputs ... OK
 * DONE
-Status: 2 ERRORs, 1 NOTE
+Status: 1 ERROR, 1 NOTE

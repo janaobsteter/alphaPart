@@ -48,11 +48,11 @@ permanent storage.
 
 \examples{
 ## Load an example data
-data("alphaPart.ped")
+data("AlphaPart.ped")
 
 ## --- Partition additive genetic values by loc ---
 
-(res <- alphaPart(x=alphaPart.ped, colPath="loc", colAGV=c("agv1", "agv2")))
+(res <- AlphaPart(x=AlphaPart.ped, colPath="loc", colAGV=c("agv1", "agv2")))
 
 ## Summarize whole population
 (ret <- summary(res))
@@ -68,8 +68,8 @@ data("alphaPart.ped")
 
 ## --- Partition additive genetic values by loc and sex ---
 
-alphaPart.ped$loc.sex <- with(alphaPart.ped, paste(loc, sex, sep="-"))
-(res <- alphaPart(x=alphaPart.ped, colPath="loc.sex", colAGV=c("agv1", "agv2")))
+AlphaPart.ped$loc.sex <- with(AlphaPart.ped, paste(loc, sex, sep="-"))
+(res <- AlphaPart(x=AlphaPart.ped, colPath="loc.sex", colAGV=c("agv1", "agv2")))
 
 ## Summarize population by generation (=trend)
 (ret <- summary(res, by="gen"))
@@ -82,7 +82,7 @@ alphaPart.ped$loc.sex <- with(alphaPart.ped, paste(loc, sex, sep="-"))
 }
 \seealso{
 \code{\link[grDevices]{savePlot}} help page on the default \code{savePlot}
-method in the \pkg{grDevices} package; \code{\link[alphaPart]{savePlot.plotSummaryAlphaPart}}
+method in the \pkg{grDevices} package; \code{\link[AlphaPart]{savePlot.plotSummaryAlphaPart}}
 help page on the method for the objects of \code{plotSummaryAlphaPart} class; and
-\code{\link[alphaPart]{plot.summaryAlphaPart}} for ploting results of summaryAlphaPart object.
+\code{\link[AlphaPart]{plot.summaryAlphaPart}} for ploting results of summaryAlphaPart object.
 }

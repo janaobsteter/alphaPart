@@ -8,16 +8,16 @@
 */
 
 /* .Call calls */
-extern SEXP alphaPartDrop(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
-extern SEXP alphaPartDropGroup(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
+extern SEXP AlphaPartDrop(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
+extern SEXP AlphaPartDropGroup(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
 
 static const R_CallMethodDef CallEntries[] = {
-    {"alphaPartDrop",      (DL_FUNC) &alphaPartDrop,       8},
-    {"alphaPartDropGroup", (DL_FUNC) &alphaPartDropGroup, 10},
+    {"AlphaPartDrop",      (DL_FUNC) &AlphaPartDrop,       8},
+    {"AlphaPartDropGroup", (DL_FUNC) &AlphaPartDropGroup, 10},
     {NULL, NULL, 0}
 };
 
-void R_init_alphaPart(DllInfo *dll)
+void R_init_AlphaPart(DllInfo *dll)
 {
     R_registerRoutines(dll, NULL, CallEntries, NULL, NULL);
     R_useDynamicSymbols(dll, FALSE);

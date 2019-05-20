@@ -43,7 +43,7 @@
 #' If \code{report=TRUE} success is printed on the screen as the number of initially, fixed,
 #' and left unknown birth years is printed.
 #'
-#' @useDynLib alphaPart, .registration = TRUE
+#' @useDynLib AlphaPart, .registration = TRUE
 #' @importFrom Rcpp sourceCpp
 #'
 #' @export

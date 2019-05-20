@@ -3,17 +3,17 @@
 #' Print method for objects of the class summaryAlphaPart.
 #'
 #' Print method for objects of the class \code{summaryAlphaPart} (result of
-#' \code{summary(alphaPart(...))}).
+#' \code{summary(AlphaPart(...))}).
 #'
 #' @seealso
-#' \code{\link[alphaPart]{summary.alphaPart}}
+#' \code{\link[AlphaPart]{summary.AlphaPart}}
 #'
-#' @param x summaryAlphaPart, output object from \code{\link[alphaPart]{summary.alphaPart}} function.
+#' @param x summaryAlphaPart, output object from \code{\link[AlphaPart]{summary.AlphaPart}} function.
 #' @param ...  Arguments passed to other functions (not used at the moment).
 #'
-#' @example inst/examples/examples_summary.alphaPart.R
+#' @example inst/examples/examples_summary.AlphaPart.R
 #'
-#' @useDynLib alphaPart, .registration = TRUE
+#' @useDynLib AlphaPart, .registration = TRUE
 #' @importFrom Rcpp sourceCpp
 #'
 #' @export

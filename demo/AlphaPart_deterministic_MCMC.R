@@ -1,4 +1,4 @@
-### alphaPart_deterministic_MCMC.R
+### AlphaPart_deterministic_MCMC.R
 ###-----------------------------------------------------------------------------
 ### $Id$
 ###-----------------------------------------------------------------------------
@@ -23,7 +23,7 @@
 ## Selection will always be present in the first location.
 ##
 ## Additive genetic values are provided, but also infered from the data using MCMC
-## method to show how to use alphaPart with MCMC results!
+## method to show how to use AlphaPart with MCMC results!
 ##
 ## The idea of this example is not to do extensive simulations, but just to have
 ## a simple example to see how the partitioning of additive genetic values works.
@@ -210,7 +210,7 @@ fit2MCMC <- mcmcsamp(fit2, n=1000, saveb=TRUE)
 ###-----------------------------------------------------------------------------
 
 ## Compute partitions by location
-(res <- alphaPart(x=ped, colPath="loc", colAGV=c("agv1", "agv2")))
+(res <- AlphaPart(x=ped, colPath="loc", colAGV=c("agv1", "agv2")))
 
 ## Summarize whole population
 (ret <- summary(res))
@@ -233,7 +233,7 @@ plot(ret)
 
 ## Compute partitions by location and sex
 ped$loc.sex <- with(ped, paste(loc, sex, sep="-"))
-(res <- alphaPart(x=ped, colPath="loc.sex", colAGV=c("agv1", "agv2")))
+(res <- AlphaPart(x=ped, colPath="loc.sex", colAGV=c("agv1", "agv2")))
 
 ## Summarize and plot by generation (=trend)
 (ret <- summary(res, by="gen"))
@@ -253,4 +253,4 @@ plot(ret)
 plot(ret)
 
 ###-----------------------------------------------------------------------------
-### alphaPart_deterministic_MCMC.R ends here
+### AlphaPart_deterministic_MCMC.R ends here

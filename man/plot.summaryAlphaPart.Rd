@@ -12,7 +12,7 @@
   hjust = 0), labelPath = NULL, ...)
 }
 \arguments{
-\item{x}{summaryAlphaPart, object from the \code{alphaPart(...)} or \code{summary(alphaPart(...), ...)} call.}
+\item{x}{summaryAlphaPart, object from the \code{AlphaPart(...)} or \code{summary(AlphaPart(...), ...)} call.}
 
 \item{sortValue}{Logical, affect legend attributes via sort of paths according to
 \code{sortValueFUN} function; if not logical, then ordered paths are given as a character vector.}
@@ -76,10 +76,10 @@ graphics.
 }
 \examples{
 ## Load an example data
-data("alphaPart.ped")
+data("AlphaPart.ped")
 
 ## Partition additive genetic values by location
-(res <- alphaPart(x=alphaPart.ped, colPath="loc", colAGV=c("agv1", "agv2")))
+(res <- AlphaPart(x=AlphaPart.ped, colPath="loc", colAGV=c("agv1", "agv2")))
 
 ## Summarize population by generation (=trend)
 (ret <- summary(res, by="gen"))
@@ -92,8 +92,8 @@ print(p[[2]])
 #print(p)
 
 ## Partition additive genetic values by location and sex
-alphaPart.ped$loc.sex <- with(alphaPart.ped, paste(loc, sex, sep="-"))
-(res <- alphaPart(x=alphaPart.ped, colPath="loc.sex", colAGV=c("agv1", "agv2")))
+AlphaPart.ped$loc.sex <- with(AlphaPart.ped, paste(loc, sex, sep="-"))
+(res <- AlphaPart(x=AlphaPart.ped, colPath="loc.sex", colAGV=c("agv1", "agv2")))
 
 ## Summarize population by generation (=trend)
 (ret <- summary(res, by="gen"))

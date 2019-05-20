@@ -1,21 +1,21 @@
 #' print.plotSummaryAlphaPart.R
 #'
 #' #' Print method for objects of the class \code{plotSummaryAlphaPart} (result of
-#' \code{plot(summary(alphaPart(...)))}).
+#' \code{plot(summary(AlphaPart(...)))}).
 #'
 #' TODO: DETAILS
 #'
 #' @seealso
-#' \code{\link[alphaPart]{plot.summaryAlphaPart}}
+#' \code{\link[AlphaPart]{plot.summaryAlphaPart}}
 #'
 #' @param x plotSummaryAlphaPart, output object from
-#' \code{\link[alphaPart]{plot.summaryAlphaPart}} function
+#' \code{\link[AlphaPart]{plot.summaryAlphaPart}} function
 #' @param ask Logical, ask before printing another plot?
 #' @param ...  Arguments passed to other functions (not used at the moment).
 #'
 #' @example inst/examples/examples_print.plotSummaryAlphaPart.R
 #'
-#' @useDynLib alphaPart, .registration = TRUE
+#' @useDynLib AlphaPart, .registration = TRUE
 #' @importFrom Rcpp sourceCpp
 #'
 #' @export

@@ -1,8 +1,8 @@
 ## Load an example data
-data("alphaPart.ped")
+data("AlphaPart.ped")
 
 ## Partition additive genetic values
-(res <- alphaPart(x=alphaPart.ped, colPath="loc", colAGV=c("agv1", "agv2")))
+(res <- AlphaPart(x=AlphaPart.ped, colPath="loc", colAGV=c("agv1", "agv2")))
 
 ## Summarize population by generation (=trend)
 (ret <- summary(res, by="gen"))

@@ -11,11 +11,11 @@
 #'
 #' @seealso \code{\link[utils]{write.csv}} help page on the default \code{write.csv} and \code{write.csv2}
 #' methods in the \pkg{utils} package;
-#' \code{\link[alphaPart]{summary.alphaPart}} and \code{\link[alphaPart]{alphaPart}}
-#' help pages on the objects of \code{summaryAlphaPart} and \code{alphaPart} classes.
+#' \code{\link[AlphaPart]{summary.AlphaPart}} and \code{\link[AlphaPart]{AlphaPart}}
+#' help pages on the objects of \code{summaryAlphaPart} and \code{AlphaPart} classes.
 #'
-#' @param x alphaPart, object returned from \code{\link[alphaPart]{alphaPart}} function or
-#' summaryAlphaPart, object returned from \code{\link[alphaPart]{summary.alphaPart}} function.
+#' @param x AlphaPart, object returned from \code{\link[AlphaPart]{AlphaPart}} function or
+#' summaryAlphaPart, object returned from \code{\link[AlphaPart]{summary.AlphaPart}} function.
 #' @param file Character, file name with or without .csv extension, e.g., both "file" and "file.csv" are valid.
 #' @param traitsAsDir Logical, should results be saved within trait folders;
 #' the construction is \code{file.path(dirname(file), trait, basename(file))};
@@ -27,7 +27,7 @@
 #' @example inst/examples/examples_write.csv.R
 #'
 #' @return  \item{write.csv}{See \code{\link[utils]{write.csv}} for details.}
-#'          \item{write.csv.alphaPart}{For each trait (list component in \code{x}) a file is saved on disk with name
+#'          \item{write.csv.AlphaPart}{For each trait (list component in \code{x}) a file is saved on disk with name
 #' "file_trait.csv", where the file will hold original data and additive genetic value partitions.
 #' With \code{traitsAsDir=TRUE} files are saved as "trait/file_trait.csv".
 #' File names are printed on screen during the process of export and at the end invisibly returned.}
@@ -37,7 +37,7 @@
 #' With \code{traitsAsDir=TRUE} files are saved as "trait/file_trait_*.csv". File names
 #' are printed on screen during the process of export and at the end invisibly returned.}
 #'
-#' @useDynLib alphaPart, .registration = TRUE
+#' @useDynLib AlphaPart, .registration = TRUE
 #' @importFrom Rcpp sourceCpp
 #' @importFrom utils write.csv2
 
@@ -57,11 +57,11 @@ write.csv.default <- function (...) {
 #' results.
 #'
 #' @export
-write.csv.alphaPart <- function (x, file, traitsAsDir=FALSE, csv2=TRUE, row.names=FALSE, ...) {
+write.csv.AlphaPart <- function (x, file, traitsAsDir=FALSE, csv2=TRUE, row.names=FALSE, ...) {
   ## --- Setup ---
 
   if(length(file) > 1) stop("'file' argument must be of length one")
-  if(!("alphaPart" %in% class(x))) stop("'x' must be of a 'alphaPart' class")
+  if(!("AlphaPart" %in% class(x))) stop("'x' must be of a 'AlphaPart' class")
   fileOrig <- sub(pattern=".csv$", replacement="", x=file)
   ret <- c()
 

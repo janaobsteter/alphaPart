@@ -6,9 +6,9 @@
 #' needs.
 #'
 #' @seealso \code{\link[grDevices]{savePlot}} help page on the default \code{savePlot}
-#' method in the \pkg{grDevices} package; \code{\link[alphaPart]{savePlot.plotSummaryAlphaPart}}
+#' method in the \pkg{grDevices} package; \code{\link[AlphaPart]{savePlot.plotSummaryAlphaPart}}
 #' help page on the method for the objects of \code{plotSummaryAlphaPart} class; and
-#' \code{\link[alphaPart]{plot.summaryAlphaPart}} for ploting results of summaryAlphaPart object.
+#' \code{\link[AlphaPart]{plot.summaryAlphaPart}} for ploting results of summaryAlphaPart object.
 #'
 #' @param x Object on which to chose savePLot method.
 #' @param filename Character, filename to save to.
@@ -21,12 +21,12 @@
 #' @param ... Arguments passed to \code{type} specific methods, say
 #' \code{width} and \code{height} for \code{type="pdf"} etc.
 #'
-#' @example inst/examples/examples_summary.alphaPart.R
+#' @example inst/examples/examples_summary.AlphaPart.R
 #'
 #' @return Beside the side effect of saving plots to disk, filenames are printed on
 #' screen during the process and at the end invisibly returned.
 #'
-#' @useDynLib alphaPart, .registration = TRUE
+#' @useDynLib AlphaPart, .registration = TRUE
 #' @importFrom Rcpp sourceCpp
 #' @importFrom grDevices dev.cur
 #' @importFrom grDevices dev.off
@@ -63,7 +63,7 @@ savePlot.default <- function(
 # Save plots on the disk
 savePlot.plotSummaryAlphaPart <- function(
   x,                                           ##<< plotSummaryAlphaPart, output object from
-                                               ## \code{\link[alphaPart]{plot.summaryAlphaPart}} function
+                                               ## \code{\link[AlphaPart]{plot.summaryAlphaPart}} function
   filename=paste("Rplot", type, sep="."),      ##<< character, filename to save to
   type=c("pdf", "png", "jpeg", "tiff", "bmp"), ##<< character, file/device type
   device=dev.cur(),                            ##<< device, the device to save from (not used for this method)

@@ -1,4 +1,4 @@
-### demo_stohastic.R
+### partAGV_deterministic.R
 ###-----------------------------------------------------------------------------
 ### $Id$
 ###-----------------------------------------------------------------------------
@@ -9,7 +9,7 @@
 ## A demonstration with a simple example to see in action the partitioning of
 ## additive genetic values by paths (Garcia-Cortes et al., 2008; Animal)
 ##       
-## STOHASTIC SIMULATION (sort of)
+## DETERMINISTIC SIMULATION (sort of)
 ##
 ## We have two locations (1 and 2). The first location has individualss with higher
 ## additive genetic value. Males from the first location are imported males to the
@@ -32,70 +32,79 @@
 
 options(width=200)
 
-## install.packages(pkg=c("truncnorm"), dep=TRUE)
-library(package="truncnorm")
-
-### EXAMPLE PEDIGREE
+### EXAMPLE PEDIGREE & SETUP OF MENDELIAN SAMPLING - "DETERMINISTIC"
 ###-----------------------------------------------------------------------------
 
 ## Generation 0
- id0 <- c("01", "02", "03", "04", "05", "06", "07", "08")
-fid0 <- mid0 <- rep(NA, times=length(id0))
-  h0 <- rep(c(1, 2), each=4)
-  g0 <- rep(0, times=length(id0))
+  id0 <- c("01", "02", "03", "04")
+ fid0 <- mid0 <- rep(NA, times=length(id0))
+   h0 <- rep(c(1, 2), each=2)
+   g0 <- rep(0, times=length(id0))
+  w10 <- c( 2, 2, 0, 0)
+  w20 <- c( 2, 2, 0, 0)
 
 ## Generation 1
- id1 <- c("11", "12", "13", "14", "15", "16", "17", "18")
-fid1 <- c("02", "02", "02", "02", "06", "06", "06", "06")
-mid1 <- c("01", "01", "03", "04", "05", "05", "07", "08")
-  h1 <- h0
-  g1 <- rep(1, times=length(id1))
+  id1 <- c("11", "12", "13", "14")
+ fid1 <- c("01", "01", "03", "03")
+ mid1 <- c("02", "02", "04", "04")
+   h1 <- h0
+   g1 <- rep(1, times=length(id1))
+  w11 <- c( 0.6,  0.2, -0.6,  0.2)
+  w21 <- c( 0.6,  0.2,  0.6,  0.2)
 
 ## Generation 2
- id2 <- c("21", "22", "23", "24", "25", "26", "27", "28")
-fid2 <- c("13", "13", "13", "13", "13", "13", "13", "13")
-mid2 <- c("11", "12", "14", "14", "15", "16", "17", "18")
-  h2 <- h0
-  g2 <- rep(2, times=length(id2))
+  id2 <- c("21", "22", "23", "24")
+ fid2 <- c("12", "12", "12", "12")
+ mid2 <- c("11", "11", "13", "14")
+   h2 <- h0
+   g2 <- rep(2, times=length(id2))
+  w12 <- c( 0.6,  0.3, -0.2,  0.2)
+  w22 <- c( 0.6,  0.3,  0.2,  0.2)
 
 ## Generation 3
- id3 <- c("31", "32", "33", "34", "35", "36", "37", "38")
-fid3 <- c("24", "24", "24", "24", "24", "24", "24", "24")
-mid3 <- c("21", "21", "22", "23", "25", "26", "27", "28")
-  h3 <- h0
-  g3 <- rep(3, times=length(id3))
+  id3 <- c("31", "32", "33", "34")
+ fid3 <- c("22", "22", "22", "22")
+ mid3 <- c("21", "21", "23", "24")
+   h3 <- h0
+   g3 <- rep(3, times=length(id3))
+  w13 <- c( 0.7,  0.1, -0.3,  0.3)
+  w23 <- c( 0.7,  0.1,  0.3,  0.3)
 
 ## Generation 4
- id4 <- c("41", "42", "43", "44", "45", "46", "47", "48")
-fid4 <- c("34", "34", "34", "34", "34", "34", "34", "34")
-mid4 <- c("31", "32", "32", "33", "35", "36", "37", "38")
-  h4 <- h0
-  g4 <- rep(4, times=length(id4))
+  id4 <- c("41", "42", "43", "44")
+ fid4 <- c("32", "32", "32", "32")
+ mid4 <- c("31", "31", "33", "34")
+   h4 <- h0
+   g4 <- rep(4, times=length(id4))
+  w14 <- c( 0.8,  0.8, -0.1,  0.3)
+  w24 <- c( 0.8,  0.8,  0.1,  0.3)
 
 ## Generation 5
- id5 <- c("51", "52", "53", "54", "55", "56", "57", "58")
-fid5 <- c("44", "44", "44", "44", "44", "44", "44", "44")
-mid5 <- c("41", "42", "43", "43", "45", "46", "47", "48")
-  h5 <- h0
-  g5 <- rep(5, times=length(id4))
+  id5 <- c("51", "52", "53", "54")
+ fid5 <- c("42", "42", "42", "42")
+ mid5 <- c("41", "41", "43", "44")
+   h5 <- h0
+   g5 <- rep(5, times=length(id4))
+  w15 <- c( 0.8,  1.0, -0.2,  0.3)
+  w25 <- c( 0.8,  1.0,  0.2,  0.3)
 
 ped <- data.frame( id=c( id0,  id1,  id2,  id3,  id4,  id5),
                   fid=c(fid0, fid1, fid2, fid3, fid4, fid5),
                   mid=c(mid0, mid1, mid2, mid3, mid4, mid5),
-                  loc=c(  h0,   h1,   h2,   h3,   h4,   h5),
-                  gen=c(  g0,   g1,   g2,   g3,   g4,   g5))
+                  loc=c(  h0,   h1,   h2,   h3,   h4,  h5),
+                  gen=c(  g0,   g1,   g2,   g3,   g4,  g5),
+                   w1=c( w10,  w11,  w12,  w13,  w14,  w15),
+                   w2=c( w20,  w21,  w22,  w23,  w24,  w25))
 ped$sex <- 2
 ped[ped$id %in% ped$fid, "sex"] <- 1
 ped$loc.gen <- with(ped, paste(loc, gen, sep="-"))
 
-### SIMULATE ADDITIVE GENETIC VALUES - STOHASTIC
+### SIMULATE ADDITIVE GENETIC VALUES - SUM PARENT AVERAGE AND MENDELIAN SAMPLING
 ###-----------------------------------------------------------------------------
 
-## --- Parameters of simulation ---
-
 ## Additive genetic mean in founders by location
-mu1 <- 2
-mu2 <- 0
+mu1 <-  2
+mu2 <-  0
 
 ## Additive genetic variance in population
 sigma2 <- 1
@@ -105,36 +114,20 @@ sigma  <- sqrt(sigma2)
 ##  will be accepted in simulation
 t <- 0
 
-## Set seed for simulation
-set.seed(seed=19791123)
+ped$agv1 <- ped$pa1 <- NA ## Scenario (trait) 1: No selection in the second location
+ped$agv2 <- ped$pa2 <- NA ## Scenario (trait) 2:    Selection in the second location
 
-## --- Start of simulation ---
+## Generation 0  - founders (no parent average here - so setting it to zero)
+ped[ped$gen == 0, c("pa1",  "pa2")] <- 0
+ped[ped$gen == 0, c("agv1", "agv2")] <- ped[ped$gen == 0, c("w1", "w2")]
 
-ped$agv1 <- NA ## Scenario (trait) 1: No selection in the second location
-ped$agv2 <- NA ## Scenario (trait) 2:    Selection in the second location
-
-## Generation 0  - founders (for simplicity set their values to the mean of location)
-ped[ped$gen == 0 & ped$loc == 1, c("agv1", "agv2")] <- mu1
-ped[ped$gen == 0 & ped$loc == 2, c("agv1", "agv2")] <- mu2
-
-## Generation 1+ - non-founders
+## Generation 1+ - non-founders (parent average + Mendelian sampling)
 for(i in (length(g0)+1):nrow(ped)) {
-  ## Scenario (trait) 1: selection only in the first location
-  if(ped[i, "loc"] == 1) {
-    w <- rtruncnorm(n=1, mean=0, sd=sqrt(sigma2/2), a=t)
-  } else {
-    w <-      rnorm(n=1, mean=0, sd=sqrt(sigma2/2))
-  }
-  ped[i, "agv1"] <- round(0.5 * ped[ped$id %in% ped[i, "fid"], "agv1"] +
-                          0.5 * ped[ped$id %in% ped[i, "mid"], "agv1"] +
-                          w, digits=1)
-  ## Scenario (trait) 2: selection in both locations
-  if(ped[i, "loc"] == 2) {
-    w <- rtruncnorm(n=1, mean=0, sd=sqrt(sigma2/2), a=t)
-  } ## for location 1 take the same values as above
-  ped[i, "agv2"] <- round(0.5 * ped[ped$id %in% ped[i, "fid"], "agv2"] +
-                          0.5 * ped[ped$id %in% ped[i, "mid"], "agv2"] +
-                          w, digits=1)
+  ped[i, "pa1"] <- 0.5 * (ped[ped$id %in% ped[i, "fid"], "agv1"] +
+                          ped[ped$id %in% ped[i, "mid"], "agv1"])
+  ped[i, "pa2"] <- 0.5 * (ped[ped$id %in% ped[i, "fid"], "agv2"] +
+                          ped[ped$id %in% ped[i, "mid"], "agv2"])
+  ped[i, c("agv1", "agv2")] <- ped[i, c("pa1", "pa2")] + ped[i, c("w1", "w2")]
 }
 
 ### PLOT INDIVIDUAL ADDITIVE GENETIC VALUES
@@ -159,7 +152,7 @@ legend(x="topleft", legend=c(1, 2), title="Location", pch=c(19, 21), bty="n")
 ###-----------------------------------------------------------------------------
 
 ## Compute partitions by location
-(res <- alphaPart(x=ped, colPath="loc", colAGV=c("agv1", "agv2")))
+(res <- AlphaPart(x=ped, colPath="loc", colAGV=c("agv1", "agv2")))
 
 ## Summarize whole population
 (ret <- summary(res))
@@ -182,7 +175,7 @@ plot(ret)
 
 ## Compute partitions by location and sex
 ped$loc.sex <- with(ped, paste(loc, sex, sep="-"))
-(res <- alphaPart(x=ped, colPath="loc.sex", colAGV=c("agv1", "agv2")))
+(res <- AlphaPart(x=ped, colPath="loc.sex", colAGV=c("agv1", "agv2")))
 
 ## Summarize and plot by generation (=trend)
 (ret <- summary(res, by="gen"))
@@ -202,4 +195,4 @@ plot(ret)
 plot(ret)
 
 ###-----------------------------------------------------------------------------
-### demo_stohastic.R ends here
+### AlphaPart_deterministic.R ends here

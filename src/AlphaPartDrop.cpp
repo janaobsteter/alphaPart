@@ -1,6 +1,6 @@
-#include "alphaPartDropGroup.h"
+#include "AlphaPartDrop.h"
 
-SEXP alphaPartDropGroup(SEXP c1_, SEXP c2_, SEXP nI_, SEXP nP_, SEXP nT_, SEXP nG_, SEXP y_, SEXP P_, SEXP Px_, SEXP g_)
+SEXP AlphaPartDrop(SEXP c1_, SEXP c2_, SEXP nI_, SEXP nP_, SEXP nT_, SEXP y_, SEXP P_, SEXP Px_)
 {
 
   using namespace Rcpp ;
@@ -17,19 +17,16 @@ SEXP alphaPartDropGroup(SEXP c1_, SEXP c2_, SEXP nI_, SEXP nP_, SEXP nT_, SEXP n
   int nI = Rcpp::as<int>(nI_); 
   int nP = Rcpp::as<int>(nP_);
   int nT = Rcpp::as<int>(nT_);
-  int nG = Rcpp::as<int>(nG_);
   Rcpp::NumericMatrix ped(y_);
   Rcpp::IntegerVector P(P_);  
   Rcpp::IntegerVector Px(Px_);
-  Rcpp::IntegerVector g(g_);  
   
   // --- Outputs ---
       
   Rcpp::NumericMatrix pa(nI+1, nT);    // parent average
   Rcpp::NumericMatrix  w(nI+1, nT);    // Mendelian sampling
   Rcpp::NumericMatrix xa(nI+1, nP*nT); // Parts
-  Rcpp::NumericMatrix xg(nG+1, nP*nT); // Parts for groups
-
+  
   // --- Compute ---
       
   for(i = 1; i < nI+1; i++) {
@@ -47,20 +44,19 @@ SEXP alphaPartDropGroup(SEXP c1_, SEXP c2_, SEXP nI_, SEXP nP_, SEXP nT_, SEXP n
       j = Px[t] + P[i];
       xa(i, j) = w(i, t);
 
-      // ... for the PA part
+      // ... for the PA parts
       for(p = 0; p < nP; p++) {
         j = Px[t] + p;
         xa(i, j) += c1 * xa(ped(i, 1), j) +
                     c2 * xa(ped(i, 2), j);
-        // Rprintf("Animal: %i, Trait: %i, Path: %i (%i), Group: %i\\n", i, t, p, j, g(i));
-        xg(g(i), j) += xa(i, j);
       }
-
     }
   }
   
   // --- Return ---
 
-  return xg;
+  return Rcpp::List::create(Rcpp::Named("pa", pa),
+                            Rcpp::Named("w",  w),
+                            Rcpp::Named("xa", xa));
 
 }

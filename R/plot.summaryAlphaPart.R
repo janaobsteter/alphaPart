@@ -8,7 +8,7 @@
 #' visualise this data in eye pleasing way using ggplot2
 #' graphics.
 #'
-#' @param x summaryAlphaPart, object from the \code{alphaPart(...)} or \code{summary(alphaPart(...), ...)} call.
+#' @param x summaryAlphaPart, object from the \code{AlphaPart(...)} or \code{summary(AlphaPart(...), ...)} call.
 #' @param sortValue Logical, affect legend attributes via sort of paths according to
 #' \code{sortValueFUN} function; if not logical, then ordered paths are given as a character vector.
 #' @param sortValueFUN Function, that produces single value for one vector, say \code{mean} or \code{sum}.
@@ -44,7 +44,7 @@
 #' For each trait in \code{x} there are two plots (one for absolute values and one for
 #' relative values).
 #'
-#' @useDynLib alphaPart, .registration = TRUE
+#' @useDynLib AlphaPart, .registration = TRUE
 #' @importFrom Rcpp sourceCpp
 #'
 #' @export

@@ -8,16 +8,16 @@ ped <- data.frame(  id=c(  1,   2,   3,   4,   5,   6),
                  trt2=c(100, 110, 105,  140,  85, 110))
 
 ## Partition additive genetic values
-(tmp <- alphaPart(x=ped, colAGV=c("trt1", "trt2")))
+(tmp <- AlphaPart(x=ped, colAGV=c("trt1", "trt2")))
 
-## Sum some partitions (working on object of class alphaPart)
-(tmp2 <- alphaPartSum(x=tmp, map=list(c("X", "A", "B"), c("A", "B"))))
+## Sum some partitions (working on object of class AlphaPart)
+(tmp2 <- AlphaPartSum(x=tmp, map=list(c("X", "A", "B"), c("A", "B"))))
 
 ## Summarize by generation
 (tmpS <- summary(tmp, by="gen"))
 
 ## Sum some partitions (working on object of class summaryAlphaPart)
-(tmpS2 <- alphaPartSum(x=tmpS, map=list(c("X", "A", "B"), c("A", "B"))))
+(tmpS2 <- AlphaPartSum(x=tmpS, map=list(c("X", "A", "B"), c("A", "B"))))
 
 ## ... must be equal to
 (tmpS3 <- summary(tmp2, by="gen"))

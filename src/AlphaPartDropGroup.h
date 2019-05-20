@@ -1,5 +1,5 @@
-#ifndef _alphaPart_RCPP_ALPHAPartDROP_H
-#define _alphaPart_RCPP_ALPHAPartDROP_H
+#ifndef _AlphaPart_RCPP_ALPHAPartDROPGROUP_H
+#define _AlphaPart_RCPP_ALPHAPartDROPGROUP_H
 
 #include <Rcpp.h>
 
@@ -15,6 +15,6 @@
  * on Rcpp-devel for a misuse of RcppExport
  */
 
-RcppExport SEXP alphaPartDrop(SEXP c1_, SEXP c2_, SEXP nI_, SEXP nP_, SEXP nT_, SEXP y_, SEXP P_, SEXP Px_) ;
+RcppExport SEXP AlphaPartDropGroup(SEXP c1_, SEXP c2_, SEXP nI_, SEXP nP_, SEXP nT_, SEXP nG_, SEXP y_, SEXP P_, SEXP Px_, SEXP g_) ;
 
 #endif

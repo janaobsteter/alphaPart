@@ -1,8 +1,8 @@
 context("test-alphapart")
 
-test_that("Test input for alphaPart ped", {
+test_that("Test input for AlphaPart ped", {
 
-  ## Example - not really interesting but set up in a way that we can test behaviour of alphaPart()
+  ## Example - not really interesting but set up in a way that we can test behaviour of AlphaPart()
   ped <- data.frame(
         id=c( "A",   "B",   "C",   "F",   "G",   "J",   "K",   "E",   "D",   "I",   "H",   "L",   "M"),
        fid=c(  NA,    NA,    NA,   "A",   "C",   "F",   "F",   "A",   "A",   "A",   "C",   "K",    NA),
@@ -39,21 +39,21 @@ test_that("Test input for alphaPart ped", {
   ## --- Run ---
 
   ## Error when path column contains NA
-  expect_error(alphaPart(x=ped[, c("id", "fid", "mid", "pat", "trt1", "trt2")]))
+  expect_error(AlphaPart(x=ped[, c("id", "fid", "mid", "pat", "trt1", "trt2")]))
 
   ## Error if recode=FALSE and input is not numeric
-  expect_error(alphaPart(x=ped[, c("id", "fid", "mid", "pat", "trt1", "trt2")], pathNA=TRUE, recode=FALSE, verbose=0))
+  expect_error(AlphaPart(x=ped[, c("id", "fid", "mid", "pat", "trt1", "trt2")], pathNA=TRUE, recode=FALSE, verbose=0))
 
   ## Error if colAGV columns are not numeric
-  expect_error(alphaPart(x=ped[, c("id", "fid", "mid", "pat", "trt1", "trt2")], pathNA=TRUE, recode=FALSE, verbose=0))
+  expect_error(AlphaPart(x=ped[, c("id", "fid", "mid", "pat", "trt1", "trt2")], pathNA=TRUE, recode=FALSE, verbose=0))
 
   ## Error if NAs are present
   pedX <- ped
   pedX[1, "trt1"] <- NA
-  expect_error(alphaPart(x=pedX[, c("id", "fid", "mid", "pat", "trt1", "trt2")], pathNA=TRUE, verbose=0))
+  expect_error(AlphaPart(x=pedX[, c("id", "fid", "mid", "pat", "trt1", "trt2")], pathNA=TRUE, verbose=0))
 })
 
-test_that("Test the output of alphaPart function", {
+test_that("Test the output of AlphaPart function", {
   ped <- data.frame(
         id=c( "A",   "B",   "C",   "F",   "G",   "J",   "K",   "E",   "D",   "I",   "H",   "L",   "M"),
        fid=c(  NA,    NA,    NA,   "A",   "C",   "F",   "F",   "A",   "A",   "A",   "C",   "K",    NA),
@@ -78,19 +78,19 @@ test_that("Test the output of alphaPart function", {
   ped3$midI <- match(ped3$mid, ped3$id)
     ## ... to test recode and unknown argument
 
-  ret   <- alphaPart(x=ped[, c("id", "fid", "mid", "pat", "trt1", "trt2")],  pathNA=TRUE, verbose=0)
-  ret2  <- alphaPart(x=ped,                                                  pathNA=TRUE, verbose=0, colId=1,     colFid=2,      colMid=3,      colPath=6,     colAGV=c(7, 9))
-  ret3  <- alphaPart(x=ped,                                                  pathNA=TRUE, verbose=0, colId="id",  colFid="fid",  colMid="mid",  colPath="pat", colAGV=c("trt1", "trt2"))
+  ret   <- AlphaPart(x=ped[, c("id", "fid", "mid", "pat", "trt1", "trt2")],  pathNA=TRUE, verbose=0)
+  ret2  <- AlphaPart(x=ped,                                                  pathNA=TRUE, verbose=0, colId=1,     colFid=2,      colMid=3,      colPath=6,     colAGV=c(7, 9))
+  ret3  <- AlphaPart(x=ped,                                                  pathNA=TRUE, verbose=0, colId="id",  colFid="fid",  colMid="mid",  colPath="pat", colAGV=c("trt1", "trt2"))
   ped$idI <- ped$id
-  ret3a <- alphaPart(x=ped,                                                  pathNA=TRUE, verbose=0, colId="idI", colFid="fid",  colMid="mid",  colPath="pat", colAGV=c("trt1", "trt2"))
+  ret3a <- AlphaPart(x=ped,                                                  pathNA=TRUE, verbose=0, colId="idI", colFid="fid",  colMid="mid",  colPath="pat", colAGV=c("trt1", "trt2"))
   ped$idI <- NULL
-  ret4  <- alphaPart(x=ped[, c("id", "fid", "mid", "pat", "trt1", "trt2")],  pathNA=TRUE, verbose=0, colId="id",  colFid="fid",  colMid="mid",  colPath="pat", colAGV=c("trt1", "trt2"))
+  ret4  <- AlphaPart(x=ped[, c("id", "fid", "mid", "pat", "trt1", "trt2")],  pathNA=TRUE, verbose=0, colId="id",  colFid="fid",  colMid="mid",  colPath="pat", colAGV=c("trt1", "trt2"))
 
   ## ... to test recode argument
-  ret5  <- alphaPart(x=ped3,                                                 pathNA=TRUE, verbose=0, colId="idI", colFid="fidI", colMid="midI", colPath="pat", colAGV=c("trt1", "trt2"))
-  ret6  <- alphaPart(x=ped3,                                                 pathNA=TRUE, verbose=0, colId="idI", colFid="fidI", colMid="midI", colPath="pat", colAGV=c("trt1", "trt2"), recode=FALSE)
+  ret5  <- AlphaPart(x=ped3,                                                 pathNA=TRUE, verbose=0, colId="idI", colFid="fidI", colMid="midI", colPath="pat", colAGV=c("trt1", "trt2"))
+  ret6  <- AlphaPart(x=ped3,                                                 pathNA=TRUE, verbose=0, colId="idI", colFid="fidI", colMid="midI", colPath="pat", colAGV=c("trt1", "trt2"), recode=FALSE)
   ## ... to test recode and unknown argument
-  ret7  <- alphaPart(x=ped3,                                                 pathNA=TRUE, verbose=0, colId="idI", colFid="fidI", colMid="midI", colPath="pat", colAGV=c("trt1", "trt2"), recode=FALSE, unknown=99)
+  ret7  <- AlphaPart(x=ped3,                                                 pathNA=TRUE, verbose=0, colId="idI", colFid="fidI", colMid="midI", colPath="pat", colAGV=c("trt1", "trt2"), recode=FALSE, unknown=99)
 
 
   ## --- Overall result ---
@@ -144,11 +144,11 @@ test_that("Test computation", {
       trt2=c(0.10,  0.24, -0.30,  0.17, -0.21,  0.13,     0,     0,     0,     0,  0.20,     0,  0.00))
 
 
-  ret   <- alphaPart(x=ped[, c("id", "fid", "mid", "pat", "trt1", "trt2")],  pathNA=TRUE, verbose=0)
+  ret   <- AlphaPart(x=ped[, c("id", "fid", "mid", "pat", "trt1", "trt2")],  pathNA=TRUE, verbose=0)
 
   ## --- Check computations ---
 
-  ## ret   <- alphaPart(x=ped[, c("id", "fid", "mid", "pat", "trt1", "trt2")], pathNA=TRUE, verbose=2)
+  ## ret   <- AlphaPart(x=ped[, c("id", "fid", "mid", "pat", "trt1", "trt2")], pathNA=TRUE, verbose=2)
   ## Gene flow (T)
   ##  [1,] 1.000 .    .     .    .    . .   . . . .   . .
   ##  [2,] .     1.00 .     .    .    . .   . . . .   . .

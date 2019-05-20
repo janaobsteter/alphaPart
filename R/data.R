@@ -16,4 +16,4 @@
 #'   \item{agv2}{Second additive genetic value}
 #' }
 #' @source Stochastic simulation.
-"alphaPart.ped"
+"AlphaPart.ped"

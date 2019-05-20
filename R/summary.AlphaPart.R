@@ -1,17 +1,17 @@
-#' summary.alphaPart.R
+#' summary.AlphaPart.R
 #'
-#' A function to summarize alphaPart object.
+#' A function to summarize AlphaPart object.
 #'
 #' Additive genetic values of individuals are often summarized, either by year of
-#' birth or some other classification. Function \code{summary.alphaPart} provides
+#' birth or some other classification. Function \code{summary.AlphaPart} provides
 #' a way to ease the computation of such summaries on partitions of additive
 #' genetic values.
 #'
 #' @seealso
-#' \code{\link[alphaPart]{alphaPart}} for partitioning additive genetic values,
-#' \code{\link[alphaPart]{plot.summaryAlphaPart}} for plotting output of summary method
+#' \code{\link[AlphaPart]{AlphaPart}} for partitioning additive genetic values,
+#' \code{\link[AlphaPart]{plot.summaryAlphaPart}} for plotting output of summary method
 #'
-#' @param object alphaPart, output object from \code{\link[alphaPart]{alphaPart}} function.
+#' @param object AlphaPart, output object from \code{\link[AlphaPart]{AlphaPart}} function.
 #' @param by Character, the name of a column by which summary function FUN should
 #' be applied; if \code{NULL} (default) summary is given for the whole table.
 #' @param FUN Function, which function should be used in summary; function should
@@ -19,11 +19,11 @@
 #' @param labelSum Character, label used for the overall additive genetic value.
 #' @param subset Logical, perform summary only on a subset of \code{object} subsetted by
 #' this argument.
-#' @param sums Logical, link between \code{\link[alphaPart]{alphaPart}} and
-#' \code{summary.alphaPart()} (only for internal use!).
+#' @param sums Logical, link between \code{\link[AlphaPart]{AlphaPart}} and
+#' \code{summary.AlphaPart()} (only for internal use!).
 #' @param ...  Arguments passed to other functions (not used at the moment).
 #'
-#' @example inst/examples//examples_summary.alphaPart.R
+#' @example inst/examples//examples_summary.AlphaPart.R
 #'
 #' @return An object of class \code{summaryAlphaPart}, which is a list of data frames
 #' with summary statistics on additive genetic value partitions. For each trait there
@@ -41,24 +41,24 @@
 #'   \item{warn}{potential warning messages associated with this object}
 #'   \item{labelSum}{column name of summary for "whole/original" additive genetic values}
 #'
-#' There is a handy plot method (\code{\link[alphaPart]{plot.summaryAlphaPart}}) for output.
+#' There is a handy plot method (\code{\link[AlphaPart]{plot.summaryAlphaPart}}) for output.
 #'
-#' @useDynLib alphaPart, .registration = TRUE
+#' @useDynLib AlphaPart, .registration = TRUE
 #' @importFrom Rcpp sourceCpp
 #'
 #' @export
 
 
-summary.alphaPart <- function(object, by=NULL, FUN=mean, labelSum="Sum", subset=NULL, sums=FALSE, ...) {
+summary.AlphaPart <- function(object, by=NULL, FUN=mean, labelSum="Sum", subset=NULL, sums=FALSE, ...) {
 
 
   ## --- Setup ---
 
   groupSummary <- sums
 
-  test <- !("alphaPart" %in% class(object))
+  test <- !("AlphaPart" %in% class(object))
   if (test) {
-    stop("'object' must be of a alphaPart class")
+    stop("'object' must be of a AlphaPart class")
   }
 
   if (groupSummary) by <- object$by

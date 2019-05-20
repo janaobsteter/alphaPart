@@ -3,7 +3,7 @@
 \name{write.csv}
 \alias{write.csv}
 \alias{write.csv.default}
-\alias{write.csv.alphaPart}
+\alias{write.csv.AlphaPart}
 \alias{write.csv.summaryAlphaPart}
 \title{write.csv.R}
 \usage{
@@ -11,7 +11,7 @@ write.csv(...)
 
 \method{write.csv}{default}(...)
 
-\method{write.csv}{alphaPart}(x, file, traitsAsDir = FALSE,
+\method{write.csv}{AlphaPart}(x, file, traitsAsDir = FALSE,
   csv2 = TRUE, row.names = FALSE, ...)
 
 \method{write.csv}{summaryAlphaPart}(x, file, traitsAsDir = FALSE,
@@ -20,8 +20,8 @@ write.csv(...)
 \arguments{
 \item{...}{Other options passed to \code{\link[utils]{write.csv2}} or \code{\link[utils]{write.csv}}.}
 
-\item{x}{alphaPart, object returned from \code{\link[alphaPart]{alphaPart}} function or
-summaryAlphaPart, object returned from \code{\link[alphaPart]{summary.alphaPart}} function.}
+\item{x}{AlphaPart, object returned from \code{\link[AlphaPart]{AlphaPart}} function or
+summaryAlphaPart, object returned from \code{\link[AlphaPart]{summary.AlphaPart}} function.}
 
 \item{file}{Character, file name with or without .csv extension, e.g., both "file" and "file.csv" are valid.}
 
@@ -35,7 +35,7 @@ folders are created if they do not exist.}
 }
 \value{
 \item{write.csv}{See \code{\link[utils]{write.csv}} for details.}
-         \item{write.csv.alphaPart}{For each trait (list component in \code{x}) a file is saved on disk with name
+         \item{write.csv.AlphaPart}{For each trait (list component in \code{x}) a file is saved on disk with name
 "file_trait.csv", where the file will hold original data and additive genetic value partitions.
 With \code{traitsAsDir=TRUE} files are saved as "trait/file_trait.csv".
 File names are printed on screen during the process of export and at the end invisibly returned.}
@@ -60,7 +60,7 @@ so that one can define \code{write.csv} methods for other objects.
 \itemize{
 \item \code{default}: Default \code{write.csv} method.
 
-\item \code{alphaPart}: Save partitioned additive genetic values to CSV files on disk on disk for further
+\item \code{AlphaPart}: Save partitioned additive genetic values to CSV files on disk on disk for further
 analyses or processing with other software or just for saving (backing up)
 results.
 
@@ -71,25 +71,25 @@ results.
 
 \examples{
 ## Load an example data
-data("alphaPart.ped")
+data("AlphaPart.ped")
 
 ## Partition additive genetic values
-res <- alphaPart(x=alphaPart.ped, colPath="loc", colAGV=c("agv1", "agv2"))
+res <- AlphaPart(x=AlphaPart.ped, colPath="loc", colAGV=c("agv1", "agv2"))
 
 ## Write summary on the disk and collect saved file names
-fileName <- file.path(tempdir(), "alphaPart")
+fileName <- file.path(tempdir(), "AlphaPart")
 ret <- write.csv(x=res, file=fileName)
 print(ret)
 file.show(ret[1])
 
 ## Clean up
-files <- dir(path=tempdir(), pattern="alphaPart*")
+files <- dir(path=tempdir(), pattern="AlphaPart*")
 unlink(x=files)
 
 }
 \seealso{
 \code{\link[utils]{write.csv}} help page on the default \code{write.csv} and \code{write.csv2}
 methods in the \pkg{utils} package;
-\code{\link[alphaPart]{summary.alphaPart}} and \code{\link[alphaPart]{alphaPart}}
-help pages on the objects of \code{summaryAlphaPart} and \code{alphaPart} classes.
+\code{\link[AlphaPart]{summary.AlphaPart}} and \code{\link[AlphaPart]{AlphaPart}}
+help pages on the objects of \code{summaryAlphaPart} and \code{AlphaPart} classes.
 }

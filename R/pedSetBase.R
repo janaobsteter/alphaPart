@@ -31,7 +31,7 @@
 #' @return Object \code{x} with removed rows for some individuals and their presence as parents.
 #' If \code{report=TRUE} progress is printed on the screen.
 #'
-#' @useDynLib alphaPart, .registration = TRUE
+#' @useDynLib AlphaPart, .registration = TRUE
 #' @importFrom Rcpp sourceCpp
 #'
 #' @export

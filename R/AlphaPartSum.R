@@ -1,4 +1,4 @@
-#' alphaPartSum.R
+#' AlphaPartSum.R
 #'
 #' A function to sum partitions of several paths.
 #'
@@ -23,32 +23,32 @@
 #' as it is defined as a target/new partition.
 #'
 #' @seealso
-#' \code{\link[alphaPart]{alphaPart}} for the main method,
-#' \code{\link[alphaPart]{summary.alphaPart}} for summary method that works on output of \code{alphaPart},
-#' \code{\link[alphaPart]{alphaPartSubset}} for subset/keep method
+#' \code{\link[AlphaPart]{AlphaPart}} for the main method,
+#' \code{\link[AlphaPart]{summary.AlphaPart}} for summary method that works on output of \code{AlphaPart},
+#' \code{\link[AlphaPart]{AlphaPartSubset}} for subset/keep method
 #'
-#' @param x summaryAlphaPart, object from the \code{alphaPart(...)} or \code{summary(alphaPart(...), ...)} call.
+#' @param x summaryAlphaPart, object from the \code{AlphaPart(...)} or \code{summary(AlphaPart(...), ...)} call.
 #' @param map List, a map of summing paths; see details and examples.
 #' @param remove Logical, remove original paths or not.
 #' @param zeroPath Logical, set called path to zero if it does not exist.
-#' @param call character, for internal use with \code{alphaPartSubset}).
+#' @param call character, for internal use with \code{AlphaPartSubset}).
 #'
-#' @example inst/examples/examples_alphaPartSum.R
+#' @example inst/examples/examples_AlphaPartSum.R
 #'
-#' @return An object of class \code{alphaPart} or \code{summaryAlphaPart} with modified partitions.
+#' @return An object of class \code{AlphaPart} or \code{summaryAlphaPart} with modified partitions.
 #' Meta information in slot "info" is modified as well.
 #'
-#' @useDynLib alphaPart, .registration = TRUE
+#' @useDynLib AlphaPart, .registration = TRUE
 #' @importFrom Rcpp sourceCpp
 #'
 #' @export
 
-alphaPartSum <- function (x, map=NULL, remove=TRUE, zeroPath=TRUE, call="alphaPartSum") {
+AlphaPartSum <- function (x, map=NULL, remove=TRUE, zeroPath=TRUE, call="AlphaPartSum") {
   ## --- Setup ---
   
-  test1 <- "alphaPart"        %in% class(x)
+  test1 <- "AlphaPart"        %in% class(x)
   test2 <- "summaryAlphaPart" %in% class(x)
-  if (!any(c(test1, test2))) stop("object 'x' must be of a 'alphaPart' or 'summaryAlphaPart' class")
+  if (!any(c(test1, test2))) stop("object 'x' must be of a 'AlphaPart' or 'summaryAlphaPart' class")
   if (!is.list(map)) stop("object 'map' must be of a 'list' class")
 
   ## Initial number of columns
@@ -88,7 +88,7 @@ alphaPartSum <- function (x, map=NULL, remove=TRUE, zeroPath=TRUE, call="alphaPa
   for (t in 1:(length(x) - 1)) { ## t <- 1
 
     ## Sum up partitions given the map
-    if (call == "alphaPartSum") {
+    if (call == "AlphaPartSum") {
       if (zeroPath) {
         for (i in mapM) {
           x[[t]][, paste(x$info$lT[t], i, sep="_")] <- 0
@@ -96,13 +96,13 @@ alphaPartSum <- function (x, map=NULL, remove=TRUE, zeroPath=TRUE, call="alphaPa
       }
       for (i in 1:length(map)) { ## i <- 1
         if (length(map[[i]]) > 1) {
-          if (test1) { ## x comes from alphaPart(...)
+          if (test1) { ## x comes from AlphaPart(...)
             if (length(map[[i]][2:length(map[[i]])]) > 1) { ## need this as rowSums() need an array of at least two dimensions
               x[[t]][, paste(x$info$lT[t], map[[i]][1], sep="_")] <- rowSums(x[[t]][, paste(x$info$lT[t], map[[i]][2:length(map[[i]])], sep="_")])
             } else {
               x[[t]][, paste(x$info$lT[t], map[[i]][1], sep="_")] <-         x[[t]][, paste(x$info$lT[t], map[[i]][2],                  sep="_")]
             }
-          } else {    ## x comes from summary(alphaPart(...), ...)
+          } else {    ## x comes from summary(AlphaPart(...), ...)
             for (j in c("abs", "rel")) { ## j <- "abs"
               if (length(map[[i]][2:length(map[[i]])]) > 1) {
                 x[[t]][[j]][, map[[i]][1]] <- rowSums(x[[t]][[j]][, map[[i]][2:length(map[[i]])]])
@@ -113,7 +113,7 @@ alphaPartSum <- function (x, map=NULL, remove=TRUE, zeroPath=TRUE, call="alphaPa
           } ## if (test1)
         } ## if (length...)
       } ## for (i in 1...)
-    } ## if (call != "alphaPartSum")
+    } ## if (call != "AlphaPartSum")
 
     ## Remove original partitions (we do this after we go through the whole map!)
     if (remove) {
@@ -128,9 +128,9 @@ alphaPartSum <- function (x, map=NULL, remove=TRUE, zeroPath=TRUE, call="alphaPa
       remN <- unique(remN)
       remY <- remY[!(remY %in% remN)]
       if (length(remY) > 0) {
-        if (test1) { ## x comes from alphaPart(...)
+        if (test1) { ## x comes from AlphaPart(...)
           for (i in remY) x[[t]][, paste(x$info$lT[t], i, sep="_")]     <- NULL          
-        } else {    ## x comes from summary(alphaPart(...), ...)
+        } else {    ## x comes from summary(AlphaPart(...), ...)
           for (i in remY) x[[t]]$abs[, i] <- NULL
           for (i in remY) x[[t]]$rel[, i] <- NULL
         } ## if (test1)

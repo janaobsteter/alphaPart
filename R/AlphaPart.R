@@ -1,6 +1,8 @@
-#' alphaPart.R
+#' AlphaPart.R
 #'
-#' A function to partition additive genetic values by paths.
+#' A function to partition additive genetic values by paths. The partition method is
+#' described in García-Cortés et al., 2008: Partition of the genetic trend to validate multiple selection decisions.
+#' Animal : an international journal of animal bioscience.
 #'
 #' @details
 #' Pedigree in \code{x} must be valid in a sense that there are:\itemize{
@@ -12,7 +14,7 @@
 #' Unknown (missing) values for additive genetic values are propagated down the pedigree
 #' to provide all available values from genetic evaluation. Another option is
 #' to cut pedigree links - set parents to unknown and remove them from pedigree
-#' prior to using this function - see \code{\link[alphaPart]{pedSetBase}} function.
+#' prior to using this function - see \code{\link[AlphaPart]{pedSetBase}} function.
 #' Warning is issued in the case of unknown (missing) values.
 #'
 #' In animal breeding/genetics literature the model with the underlying pedigree type
@@ -21,14 +23,14 @@
 #' and \code{colMid} mother - paternal grandsire model can be accomodated as well.
 #'
 #' Argument \code{colBy} can be used to directly perform a summary analysis by
-#' group, i.e., \code{summary(alphaPart(...), by="group")}. See \code{\link[alphaPart]{summary.alphaPart}}
+#' group, i.e., \code{summary(AlphaPart(...), by="group")}. See \code{\link[AlphaPart]{summary.AlphaPart}}
 #' for more. This can save some CPU time by skipping intermediate steps. However,
 #' only means can be obtained, while \code{summary} method gives more flexibility.
 #'
 #' @seealso
-#' \code{\link[alphaPart]{summary.alphaPart}} for summary method that works on output of \code{alphaPart},
-#' \code{\link[alphaPart]{pedSetBase}} for setting base population,
-#' \code{\link[alphaPart]{pedFixBirthYear}} for imputing unknown (missing) birth years,
+#' \code{\link[AlphaPart]{summary.AlphaPart}} for summary method that works on output of \code{AlphaPart},
+#' \code{\link[AlphaPart]{pedSetBase}} for setting base population,
+#' \code{\link[AlphaPart]{pedFixBirthYear}} for imputing unknown (missing) birth years,
 #' \code{\link[pedigree]{orderPed}} in \pkg{pedigree} package for sorting pedigree
 #'
 #' @references Garcia-Cortes, L. A. et al. (2008) Partition of the genetic trend to validate multiple selection
@@ -64,11 +66,11 @@
 #' @param colAGV Numeric or character, position(s) or name(s) of column(s) holding Additive Genetic Values.
 #' @param colBy Numeric or character, position or name of a column holding group information (see details).
 #'
-#' @example inst/examples/examples_alphaPart.R
-#' @return An object of class \code{alphaPart}, which can be used in further analyses - there is a handy summary
-#' method (\code{\link[alphaPart]{summary.alphaPart}} works on objects of \code{alphaPart} class) and a plot method
-#' for its output (\code{\link[alphaPart]{plot.summaryAlphaPart}} works on objects of \code{summaryAlphaPart} class).
-#' Class \code{alphaPart} is a list. The first \code{length(colAGV)} components (one for each trait and named with
+#' @example inst/examples/examples_AlphaPart.R
+#' @return An object of class \code{AlphaPart}, which can be used in further analyses - there is a handy summary
+#' method (\code{\link[AlphaPart]{summary.AlphaPart}} works on objects of \code{AlphaPart} class) and a plot method
+#' for its output (\code{\link[AlphaPart]{plot.summaryAlphaPart}} works on objects of \code{summaryAlphaPart} class).
+#' Class \code{AlphaPart} is a list. The first \code{length(colAGV)} components (one for each trait and named with
 #' trait label, say trt) are data frames. Each data.frame contains:
 #'   \item{\code{x}}{columns from initial data \code{x}}
 #'   \item{trt_pa}{parent average}
@@ -85,11 +87,11 @@
 #'   \item{warn}{potential warning messages associated with this object}
 #'
 #' If  \code{colBy!=NULL} the resulting object is of a class \code{summaryAlphaPart},
-#' see \code{\link[alphaPart]{summary.alphaPart}} for details.
+#' see \code{\link[AlphaPart]{summary.AlphaPart}} for details.
 #'
 #' If  \code{profile=TRUE}, profiling info is printed on screen to spot any computational bottlenecks.
 #'
-#' @useDynLib alphaPart, .registration = TRUE
+#' @useDynLib AlphaPart, .registration = TRUE
 #' @importFrom Rcpp sourceCpp
 #'
 #' @export
@@ -104,7 +106,7 @@
 
 
 
-alphaPart <- function (x, pathNA=FALSE, recode=TRUE, unknown=NA, sort=TRUE, verbose=1, profile=FALSE,
+AlphaPart <- function (x, pathNA=FALSE, recode=TRUE, unknown=NA, sort=TRUE, verbose=1, profile=FALSE,
   printProfile="end", pedType="IPP", colId=1, colFid=2, colMid=3, colPath=4, colAGV=5:ncol(x),
   colBy=NULL) {
 
@@ -299,21 +301,21 @@ alphaPart <- function (x, pathNA=FALSE, recode=TRUE, unknown=NA, sort=TRUE, verb
 
   ## Compute
   if (!groupSummary) {
-    tmp <- .Call("alphaPartDrop",
+    tmp <- .Call("AlphaPartDrop",
                  c1_=c1, c2_=c2,
                  nI_=nI, nP_=nP, nT_=nT,
                  y_=y, P_=P, Px_=cumsum(c(0, rep(nP, nT-1))),
-                 PACKAGE="alphaPart")
+                 PACKAGE="AlphaPart")
   } else {
     N <- aggregate(x=y[-1, -c(1:3)], by=list(by=x[, colBy]), FUN=length)
     tmp <- vector(mode="list", length=3)
     names(tmp) <- c("pa", "w", "xa")
     tmp$pa <- tmp$w <- matrix(data=0, nrow=nG+1, ncol=nT)
-    tmp$xa <- .Call("alphaPartDropGroup",
+    tmp$xa <- .Call("AlphaPartDropGroup",
                  c1_=c1, c2_=c2,
                  nI_=nI, nP_=nP, nT_=nT, nG_=nG,
                  y_=y, P_=P, Px_=cumsum(c(0, rep(nP, nT-1))), g_=g,
-                 PACKAGE="alphaPart")
+                 PACKAGE="AlphaPart")
   }
 
   ## Assign nice column names
@@ -379,7 +381,7 @@ alphaPart <- function (x, pathNA=FALSE, recode=TRUE, unknown=NA, sort=TRUE, verb
 
   ## --- Return ---
 
-  class(ret) <- c("alphaPart", class(ret))
+  class(ret) <- c("AlphaPart", class(ret))
   if (groupSummary) {
     ret$by <- colBy
     ret$N <- N

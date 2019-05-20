@@ -1,5 +1,5 @@
 library(testthat)
-library(alphaPart)
+library(AlphaPart)
 
-test_check("alphaPart")
+test_check("AlphaPart")
 

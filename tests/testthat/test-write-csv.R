@@ -1,26 +1,26 @@
 context("test-write-csv")
 
-test_that("Check writing input for write.csv.alphaPart", {
+test_that("Check writing input for write.csv.AlphaPart", {
 
   ## Making sure we accept only the right class and one file name!
-  expect_error(write.csv.alphaPart(data.frame(x=1:10)))
-  expect_error(write.csv.alphaPart(data.frame(x=1:10), file=c("a", "b")))
+  expect_error(write.csv.AlphaPart(data.frame(x=1:10)))
+  expect_error(write.csv.AlphaPart(data.frame(x=1:10), file=c("a", "b")))
 })
 
-test_that("Check writing process for write.csv.alphaPart", {
+test_that("Check writing process for write.csv.AlphaPart", {
   ## Load an example data
-  data("alphaPart.ped")
+  data("AlphaPart.ped")
 
   ## Partition additive genetic values
-  res <- alphaPart(x=alphaPart.ped, colPath="loc", colAGV=c("agv1", "agv2"))
+  res <- AlphaPart(x=AlphaPart.ped, colPath="loc", colAGV=c("agv1", "agv2"))
 
   ## Write summary on the disk and collect saved file names
   dirT <- tempdir()
-  fileName <- file.path(dirT, "alphaPart")
+  fileName <- file.path(dirT, "AlphaPart")
   retF <- write.csv(x=res, file=fileName)
 
   ## Check returned file names
-  expect_equal(retF, paste(dirT, "/alphaPart_", c("agv1.csv", "agv2.csv"), sep=""))
+  expect_equal(retF, paste(dirT, "/AlphaPart_", c("agv1.csv", "agv2.csv"), sep=""))
 
   ## Check content of files
   tmp <- read.csv2(file=retF[1])
@@ -32,23 +32,23 @@ test_that("Check writing process for write.csv.alphaPart", {
   expect_equal(tmp$agv1_1, res$agv2$agv1_1)
 
   ## Clean up
-  files <- dir(path=dirT, pattern="alphaPart*")
+  files <- dir(path=dirT, pattern="AlphaPart*")
   unlink(x=files)
 })
 
-test_that("Check write.csv.alphaPart on the disk *within trait folders*", {
+test_that("Check write.csv.AlphaPart on the disk *within trait folders*", {
   ## Load an example data
-  data("alphaPart.ped")
+  data("AlphaPart.ped")
 
   ## Partition additive genetic values
-  res <- alphaPart(x=alphaPart.ped, colPath="loc", colAGV=c("agv1", "agv2"))
+  res <- AlphaPart(x=AlphaPart.ped, colPath="loc", colAGV=c("agv1", "agv2"))
   ## Write summary on the disk *within trait folders*
   dirT <- tempdir()
-  fileName <- file.path(dirT, "alphaPart")
+  fileName <- file.path(dirT, "AlphaPart")
   retF <- write.csv(x=res, file=fileName, traitsAsDir=TRUE)
 
   ## Check returned file names
-  expect_equal(retF, paste(dirT, c("agv1", "agv2"), c("alphaPart_agv1.csv", "alphaPart_agv2.csv"), sep="/"))
+  expect_equal(retF, paste(dirT, c("agv1", "agv2"), c("AlphaPart_agv1.csv", "AlphaPart_agv2.csv"), sep="/"))
 
   ## Clean up
   files <- dir(path=dirT, pattern=c("agv1", "agv2"))
@@ -71,21 +71,21 @@ test_that("Check writing input for write.csv.summaryAlphaPart", {
 
 test_that("Check writing process for write.csv.summaryAlphaPart", {
   ## Load an example data
-  data("alphaPart.ped")
+  data("AlphaPart.ped")
 
   ## Partition additive genetic values
-  res <- alphaPart(x=alphaPart.ped, colPath="loc", colAGV=c("agv1", "agv2"))
+  res <- AlphaPart(x=AlphaPart.ped, colPath="loc", colAGV=c("agv1", "agv2"))
 
   ## Summarize population by generation (=trend)
   ret <- summary(res, by="gen")
 
   ## Write summary on the disk and collect saved file names
   dirT <- tempdir()
-  fileName <- file.path(dirT, "alphaPart")
+  fileName <- file.path(dirT, "AlphaPart")
   retF <- write.csv(x=ret, file=fileName)
 
   ## Check returned file names
-  expect_equal(retF, paste(dirT, "/alphaPart_", c("agv1_abs.csv", "agv1_rel.csv", "agv2_abs.csv", "agv2_rel.csv"), sep=""))
+  expect_equal(retF, paste(dirT, "/AlphaPart_", c("agv1_abs.csv", "agv1_rel.csv", "agv2_abs.csv", "agv2_rel.csv"), sep=""))
 
   ## Check content of files
   col <- c("gen", "N", "Sum", "1", "2")
@@ -99,26 +99,26 @@ test_that("Check writing process for write.csv.summaryAlphaPart", {
   expect_equal(tmp, ret$agv2$rel)
 
   ## Clean up
-  files <- dir(path=dirT, pattern="alphaPart*")
+  files <- dir(path=dirT, pattern="AlphaPart*")
   unlink(x=files)
 })
 
 test_that("Check write.csv.summaryAlphaPart on the disk *within trait folders*", {
-  data("alphaPart.ped")
+  data("AlphaPart.ped")
 
   ## Partition additive genetic values
-  res <- alphaPart(x=alphaPart.ped, colPath="loc", colAGV=c("agv1", "agv2"))
+  res <- AlphaPart(x=AlphaPart.ped, colPath="loc", colAGV=c("agv1", "agv2"))
 
   ## Summarize population by generation (=trend)
   ret <- summary(res, by="gen")
 
   dirT <- tempdir()
-  fileName <- file.path(dirT, "alphaPart")
+  fileName <- file.path(dirT, "AlphaPart")
   retF <- write.csv(x=ret, file=fileName, traitsAsDir=TRUE)
 
   ## Check returned file names
-  expect_equal(retF, paste(dirT, c("agv1/alphaPart_agv1_abs.csv", "agv1/alphaPart_agv1_rel.csv",
-                                   "agv2/alphaPart_agv2_abs.csv", "agv2/alphaPart_agv2_rel.csv"), sep="/"))
+  expect_equal(retF, paste(dirT, c("agv1/AlphaPart_agv1_abs.csv", "agv1/AlphaPart_agv1_rel.csv",
+                                   "agv2/AlphaPart_agv2_abs.csv", "agv2/AlphaPart_agv2_rel.csv"), sep="/"))
 
   ## Clean up
   files <- dir(path=dirT, pattern=c("agv1", "agv2"))

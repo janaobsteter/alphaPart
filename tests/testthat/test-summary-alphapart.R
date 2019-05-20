@@ -1,6 +1,6 @@
 context("test-summary-alphapart")
 
-test_that("Test summary.alphaPart", {
+test_that("Test summary.AlphaPart", {
 
   ## Small pedigree with additive genetic (=breeding) values
   ped <- data.frame(  id=c(  1,   2,   3,   4,   5,   6),
@@ -12,7 +12,7 @@ test_that("Test summary.alphaPart", {
                      gen=c(  1,   1,   2,   2,   3,   3))
 
   ## Partition additive genetic values
-  tmp <- alphaPart(x=ped, colAGV=c("trt1", "trt2"))
+  tmp <- AlphaPart(x=ped, colAGV=c("trt1", "trt2"))
   ##
   ##  Trait: trt1
   ##
@@ -115,10 +115,10 @@ test_that("Test summary.alphaPart", {
   expect_equal(round(x$trt1$rel$B, 2), c(0, 0.53))
   expect_equal(round(x$trt1$rel$C, 2), c(0, 0.02))
 
-  ## Test the direct use of by group analysis in the alphaPart function
+  ## Test the direct use of by group analysis in the AlphaPart function
   ped$gen <- factor(ped$gen)
-  tmp1 <- summary(alphaPart(x=ped, colAGV=c("trt1", "trt2")), by="gen")
-  tmp2 <- alphaPart(x=ped, colAGV=c("trt1", "trt2"), colBy="gen")
+  tmp1 <- summary(AlphaPart(x=ped, colAGV=c("trt1", "trt2")), by="gen")
+  tmp2 <- AlphaPart(x=ped, colAGV=c("trt1", "trt2"), colBy="gen")
   expect_equal(tmp1, tmp2)
 
 })

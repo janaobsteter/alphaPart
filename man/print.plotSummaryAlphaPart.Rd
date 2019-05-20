@@ -8,7 +8,7 @@
 }
 \arguments{
 \item{x}{plotSummaryAlphaPart, output object from
-\code{\link[alphaPart]{plot.summaryAlphaPart}} function}
+\code{\link[AlphaPart]{plot.summaryAlphaPart}} function}
 
 \item{ask}{Logical, ask before printing another plot?}
 
@@ -16,17 +16,17 @@
 }
 \description{
 #' Print method for objects of the class \code{plotSummaryAlphaPart} (result of
-\code{plot(summary(alphaPart(...)))}).
+\code{plot(summary(AlphaPart(...)))}).
 }
 \details{
 TODO: DETAILS
 }
 \examples{
 ## Load an example data
-data("alphaPart.ped")
+data("AlphaPart.ped")
 
 ## Partition additive genetic values
-(res <- alphaPart(x=alphaPart.ped, colPath="loc", colAGV=c("agv1", "agv2")))
+(res <- AlphaPart(x=AlphaPart.ped, colPath="loc", colAGV=c("agv1", "agv2")))
 
 ## Summarize population by generation (=trend)
 (ret <- summary(res, by="gen"))
@@ -40,5 +40,5 @@ print(p[[2]])
 print(p)
 }
 \seealso{
-\code{\link[alphaPart]{plot.summaryAlphaPart}}
+\code{\link[AlphaPart]{plot.summaryAlphaPart}}
 }

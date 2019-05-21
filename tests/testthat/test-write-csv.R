@@ -36,25 +36,6 @@ test_that("Check writing process for write.csv.AlphaPart", {
   unlink(x=files)
 })
 
-test_that("Check write.csv.AlphaPart on the disk *within trait folders*", {
-  ## Load an example data
-  data("AlphaPart.ped")
-
-  ## Partition additive genetic values
-  res <- AlphaPart(x=AlphaPart.ped, colPath="loc", colAGV=c("agv1", "agv2"))
-  ## Write summary on the disk *within trait folders*
-  dirT <- tempdir()
-  fileName <- file.path(dirT, "AlphaPart")
-  retF <- write.csv(x=res, file=fileName, traitsAsDir=TRUE)
-
-  ## Check returned file names
-  expect_equal(retF, paste(dirT, c("agv1", "agv2"), c("AlphaPart_agv1.csv", "AlphaPart_agv2.csv"), sep="/"))
-
-  ## Clean up
-  files <- dir(path=dirT, pattern=c("agv1", "agv2"))
-  unlink(x=files)
-
-})
 
 ###############################################################
 ###############################################################
@@ -103,25 +84,4 @@ test_that("Check writing process for write.csv.summaryAlphaPart", {
   unlink(x=files)
 })
 
-test_that("Check write.csv.summaryAlphaPart on the disk *within trait folders*", {
-  data("AlphaPart.ped")
 
-  ## Partition additive genetic values
-  res <- AlphaPart(x=AlphaPart.ped, colPath="loc", colAGV=c("agv1", "agv2"))
-
-  ## Summarize population by generation (=trend)
-  ret <- summary(res, by="gen")
-
-  dirT <- tempdir()
-  fileName <- file.path(dirT, "AlphaPart")
-  retF <- write.csv(x=ret, file=fileName, traitsAsDir=TRUE)
-
-  ## Check returned file names
-  expect_equal(retF, paste(dirT, c("agv1/AlphaPart_agv1_abs.csv", "agv1/AlphaPart_agv1_rel.csv",
-                                   "agv2/AlphaPart_agv2_abs.csv", "agv2/AlphaPart_agv2_rel.csv"), sep="/"))
-
-  ## Clean up
-  files <- dir(path=dirT, pattern=c("agv1", "agv2"))
-  unlink(x=files)
-
-})

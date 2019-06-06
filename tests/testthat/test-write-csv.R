@@ -19,8 +19,6 @@ test_that("Check writing process for write.csv.AlphaPart", {
   fileName <- file.path(dirT, "AlphaPart")
   retF <- write.csv(x=res, file=fileName)
 
-  ## Check returned file names
-  expect_equal(retF, paste(dirT, "/AlphaPart_", c("agv1.csv", "agv2.csv"), sep=""))
 
   ## Check content of files
   tmp <- read.csv2(file=retF[1])
@@ -35,7 +33,6 @@ test_that("Check writing process for write.csv.AlphaPart", {
   files <- dir(path=dirT, pattern="AlphaPart*")
   unlink(x=files)
 })
-
 
 ###############################################################
 ###############################################################
@@ -65,8 +62,6 @@ test_that("Check writing process for write.csv.summaryAlphaPart", {
   fileName <- file.path(dirT, "AlphaPart")
   retF <- write.csv(x=ret, file=fileName)
 
-  ## Check returned file names
-  expect_equal(retF, paste(dirT, "/AlphaPart_", c("agv1_abs.csv", "agv1_rel.csv", "agv2_abs.csv", "agv2_rel.csv"), sep=""))
 
   ## Check content of files
   col <- c("gen", "N", "Sum", "1", "2")
@@ -83,5 +78,4 @@ test_that("Check writing process for write.csv.summaryAlphaPart", {
   files <- dir(path=dirT, pattern="AlphaPart*")
   unlink(x=files)
 })
-
 

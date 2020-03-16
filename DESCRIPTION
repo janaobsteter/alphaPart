@@ -12,9 +12,10 @@ Suggests: RColorBrewer (>= 1.0-2), truncnorm (>= 1.0-5), knitr,
         rmarkdown, testthat
 LinkingTo: Rcpp
 Version: 0.8.0
-Date: 2020-02-18
+Date: 2020-03-16
 NeedsCompilation: yes
 Packaged: 2019-06-10 05:22:37 UTC
 VignetteBuilder: knitr
 RoxygenNote: 7.0.2
 Encoding: UTF-8
+

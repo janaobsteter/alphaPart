@@ -4,13 +4,8 @@
 \alias{AlphaPartSum}
 \title{AlphaPartSum.R}
 \usage{
-AlphaPartSum(
-  x,
-  map = NULL,
-  remove = TRUE,
-  zeroPath = TRUE,
-  call = "AlphaPartSum"
-)
+AlphaPartSum(x, map = NULL, remove = TRUE, zeroPath = TRUE,
+  call = "AlphaPartSum")
 }
 \arguments{
 \item{x}{summaryAlphaPart, object from the \code{AlphaPart(...)} or \code{summary(AlphaPart(...), ...)} call.}

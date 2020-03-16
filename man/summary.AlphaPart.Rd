@@ -4,15 +4,8 @@
 \alias{summary.AlphaPart}
 \title{summary.AlphaPart.R}
 \usage{
-\method{summary}{AlphaPart}(
-  object,
-  by = NULL,
-  FUN = mean,
-  labelSum = "Sum",
-  subset = NULL,
-  sums = FALSE,
-  ...
-)
+\method{summary}{AlphaPart}(object, by = NULL, FUN = mean,
+  labelSum = "Sum", subset = NULL, sums = FALSE, ...)
 }
 \arguments{
 \item{object}{AlphaPart, output object from \code{\link[AlphaPart]{AlphaPart}} function.}

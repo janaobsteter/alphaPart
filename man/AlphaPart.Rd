@@ -4,23 +4,10 @@
 \alias{AlphaPart}
 \title{AlphaPart.R}
 \usage{
-AlphaPart(
-  x,
-  pathNA = FALSE,
-  recode = TRUE,
-  unknown = NA,
-  sort = TRUE,
-  verbose = 1,
-  profile = FALSE,
-  printProfile = "end",
-  pedType = "IPP",
-  colId = 1,
-  colFid = 2,
-  colMid = 3,
-  colPath = 4,
-  colBV = 5:ncol(x),
-  colBy = NULL
-)
+AlphaPart(x, pathNA = FALSE, recode = TRUE, unknown = NA,
+  sort = TRUE, verbose = 1, profile = FALSE, printProfile = "end",
+  pedType = "IPP", colId = 1, colFid = 2, colMid = 3,
+  colPath = 4, colBV = 5:ncol(x), colBy = NULL)
 }
 \arguments{
 \item{x}{data.frame , with (at least) the following columns: individual, father, and mother identif ication,

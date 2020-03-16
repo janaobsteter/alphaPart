@@ -11,9 +11,11 @@ write.csv(...)
 
 \method{write.csv}{default}(...)
 
-\method{write.csv}{AlphaPart}(x, file, traitsAsDir = FALSE, csv2 = TRUE, row.names = FALSE, ...)
+\method{write.csv}{AlphaPart}(x, file, traitsAsDir = FALSE,
+  csv2 = TRUE, row.names = FALSE, ...)
 
-\method{write.csv}{summaryAlphaPart}(x, file, traitsAsDir = FALSE, csv2 = TRUE, row.names = FALSE, ...)
+\method{write.csv}{summaryAlphaPart}(x, file, traitsAsDir = FALSE,
+  csv2 = TRUE, row.names = FALSE, ...)
 }
 \arguments{
 \item{...}{Other options passed to \code{\link[utils]{write.csv2}} or \code{\link[utils]{write.csv}}.}

@@ -4,26 +4,12 @@
 \alias{plot.summaryAlphaPart}
 \title{plot.summaryAlphaPart.R}
 \usage{
-\method{plot}{summaryAlphaPart}(
-  x,
-  sortValue = TRUE,
-  sortValueFUN = sum,
-  sortValueDec = TRUE,
-  addSum = TRUE,
-  paths = NULL,
-  xlab = NULL,
-  ylab = NULL,
-  xlim = NULL,
-  ylim = NULL,
-  color,
-  lineSize = 1,
-  lineType = 1,
-  lineTypeList = NULL,
-  useDirectLabels = TRUE,
-  method = list(last.qp, hjust = 0),
-  labelPath = NULL,
-  ...
-)
+\method{plot}{summaryAlphaPart}(x, sortValue = TRUE,
+  sortValueFUN = sum, sortValueDec = TRUE, addSum = TRUE,
+  paths = NULL, xlab = NULL, ylab = NULL, xlim = NULL,
+  ylim = NULL, color, lineSize = 1, lineType = 1,
+  lineTypeList = NULL, useDirectLabels = TRUE, method = list(last.qp,
+  hjust = 0), labelPath = NULL, ...)
 }
 \arguments{
 \item{x}{summaryAlphaPart, object from the \code{AlphaPart(...)} or \code{summary(AlphaPart(...), ...)} call.}

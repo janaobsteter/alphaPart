@@ -4,8 +4,13 @@
 \alias{AlphaPartSum}
 \title{AlphaPartSum.R}
 \usage{
-AlphaPartSum(x, map = NULL, remove = TRUE, zeroPath = TRUE,
-  call = "AlphaPartSum")
+AlphaPartSum(
+  x,
+  map = NULL,
+  remove = TRUE,
+  zeroPath = TRUE,
+  call = "AlphaPartSum"
+)
 }
 \arguments{
 \item{x}{summaryAlphaPart, object from the \code{AlphaPart(...)} or \code{summary(AlphaPart(...), ...)} call.}
@@ -56,7 +61,7 @@ ped <- data.frame(  id=c(  1,   2,   3,   4,   5,   6),
                  trt2=c(100, 110, 105,  140,  85, 110))
 
 ## Partition additive genetic values
-(tmp <- AlphaPart(x=ped, colAGV=c("trt1", "trt2")))
+(tmp <- AlphaPart(x=ped, colBV=c("trt1", "trt2")))
 
 ## Sum some partitions (working on object of class AlphaPart)
 (tmp2 <- AlphaPartSum(x=tmp, map=list(c("X", "A", "B"), c("A", "B"))))

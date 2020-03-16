@@ -11,7 +11,7 @@ test_that("Test input for AlphaPartSum", {
                       trt2=c(100, 110, 105, 100,  85, 110))
 
   ## Partition additive genetic values
-  tmp <- AlphaPart(x=ped, colAGV=c("trt1", "trt2"))
+  tmp <- AlphaPart(x=ped, colBV=c("trt1", "trt2"))
 
   ## Test that we only accept objects of class AlphaPart and summaryAlphaPart
   expect_error(AlphaPartSum(x=ped))
@@ -33,7 +33,7 @@ test_that("Test output of AlphaPartSum - summing by paths", {
                       trt2=c(100, 110, 105, 100,  85, 110))
 
   ## Partition additive genetic values
-  tmp <- AlphaPart(x=ped, colAGV=c("trt1", "trt2"))
+  tmp <- AlphaPart(x=ped, colBV=c("trt1", "trt2"))
   ## Sum some partitions (working on object of class AlphaPart)
   tmp2 <- AlphaPartSum(x=tmp, map=list(c("X", "A", "B"), c("A", "B"), c("C", "X", "A")))
 
@@ -69,7 +69,7 @@ test_that("Test the output of AlphaPartSum - summing by generation", {
                       trt2=c(100, 110, 105, 100,  85, 110))
 
   ## Partition additive genetic values
-  tmp <- AlphaPart(x=ped, colAGV=c("trt1", "trt2"))
+  tmp <- AlphaPart(x=ped, colBV=c("trt1", "trt2"))
   ## Summarize by generation
   tmpS <- summary(tmp, by="gen")
 
@@ -77,18 +77,13 @@ test_that("Test the output of AlphaPartSum - summing by generation", {
   tmpS2 <- AlphaPartSum(x=tmpS, map=list(c("X", "A", "B"), c("A", "B")))
 
   ## Test that the creation of new path is is done properly (is sum correct)
-  expect_equal(tmpS2$trt1$abs$X, c(110, 122.5, 125))
-  expect_equal(tmpS2$trt1$rel$X, c(1, 1, 1))
-  expect_equal(tmpS2$trt2$abs$X, c(105, 102.5, 97.5))
-  expect_equal(round(tmpS2$trt2$rel$X, 4), c(1, 1, 1))
+  expect_equal(tmpS2$trt1$X, c(110, 122.5, 125))
+  expect_equal(tmpS2$trt2$X, c(105, 102.5, 97.5))
   ## Test that overwritting existing path works (A with B in this case)
-  expect_equal(tmpS2$trt1$abs$A, tmpS$trt1$abs$B)
-  expect_equal(tmpS2$trt1$rel$A, tmpS$trt1$rel$B)
-  expect_equal(tmpS2$trt2$abs$A, tmpS$trt2$abs$B)
-  expect_equal(tmpS2$trt2$rel$A, tmpS$trt2$rel$B)
+  expect_equal(tmpS2$trt1$A, tmpS$trt1$B)
+  expect_equal(tmpS2$trt2$A, tmpS$trt2$B)
   ## Test that non target/new paths are removed (B in this case)
-  expect_true(!("B" %in% colnames(tmpS2$trt2$abs)))
-  expect_true(!("B" %in% colnames(tmpS2$trt2$rel)))
+  expect_true(!("B" %in% colnames(tmpS2$trt2)))
   ## Test that meta info slot is updated properly
   expect_equal(tmpS2$info$nP, 2)
   expect_equal(tmpS2$info$lP, c("A", "X"))

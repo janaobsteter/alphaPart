@@ -23,16 +23,14 @@ print.summaryAlphaPart <- function(x, ...) {
   
 
   nI <- nrow(x[[1]])
-  cat("\n\n Summary of partitions of additive genetic values \n")
+  cat("\n\n Summary of partitions of breeding values \n")
   cat("   - paths: ",  x$info$nP, " (", paste(x$info$lP, collapse=", "), ")\n", sep="")
   cat("   - traits: ", x$info$nT, " (", paste(x$info$lT, collapse=", "), ")\n", sep="")
   if (length(x$info$warn) > 0) cat("   - warning: ", paste(x$info$warn, collapse="\n"), "\n", sep="")
 
   for (trt in x$info$lT) {
-    cat("\n Trait:", trt, "(absolute) \n\n")
-    print(x[[trt]]$abs)
-    cat("\n Trait:", trt, "(relative) \n\n")
-    print(x[[trt]]$rel)
+    cat("\n Trait:", trt, "\n\n")
+    print(x[[trt]])
   }
   cat("\n")
 

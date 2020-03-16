@@ -21,7 +21,7 @@
 #' @param ... Arguments passed to \code{type} specific methods, say
 #' \code{width} and \code{height} for \code{type="pdf"} etc.
 #'
-#' @example inst/examples/examples_summary.AlphaPart.R
+#' @example /inst/examples/examples_savePlot.plotsummaryAlphaPart.R
 #'
 #' @return Beside the side effect of saving plots to disk, filenames are printed on
 #' screen during the process and at the end invisibly returned.
@@ -85,19 +85,13 @@ savePlot.plotSummaryAlphaPart <- function(
       dir.create(path=file.path(dirname(filenameOrig), lT[i]), recursive=TRUE, showWarnings=FALSE)
       filename <- file.path(dirname(filenameOrig), lT[i], basename(filenameOrig))
     }
-    fileA <- paste(filename, paste(lT[i], "_abs.", type, sep=""), sep="_")
-    fileR <- paste(filename, paste(lT[i], "_rel.", type, sep=""), sep="_")
-    ret  <- c(ret, fileA, fileR)
+    fileA <- paste(filename, paste(lT[i], ".", type, sep=""), sep="_")
+    ret  <- c(ret, fileA)
     cat(fileA, "\n")
-    cat(fileR, "\n")
     print(list(file=fileA, ...))
     do.call(what=type, args=list(file=fileA, ...))
     if (!is.null(pre.hook) && is.function(pre.hook)) pre.hook()
-    print(x[[i]][[1]])
-    dev.off()
-    do.call(what=type, args=list(file=fileR, ...))
-    if (!is.null(pre.hook) && is.function(pre.hook)) pre.hook()
-    print(x[[i]][[2]])
+    print(x[[i]])
     dev.off()
   }
   

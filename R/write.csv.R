@@ -1,6 +1,6 @@
 #' write.csv.R
 #'
-#' Save summaries of partitioned additive genetic values to CSV files on disk for further
+#' Save summaries of partitioned breeding values to CSV files on disk for further
 #' analyses of processing with other software or just for saving (backing up)
 #' results.
 #'
@@ -28,12 +28,11 @@
 #'
 #' @return  \item{write.csv}{See \code{\link[utils]{write.csv}} for details.}
 #'          \item{write.csv.AlphaPart}{For each trait (list component in \code{x}) a file is saved on disk with name
-#' "file_trait.csv", where the file will hold original data and additive genetic value partitions.
+#' "AlphaPart_trait.csv", where the file will hold original data and breeding value partitions.
 #' With \code{traitsAsDir=TRUE} files are saved as "trait/file_trait.csv".
 #' File names are printed on screen during the process of export and at the end invisibly returned.}
-#'          |item{write.csv.summaryAlphaPart}{For each trait (list component in \code{x}) two files are saved on disk with names
-#' "file_trait_abs.csv" and "file_trait_rel.csv", where the first file will hold absolute values
-#' and the second file will hold relative values of additive genetic value partitions.
+#'          |item{write.csv.summaryAlphaPart}{For each trait (list component in \code{x}) a file partitions named
+# "file_trait.csv" is saved on disk.
 #' With \code{traitsAsDir=TRUE} files are saved as "trait/file_trait_*.csv". File names
 #' are printed on screen during the process of export and at the end invisibly returned.}
 #'
@@ -52,7 +51,7 @@ write.csv.default <- function (...) {
   utils::write.csv(...)
 }
 
-#' @describeIn write.csv  Save partitioned additive genetic values to CSV files on disk on disk for further
+#' @describeIn write.csv  Save partitioned breeding values to CSV files on disk on disk for further
 #' analyses or processing with other software or just for saving (backing up)
 #' results.
 #'
@@ -89,7 +88,7 @@ write.csv.AlphaPart <- function (x, file, traitsAsDir=FALSE, csv2=TRUE, row.name
 }
 
 
-#' @describeIn write.csv Save summaries of partitioned additive genetic values to CSV files on disk for further
+#' @describeIn write.csv Save summaries of partitioned breeding values to CSV files on disk for further
 #' analyses of processing with other software or just for saving (backing up)
 #' results.
 #'
@@ -109,18 +108,15 @@ write.csv.summaryAlphaPart <- function (x, file, traitsAsDir=FALSE, csv2=TRUE, r
       dir.create(path=file.path(dirname(fileOrig), x$info$lT[i]), recursive=TRUE, showWarnings=FALSE)
       file <- file.path(dirname(fileOrig), x$info$lT[i], basename(fileOrig))
     }
-    fileA <- paste(file, x$info$lT[i], "abs.csv", sep="_")
-    fileR <- paste(file, x$info$lT[i], "rel.csv", sep="_")
-    ret  <- c(ret, fileA, fileR)
+    fileA <- paste(file, x$info$lT[i], ".csv", sep="_")
+    ret  <- c(ret, fileA)
     cat(fileA, "\n")
-    cat(fileR, "\n")
+
     
     if(csv2) {
-      write.csv2(x=x[[i]]$abs, file=fileA, row.names=row.names, ...)
-      write.csv2(x=x[[i]]$rel, file=fileR, row.names=row.names, ...)
+      write.csv2(x=x[[i]], file=fileA, row.names=row.names, ...)
     } else {
-      write.csv(x=x[[i]]$abs, file=fileA, row.names=row.names, ...)
-      write.csv(x=x[[i]]$rel, file=fileR, row.names=row.names, ...)
+      write.csv(x=x[[i]], file=fileA, row.names=row.names, ...)
     }
   }
   

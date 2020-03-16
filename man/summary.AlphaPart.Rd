@@ -4,8 +4,15 @@
 \alias{summary.AlphaPart}
 \title{summary.AlphaPart.R}
 \usage{
-\method{summary}{AlphaPart}(object, by = NULL, FUN = mean,
-  labelSum = "Sum", subset = NULL, sums = FALSE, ...)
+\method{summary}{AlphaPart}(
+  object,
+  by = NULL,
+  FUN = mean,
+  labelSum = "Sum",
+  subset = NULL,
+  sums = FALSE,
+  ...
+)
 }
 \arguments{
 \item{object}{AlphaPart, output object from \code{\link[AlphaPart]{AlphaPart}} function.}
@@ -16,7 +23,7 @@ be applied; if \code{NULL} (default) summary is given for the whole table.}
 \item{FUN}{Function, which function should be used in summary; function should
 return single value per each level of by.}
 
-\item{labelSum}{Character, label used for the overall additive genetic value.}
+\item{labelSum}{Character, label used for the overall breeding value.}
 
 \item{subset}{Logical, perform summary only on a subset of \code{object} subsetted by
 this argument.}
@@ -28,11 +35,9 @@ this argument.}
 }
 \value{
 An object of class \code{summaryAlphaPart}, which is a list of data frames
-with summary statistics on additive genetic value partitions. For each trait there
-is a list component holding two dataframes. The first data.frame is called \code{abs}
-and holds summary for the "whole/original" additive genetic value and its partitions,
-while the second data.frame is called \code{rel} and holds relative values of \code{abs}
-counterpart. In addition another list is added (named \code{info}) with the following
+with summary statistics on breeding value partitions. For each trait there
+a dataframe holds summary for the "whole/original" breeding value and its partitions.
+In addition another list is added (named \code{info}) with the following
 components holdinfg meta info:
   \item{path}{column name holding path information}
   \item{nP}{number of paths}
@@ -41,7 +46,7 @@ components holdinfg meta info:
   \item{lT}{trait labels}
   \item{by}{column name of variable by which summary was performed}
   \item{warn}{potential warning messages associated with this object}
-  \item{labelSum}{column name of summary for "whole/original" additive genetic values}
+  \item{labelSum}{column name of summary for "whole/original" breeding values}
 
 There is a handy plot method (\code{\link[AlphaPart]{plot.summaryAlphaPart}}) for output.
 }
@@ -49,46 +54,38 @@ There is a handy plot method (\code{\link[AlphaPart]{plot.summaryAlphaPart}}) fo
 A function to summarize AlphaPart object.
 }
 \details{
-Additive genetic values of individuals are often summarized, either by year of
+Breedng values of individuals are often summarized, either by year of
 birth or some other classification. Function \code{summary.AlphaPart} provides
-a way to ease the computation of such summaries on partitions of additive
-genetic values.
+a way to ease the computation of such summaries on partitions of breeding values.
 }
 \examples{
 ## Load an example data
 data("AlphaPart.ped")
 
 ## --- Partition additive genetic values by loc ---
-
-(res <- AlphaPart(x=AlphaPart.ped, colPath="loc", colAGV=c("agv1", "agv2")))
+res <- AlphaPart(x=AlphaPart.ped, colPath="country", colBV=c("bv1", "bv2"))
 
 ## Summarize whole population
-(ret <- summary(res))
+ret <- summary(res)
 
 ## Summarize population by generation (=trend)
-(ret <- summary(res, by="gen"))
+ret <- summary(res, by="gen")
 
-## Summarize population by generation (=trend) and location 1
-(ret <- summary(res, by="loc.gen"))
+## Summarize population by generation (=trend) but only for domestic location
+ret <- summary(res, by="gen", subset=res[[1]]$country == "domestic")
 
-## Summarize population by generation (=trend) but only for location 1
-(ret <- summary(res, by="gen", subset=res[[1]]$loc == 1))
+## --- Partition additive genetic values by loc and gender ---
 
-## --- Partition additive genetic values by loc and sex ---
-
-AlphaPart.ped$loc.sex <- with(AlphaPart.ped, paste(loc, sex, sep="-"))
-(res <- AlphaPart(x=AlphaPart.ped, colPath="loc.sex", colAGV=c("agv1", "agv2")))
+AlphaPart.ped$country.gender <- with(AlphaPart.ped, paste(country, gender, sep="-"))
+res <- AlphaPart(x=AlphaPart.ped, colPath="country.gender", colBV=c("bv1", "bv2"))
 
 ## Summarize population by generation (=trend)
-(ret <- summary(res, by="gen"))
+ret <- summary(res, by="gen")
 
-## Summarize population by generation (=trend) and location 1
-(ret <- summary(res, by="loc.gen"))
-
-## Summarize population by generation (=trend) but only for location 1
-(ret <- summary(res, by="gen", subset=res[[1]]$loc == 1))
+## Summarize population by generation (=trend) but only for domestic location
+ret <- summary(res, by="gen", subset=res[[1]]$country == "domestic")
 }
 \seealso{
-\code{\link[AlphaPart]{AlphaPart}} for partitioning additive genetic values,
+\code{\link[AlphaPart]{AlphaPart}} for partitioning breeding values,
 \code{\link[AlphaPart]{plot.summaryAlphaPart}} for plotting output of summary method
 }

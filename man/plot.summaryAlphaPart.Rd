@@ -4,12 +4,26 @@
 \alias{plot.summaryAlphaPart}
 \title{plot.summaryAlphaPart.R}
 \usage{
-\method{plot}{summaryAlphaPart}(x, sortValue = TRUE,
-  sortValueFUN = sum, sortValueDec = TRUE, addSum = TRUE,
-  paths = NULL, xlab = NULL, ylab = NULL, xlim = NULL,
-  ylim = NULL, ylimRel = NULL, color, lineSize = 1, lineType = 1,
-  lineTypeList = NULL, useDirectLabels = TRUE, method = list(last.qp,
-  hjust = 0), labelPath = NULL, ...)
+\method{plot}{summaryAlphaPart}(
+  x,
+  sortValue = TRUE,
+  sortValueFUN = sum,
+  sortValueDec = TRUE,
+  addSum = TRUE,
+  paths = NULL,
+  xlab = NULL,
+  ylab = NULL,
+  xlim = NULL,
+  ylim = NULL,
+  color,
+  lineSize = 1,
+  lineType = 1,
+  lineTypeList = NULL,
+  useDirectLabels = TRUE,
+  method = list(last.qp, hjust = 0),
+  labelPath = NULL,
+  ...
+)
 }
 \arguments{
 \item{x}{summaryAlphaPart, object from the \code{AlphaPart(...)} or \code{summary(AlphaPart(...), ...)} call.}
@@ -32,8 +46,6 @@
 \item{xlim}{Numeric, a vector of two values with x-axis limits; use a list of vectors for more traits.}
 
 \item{ylim}{Numeric, a vector of two values with y-axis limits; use a list of vectors for more traits.}
-
-\item{ylimRel}{Numeric, a vector of two values with y-axis limits for relative values; use a list of vectors for more traits.}
 
 \item{color}{Character, color names; by default a set of 54 colors is predefined from the \pkg{RColorBrewer} package;
 in addition a black colour is attached at the begining for the overall trend; if there are more paths than
@@ -62,57 +74,56 @@ otherwise \code{lineType} does not have any effect.}
 }
 \value{
 A list of ggplot objects that can be further modified or displayed.
-For each trait in \code{x} there are two plots (one for absolute values and one for
-relative values).
+For each trait in \code{x} there is one plot visualising summarized values.
 }
 \description{
-A function to plot summary of partitioned additive genetic values.
+A function to plot summary of partitioned breeding values.
 }
 \details{
-Information in summaries of partitions of additive genetic values can be
+Information in summaries of partitions of breeding values can be
 overhelming due to a large volume of numbers. Plot method can be used to
 visualise this data in eye pleasing way using ggplot2
 graphics.
 }
 \examples{
+\donttest{
 ## Load an example data
 data("AlphaPart.ped")
 
-## Partition additive genetic values by location
-(res <- AlphaPart(x=AlphaPart.ped, colPath="loc", colAGV=c("agv1", "agv2")))
+## Partition additive genetic values by country
+(res <- AlphaPart(x=AlphaPart.ped, colPath="country", colBV=c("bv1", "bv2")))
 
 ## Summarize population by generation (=trend)
 (ret <- summary(res, by="gen"))
 
 ## Plot the partitions
-p <- plot(ret, ylab=c("AGV for trait 1", "AGV for trait 2"), xlab="Generation")
+p <- plot(ret, ylab=c("bv for trait 1", "bv for trait 2"), xlab="Generation")
 print(p[[1]]$abs)
-print(p[[1]]$rel)
-print(p[[2]])
-#print(p)
+print(p[[2]]$abs)
+print(p)
 
-## Partition additive genetic values by location and sex
-AlphaPart.ped$loc.sex <- with(AlphaPart.ped, paste(loc, sex, sep="-"))
-(res <- AlphaPart(x=AlphaPart.ped, colPath="loc.sex", colAGV=c("agv1", "agv2")))
+## Partition additive genetic values by country and sex
+AlphaPart.ped$country.gender <- with(AlphaPart.ped, paste(country, gender, sep="-"))
+(res <- AlphaPart(x=AlphaPart.ped, colPath="country.gender", colBV=c("bv1", "bv2")))
 
 ## Summarize population by generation (=trend)
 (ret <- summary(res, by="gen"))
 
 ## Plot the partitions
-p <- plot(ret, ylab=c("AGV for trait 1", "AGV for trait 2"), xlab="Generation")
+p <- plot(ret, ylab=c("BV for trait 1", "BV for trait 2"), xlab="Generation")
 print(p)
-p <- plot(ret, ylab=c("AGV for trait 1", "AGV for trait 2"), xlab="Generation",
+p <- plot(ret, ylab=c("BV for trait 1", "BV for trait 2"), xlab="Generation",
         lineTypeList=list("-1"=1, "-2"=2, def=3))
 print(p)
-p <- plot(ret, ylab=c("AGV for trait 1", "AGV for trait 2"), xlab="Generation",
+p <- plot(ret, ylab=c("BV for trait 1", "BV for trait 2"), xlab="Generation",
         lineTypeList=list("-1"=1, "-2"=2, def=3), useGgplot2=FALSE, useDirectLabels = FALSE)
 print(p)
 
 ## Plot control (color and type of lines + limits)
-p <- plot(ret, ylab=c("AGV for trait 1", "AGV for trait 2"), xlab="Generation",
+p <- plot(ret, ylab=c("BV for trait 1", "BV for trait 2"), xlab="Generation",
         useGgplot2=TRUE, color=c("green", "gray"), lineType=c(2, 3),
         sortValue=FALSE, lineSize=4,
         xlim=c(-1, 7))
 print(p)
-
+}
 }

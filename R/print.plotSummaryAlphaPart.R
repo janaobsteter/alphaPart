@@ -26,18 +26,17 @@ print.plotSummaryAlphaPart <- function (x, ask=interactive(), ...) {
   k <- 1
   nT <- length(x)
   for (i in 1:nT) {
-    for (j in 1:2) {
-      print(x[[i]][[j]])
-      if (ask) {
-        if (k < nT*2) {
-          msg <- paste("Press any key to print out the next plot (", k, "/", nT*2, ") ...\n", sep="")
-          tmp <- readline(prompt=msg)
-        }
+    print(x[[i]])
+    if (ask) {
+      if (k < nT) {
+        msg <- paste("Press any key to print out the next plot (", k, "/", nT, ") ...\n", sep="")
+        tmp <- readline(prompt=msg)
       }
-      k <- k + 1
     }
+    k <- k + 1
   }
-
 }
+
+
 
 

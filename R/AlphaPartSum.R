@@ -52,7 +52,7 @@ AlphaPartSum <- function (x, map=NULL, remove=TRUE, zeroPath=TRUE, call="AlphaPa
   if (!is.list(map)) stop("object 'map' must be of a 'list' class")
 
   ## Initial number of columns
-  nCOrig <- ifelse(test1, ncol(x[[1]]), ncol(x[[1]]$abs))
+  nCOrig <- ifelse(test1, ncol(x[[1]]), ncol(x[[1]]))
   nPOrig <- x$info$nP 
   nCRem <- 0
 
@@ -103,13 +103,12 @@ AlphaPartSum <- function (x, map=NULL, remove=TRUE, zeroPath=TRUE, call="AlphaPa
               x[[t]][, paste(x$info$lT[t], map[[i]][1], sep="_")] <-         x[[t]][, paste(x$info$lT[t], map[[i]][2],                  sep="_")]
             }
           } else {    ## x comes from summary(AlphaPart(...), ...)
-            for (j in c("abs", "rel")) { ## j <- "abs"
               if (length(map[[i]][2:length(map[[i]])]) > 1) {
-                x[[t]][[j]][, map[[i]][1]] <- rowSums(x[[t]][[j]][, map[[i]][2:length(map[[i]])]])
+                x[[t]][, map[[i]][1]] <- rowSums(x[[t]][, map[[i]][2:length(map[[i]])]])
               } else {
-                x[[t]][[j]][, map[[i]][1]] <-         x[[t]][[j]][, map[[i]][2]]
+                x[[t]][, map[[i]][1]] <-         x[[t]][, map[[i]][2]]
               }            
-            } ## for (j in ...)
+            ## for (j in ...)
           } ## if (test1)
         } ## if (length...)
       } ## for (i in 1...)
@@ -131,8 +130,7 @@ AlphaPartSum <- function (x, map=NULL, remove=TRUE, zeroPath=TRUE, call="AlphaPa
         if (test1) { ## x comes from AlphaPart(...)
           for (i in remY) x[[t]][, paste(x$info$lT[t], i, sep="_")]     <- NULL          
         } else {    ## x comes from summary(AlphaPart(...), ...)
-          for (i in remY) x[[t]]$abs[, i] <- NULL
-          for (i in remY) x[[t]]$rel[, i] <- NULL
+          for (i in remY) x[[t]][, i] <- NULL
         } ## if (test1)
       } ## if (length...)
     } ## if (remove)
@@ -142,12 +140,12 @@ AlphaPartSum <- function (x, map=NULL, remove=TRUE, zeroPath=TRUE, call="AlphaPa
   ## --- Fix meta info ---
 
   if (remove) nCRem <- length(remY)
-  nC <- ifelse(test1, ncol(x[[1]]), ncol(x[[1]]$abs))
+  nC <- ifelse(test1, ncol(x[[1]]), ncol(x[[1]]))
   x$info$nP <- nC - (nCOrig - nPOrig)
   if (test1) {
     x$info$lP <- gsub(pattern=paste(x$info$lT[t], "_", sep=""), replacement="", x=colnames(x[[t]])[(nCOrig - nPOrig + 1):nC], fixed=TRUE)
   } else {
-    x$info$lP <- colnames(x[[t]]$abs)[(nCOrig - nPOrig + 1):nC] 
+    x$info$lP <- colnames(x[[t]])[(nCOrig - nPOrig + 1):nC]
   }  
   x$info$warn <- c(x$info$warn, paste("Consistency of the overall sum of partitions might not be correct due to the previous use of '", call, "'", sep=""))
 

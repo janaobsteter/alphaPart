@@ -4,8 +4,15 @@
 \alias{pedSetBase}
 \title{pedSetBase.R}
 \usage{
-pedSetBase(x, keep = NULL, unknown = NA, report = TRUE, colId = 1,
-  colFid = 2, colMid = 3)
+pedSetBase(
+  x,
+  keep = NULL,
+  unknown = NA,
+  report = TRUE,
+  colId = 1,
+  colFid = 2,
+  colMid = 3
+)
 }
 \arguments{
 \item{x}{data.frame , with (at least) the following columns: individual, father, and mother identification,

@@ -23,7 +23,7 @@ test_that("Test the output of AlphaPartSubset", {
                   trt1=c(100, 120, 115, 130, 125, 125),
                   trt2=c(100, 110, 105,  10,  85, 110))
   ## Partition additive genetic values
-  tmp <- AlphaPart(x=ped, colAGV=c("trt1", "trt2"))
+  tmp <- AlphaPart(x=ped, colBV=c("trt1", "trt2"))
 
   ## Keep some partitions (working on object of class AlphaPart)
   tmp2 <- AlphaPartSubset(x=tmp, paths=c("A", "B"))

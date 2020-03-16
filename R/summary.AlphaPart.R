@@ -2,13 +2,12 @@
 #'
 #' A function to summarize AlphaPart object.
 #'
-#' Additive genetic values of individuals are often summarized, either by year of
+#' Breedng values of individuals are often summarized, either by year of
 #' birth or some other classification. Function \code{summary.AlphaPart} provides
-#' a way to ease the computation of such summaries on partitions of additive
-#' genetic values.
+#' a way to ease the computation of such summaries on partitions of breeding values.
 #'
 #' @seealso
-#' \code{\link[AlphaPart]{AlphaPart}} for partitioning additive genetic values,
+#' \code{\link[AlphaPart]{AlphaPart}} for partitioning breeding values,
 #' \code{\link[AlphaPart]{plot.summaryAlphaPart}} for plotting output of summary method
 #'
 #' @param object AlphaPart, output object from \code{\link[AlphaPart]{AlphaPart}} function.
@@ -16,7 +15,7 @@
 #' be applied; if \code{NULL} (default) summary is given for the whole table.
 #' @param FUN Function, which function should be used in summary; function should
 #' return single value per each level of by.
-#' @param labelSum Character, label used for the overall additive genetic value.
+#' @param labelSum Character, label used for the overall breeding value.
 #' @param subset Logical, perform summary only on a subset of \code{object} subsetted by
 #' this argument.
 #' @param sums Logical, link between \code{\link[AlphaPart]{AlphaPart}} and
@@ -26,11 +25,9 @@
 #' @example inst/examples//examples_summary.AlphaPart.R
 #'
 #' @return An object of class \code{summaryAlphaPart}, which is a list of data frames
-#' with summary statistics on additive genetic value partitions. For each trait there
-#' is a list component holding two dataframes. The first data.frame is called \code{abs}
-#' and holds summary for the "whole/original" additive genetic value and its partitions,
-#' while the second data.frame is called \code{rel} and holds relative values of \code{abs}
-#' counterpart. In addition another list is added (named \code{info}) with the following
+#' with summary statistics on breeding value partitions. For each trait there
+#' a dataframe holds summary for the "whole/original" breeding value and its partitions.
+#' In addition another list is added (named \code{info}) with the following
 #' components holdinfg meta info:
 #'   \item{path}{column name holding path information}
 #'   \item{nP}{number of paths}
@@ -39,7 +36,7 @@
 #'   \item{lT}{trait labels}
 #'   \item{by}{column name of variable by which summary was performed}
 #'   \item{warn}{potential warning messages associated with this object}
-#'   \item{labelSum}{column name of summary for "whole/original" additive genetic values}
+#'   \item{labelSum}{column name of summary for "whole/original" breeding values}
 #'
 #' There is a handy plot method (\code{\link[AlphaPart]{plot.summaryAlphaPart}}) for output.
 #'
@@ -121,14 +118,8 @@ summary.AlphaPart <- function(object, by=NULL, FUN=mean, labelSum="Sum", subset=
      colnames(tmpM)[z:ncol(tmpM)] <- paths
      ## Combine FUN and number of records
      tmp <- cbind(tmpN, tmpM[, z:ncol(tmpM)])
-     ## Relative
-     tmp2 <- tmp
-     tmp2[, 3:ncol(tmp2)] <- (tmp2[, 3:ncol(tmp2)] / abs(tmp2[, 3]))
      ## Store
-     ret[[i]] <- vector(mode="list", length=2)
-     names(ret[[i]]) <- c("abs", "rel")
-     ret[[i]]$abs <- tmp
-     ret[[i]]$rel <- tmp2
+     ret[[i]] <- tmp
   }
 
   ## --- Return ---

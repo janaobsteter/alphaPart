@@ -4,26 +4,25 @@
 \name{AlphaPart.ped}
 \alias{AlphaPart.ped}
 \title{Sample pedigree for partition.}
-\format{A data frame with 48 rows and 9 variables:
+\format{A data frame with 6 rows and 8 variables:
 \describe{
-  \item{id}{individual's ID}
-  \item{fid}{Father's ID}
-  \item{mid}{Mother's ID}
-  \item{loc}{Location}
+  \item{IId}{individual's ID}
+  \item{FId}{Father's ID}
+  \item{MId}{Mother's ID}
   \item{gen}{Generation}
-  \item{sex}{Individual's sex}
-  \item{loc.gen}{Interaction of location and generation}
-  \item{agv1}{First additive genetic value}
-  \item{agv2}{Second additive genetic value}
+  \item{country}{Country}
+  \item{gender}{Individual's sex}
+  \item{bv1}{Breeding value for trait 1}
+  \item{bv2}{Breeding value for trait 1}
 }}
 \source{
-Stochastic simulation.
+Simulation.
 }
 \usage{
 AlphaPart.ped
 }
 \description{
-A dataset containing pedigree information and additive genetic value
-for 48 individuals.
+A dataset containing pedigree information and breeding values
+for six individuals.
 }
 \keyword{datasets}

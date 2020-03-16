@@ -4,19 +4,32 @@
 \alias{AlphaPart}
 \title{AlphaPart.R}
 \usage{
-AlphaPart(x, pathNA = FALSE, recode = TRUE, unknown = NA,
-  sort = TRUE, verbose = 1, profile = FALSE, printProfile = "end",
-  pedType = "IPP", colId = 1, colFid = 2, colMid = 3,
-  colPath = 4, colAGV = 5:ncol(x), colBy = NULL)
+AlphaPart(
+  x,
+  pathNA = FALSE,
+  recode = TRUE,
+  unknown = NA,
+  sort = TRUE,
+  verbose = 1,
+  profile = FALSE,
+  printProfile = "end",
+  pedType = "IPP",
+  colId = 1,
+  colFid = 2,
+  colMid = 3,
+  colPath = 4,
+  colBV = 5:ncol(x),
+  colBy = NULL
+)
 }
 \arguments{
 \item{x}{data.frame , with (at least) the following columns: individual, father, and mother identif ication,
 and year of birth; see arguments \code{colId},
-\code{colFid}, \code{colMid}, \code{colPath}, and \code{colAgv}; see also details about the validity of pedigree.}
+\code{colFid}, \code{colMid}, \code{colPath}, and \code{colBV}; see also details about the validity of pedigree.}
 
 \item{pathNA}{Logical, set dummy path (to "XXX") where path information is unknown (missing).}
 
-\item{recode}{Logical, internally recode individual, father and, mother identif ication to
+\item{recode}{Logical, internally recode individual, father and, mother identification to
 \code{1:n} codes, while missing parents are defined with \code{0}; this option
 must be used if  identif ications in \code{x} are not already given as \code{1:n}
 codes, see also argument \code{sort}.}
@@ -50,7 +63,7 @@ maternal grandparent identif ication if  \code{pedType="IPG"} .}
 
 \item{colPath}{Numeric or character, position or name of a column holding path information.}
 
-\item{colAGV}{Numeric or character, position(s) or name(s) of column(s) holding Additive Genetic Values.}
+\item{colBV}{Numeric or character, position(s) or name(s) of column(s) holding breeding Values.}
 
 \item{colBy}{Numeric or character, position or name of a column holding group information (see details).}
 }
@@ -58,12 +71,12 @@ maternal grandparent identif ication if  \code{pedType="IPG"} .}
 An object of class \code{AlphaPart}, which can be used in further analyses - there is a handy summary
 method (\code{\link[AlphaPart]{summary.AlphaPart}} works on objects of \code{AlphaPart} class) and a plot method
 for its output (\code{\link[AlphaPart]{plot.summaryAlphaPart}} works on objects of \code{summaryAlphaPart} class).
-Class \code{AlphaPart} is a list. The first \code{length(colAGV)} components (one for each trait and named with
+Class \code{AlphaPart} is a list. The first \code{length(colBV)} components (one for each trait and named with
 trait label, say trt) are data frames. Each data.frame contains:
   \item{\code{x}}{columns from initial data \code{x}}
   \item{trt_pa}{parent average}
   \item{trt_w}{Mendelian sampling term}
-  \item{trt_path1, trt_path2, ...}{additive genetic value partitions}
+  \item{trt_path1, trt_path2, ...}{breeding value partitions}
 
 The last component of returned object is also a list named \code{info} with the following components holding
 meta information about the analysis:
@@ -80,18 +93,18 @@ see \code{\link[AlphaPart]{summary.AlphaPart}} for details.
 If  \code{profile=TRUE}, profiling info is printed on screen to spot any computational bottlenecks.
 }
 \description{
-A function to partition additive genetic values by paths. The partition method is
+A function to partition breeding values by a path variable. The partition method is
 described in García-Cortés et al., 2008: Partition of the genetic trend to validate multiple selection decisions.
 Animal : an international journal of animal bioscience. DOI: 10.1017/S175173110800205X
 }
 \details{
 Pedigree in \code{x} must be valid in a sense that there are:\itemize{
-\item{no directed loops (the simplest example is that the individual identif ication is equal to the identif ication of a father or mother)}
+\item{no directed loops (the simplest example is that the individual identification is equal to the identification of a father or mother)}
 \item{no bisexuality, e.g., fathers most not appear as mothers}
 \item{father and/or mother can be unknown (missing) - defined with any "code" that is dif ferent from existing identif ications}
 }
 
-Unknown (missing) values for additive genetic values are propagated down the pedigree
+Unknown (missing) values for breeding values are propagated down the pedigree
 to provide all available values from genetic evaluation. Another option is
 to cut pedigree links - set parents to unknown and remove them from pedigree
 prior to using this function - see \code{\link[AlphaPart]{pedSetBase}} function.
@@ -118,16 +131,17 @@ ped <- data.frame(  id=c(  1,   2,   3,   4,   5,   6),
                   trt2=c(100, 110, 105, 100,  85, 110))
 
 ## Partition additive genetic values
-tmp <- AlphaPart(x=ped, colAGV=c("trt1", "trt2"))
+tmp <- AlphaPart(x=ped, colBV=c("trt1", "trt2"))
 print(tmp)
 
 ## Summarize by generation
 summary(tmp, by="gen")
 
+\donttest{
 ## There are also two demos
-#demo(topic="AlphaPart_deterministic", package="AlphaPart", ask=interactive())
-#demo(topic="AlphaPart_stochastic",     package="AlphaPart", ask=interactive())
-
+demo(topic="AlphaPart_deterministic", package="AlphaPart", ask=interactive())
+demo(topic="AlphaPart_stochastic",     package="AlphaPart", ask=interactive())
+}
 }
 \references{
 Garcia-Cortes, L. A. et al. (2008) Partition of the genetic trend to validate multiple selection

@@ -4,9 +4,19 @@
 \alias{pedFixBirthYear}
 \title{pedFixBirthYear.R}
 \usage{
-pedFixBirthYear(x, interval, down = FALSE, na.rm = TRUE, sort = TRUE,
-  direct = TRUE, report = TRUE, colId = 1, colFid = 2,
-  colMid = 3, colBY = 4)
+pedFixBirthYear(
+  x,
+  interval,
+  down = FALSE,
+  na.rm = TRUE,
+  sort = TRUE,
+  direct = TRUE,
+  report = TRUE,
+  colId = 1,
+  colFid = 2,
+  colMid = 3,
+  colBY = 4
+)
 }
 \arguments{
 \item{x}{data.frame , with (at least) the following columns: individual, father, and mother identification,

@@ -1,17 +1,17 @@
 #' AlphaPart.R
 #'
-#' A function to partition additive genetic values by paths. The partition method is
+#' A function to partition breeding values by a path variable. The partition method is
 #' described in García-Cortés et al., 2008: Partition of the genetic trend to validate multiple selection decisions.
 #' Animal : an international journal of animal bioscience. DOI: 10.1017/S175173110800205X
 #'
 #' @details
 #' Pedigree in \code{x} must be valid in a sense that there are:\itemize{
-#' \item{no directed loops (the simplest example is that the individual identif ication is equal to the identif ication of a father or mother)}
+#' \item{no directed loops (the simplest example is that the individual identification is equal to the identification of a father or mother)}
 #' \item{no bisexuality, e.g., fathers most not appear as mothers}
 #' \item{father and/or mother can be unknown (missing) - defined with any "code" that is dif ferent from existing identif ications}
 #' }
 #'
-#' Unknown (missing) values for additive genetic values are propagated down the pedigree
+#' Unknown (missing) values for breeding values are propagated down the pedigree
 #' to provide all available values from genetic evaluation. Another option is
 #' to cut pedigree links - set parents to unknown and remove them from pedigree
 #' prior to using this function - see \code{\link[AlphaPart]{pedSetBase}} function.
@@ -38,9 +38,9 @@
 #'
 #' @param x data.frame , with (at least) the following columns: individual, father, and mother identif ication,
 #' and year of birth; see arguments \code{colId},
-#' \code{colFid}, \code{colMid}, \code{colPath}, and \code{colAgv}; see also details about the validity of pedigree.
+#' \code{colFid}, \code{colMid}, \code{colPath}, and \code{colBV}; see also details about the validity of pedigree.
 #' @param pathNA Logical, set dummy path (to "XXX") where path information is unknown (missing).
-#' @param recode Logical, internally recode individual, father and, mother identif ication to
+#' @param recode Logical, internally recode individual, father and, mother identification to
 #' \code{1:n} codes, while missing parents are defined with \code{0}; this option
 #' must be used if  identif ications in \code{x} are not already given as \code{1:n}
 #' codes, see also argument \code{sort}.
@@ -63,19 +63,19 @@
 #' @param colMid Numeric or character, position or name of a column holding mother identif ication or
 #' maternal grandparent identif ication if  \code{pedType="IPG"} .
 #' @param colPath Numeric or character, position or name of a column holding path information.
-#' @param colAGV Numeric or character, position(s) or name(s) of column(s) holding Additive Genetic Values.
+#' @param colBV Numeric or character, position(s) or name(s) of column(s) holding breeding Values.
 #' @param colBy Numeric or character, position or name of a column holding group information (see details).
 #'
 #' @example inst/examples/examples_AlphaPart.R
 #' @return An object of class \code{AlphaPart}, which can be used in further analyses - there is a handy summary
 #' method (\code{\link[AlphaPart]{summary.AlphaPart}} works on objects of \code{AlphaPart} class) and a plot method
 #' for its output (\code{\link[AlphaPart]{plot.summaryAlphaPart}} works on objects of \code{summaryAlphaPart} class).
-#' Class \code{AlphaPart} is a list. The first \code{length(colAGV)} components (one for each trait and named with
+#' Class \code{AlphaPart} is a list. The first \code{length(colBV)} components (one for each trait and named with
 #' trait label, say trt) are data frames. Each data.frame contains:
 #'   \item{\code{x}}{columns from initial data \code{x}}
 #'   \item{trt_pa}{parent average}
 #'   \item{trt_w}{Mendelian sampling term}
-#'   \item{trt_path1, trt_path2, ...}{additive genetic value partitions}
+#'   \item{trt_path1, trt_path2, ...}{breeding value partitions}
 #'
 #' The last component of returned object is also a list named \code{info} with the following components holding
 #' meta information about the analysis:
@@ -107,12 +107,11 @@
 
 
 AlphaPart <- function (x, pathNA=FALSE, recode=TRUE, unknown=NA, sort=TRUE, verbose=1, profile=FALSE,
-  printProfile="end", pedType="IPP", colId=1, colFid=2, colMid=3, colPath=4, colAGV=5:ncol(x),
+  printProfile="end", pedType="IPP", colId=1, colFid=2, colMid=3, colPath=4, colBV=5:ncol(x),
   colBy=NULL) {
 
-
-  ## TODO: move AGV to another object (to simplif y work with McMC or some other
-  ##       sampling method) - is it worth doing this?
+  # TODO: move BV to another object (to simplif y work with McMC or some other
+  # TODO: sortPedigree: A rabimo tole nujno za to funkcijo ali samo za summarizing? Hmm, za sortiranje, kajne? Vidis, to nisem lepo sprogramiral – ena funkcija naj bi pocela samo eno stvar na enkrat – to poenostavi kodo. Pusti za sedaj. Future work. Lahko das v TODO file v paketu;)
 
   ## --- Setup ---
 
@@ -165,16 +164,16 @@ AlphaPart <- function (x, pathNA=FALSE, recode=TRUE, unknown=NA, sort=TRUE, verb
 
   ## --- Sort and recode pedigree ---
 
-  ## Make sure that identif ications are numeric if  recode=FALSE
+  ## Make sure that identifications are numeric if  recode=FALSE
   test <- !sapply(x[, c(colId, colFid, colMid)], is.numeric) & !recode
   if (any(test)) {
     stop("argument 'recode' must be 'TRUE' when identif ications in 'x' are not numeric")
   }
 
-  ## Make sure that colAGV columns are numeric
-  test <- !sapply(x[, c(colAGV)], is.numeric)
+  ## Make sure that colBV columns are numeric
+  test <- !sapply(x[, c(colBV)], is.numeric)
   if (any(test)) {
-    stop("colAGV columns must be numeric!")
+    stop("colBV columns must be numeric!")
     str(x)
   }
 
@@ -200,7 +199,7 @@ AlphaPart <- function (x, pathNA=FALSE, recode=TRUE, unknown=NA, sort=TRUE, verb
       }
     }
   }
-  y <- cbind(y, as.matrix(x[, colAGV]))
+  y <- cbind(y, as.matrix(x[, colBV]))
 
   ## Test if  father and mother codes preceede children code - computational engine needs this
   test <- y[, 2] >= y[, 1]
@@ -228,12 +227,12 @@ AlphaPart <- function (x, pathNA=FALSE, recode=TRUE, unknown=NA, sort=TRUE, verb
   nI <- nrow(x)
 
   ## Traits
-  lT <- colnames(x[, colAGV, drop=FALSE])
+  lT <- colnames(x[, colBV, drop=FALSE])
   nT <- length(lT) # number of traits
   colnames(y)[4:ncol(y)] <- lT
 
   ## Missing values
-  nNA <- sapply(x[, colAGV, drop=FALSE], function(z) sum(is.na(z)))
+  nNA <- sapply(x[, colBV, drop=FALSE], function(z) sum(is.na(z)))
   names(nNA) <- lT
 
   ## Paths - P matrix
@@ -356,9 +355,9 @@ AlphaPart <- function (x, pathNA=FALSE, recode=TRUE, unknown=NA, sort=TRUE, verb
       colX <- colX2 <- colnames(x)
       names(colX) <- colX; names(colX2) <- colX2
       ## ... put current agv in the last column in original data
-      colX <- c(colX[!(colX %in% colX[colAGV[i]])], colX[colAGV[i]])
+      colX <- c(colX[!(colX %in% colX[colBV[i]])], colX[colBV[i]])
       ## ... remove other traits
-      colX <- colX[!(colX %in% colX2[(colX2 %in% colX2[colAGV]) & !(colX2 %in% colX2[colAGV[i]])])]
+      colX <- colX[!(colX %in% colX2[(colX2 %in% colX2[colBV]) & !(colX2 %in% colX2[colBV[i]])])]
       ret[[i]] <- cbind(x[, colX], as.data.frame(ret[[i]]))
       rownames(ret[[i]]) <- NULL
     }

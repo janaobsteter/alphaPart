@@ -5,12 +5,23 @@
 \alias{savePlot.plotSummaryAlphaPart}
 \title{savePlot.plotSummaryAlphaPart.R}
 \usage{
-savePlot(x, filename = paste("Rplot", type, sep = "."), type = c("pdf",
-  "png", "jpeg", "tiff", "bmp"), device = dev.cur(), ...)
+savePlot(
+  x,
+  filename = paste("Rplot", type, sep = "."),
+  type = c("pdf", "png", "jpeg", "tiff", "bmp"),
+  device = dev.cur(),
+  ...
+)
 
-\method{savePlot}{plotSummaryAlphaPart}(x, filename = paste("Rplot",
-  type, sep = "."), type = c("pdf", "png", "jpeg", "tiff", "bmp"),
-  device = dev.cur(), pre.hook = NULL, traitsAsDir = FALSE, ...)
+\method{savePlot}{plotSummaryAlphaPart}(
+  x,
+  filename = paste("Rplot", type, sep = "."),
+  type = c("pdf", "png", "jpeg", "tiff", "bmp"),
+  device = dev.cur(),
+  pre.hook = NULL,
+  traitsAsDir = FALSE,
+  ...
+)
 }
 \arguments{
 \item{x}{Object on which to chose savePLot method.}
@@ -50,35 +61,17 @@ permanent storage.
 ## Load an example data
 data("AlphaPart.ped")
 
-## --- Partition additive genetic values by loc ---
-
-(res <- AlphaPart(x=AlphaPart.ped, colPath="loc", colAGV=c("agv1", "agv2")))
-
-## Summarize whole population
-(ret <- summary(res))
+## Partition additive genetic values
+res <- AlphaPart(x=AlphaPart.ped, colPath="country", colBV=c("bv1", "bv2"))
 
 ## Summarize population by generation (=trend)
-(ret <- summary(res, by="gen"))
+ret <- summary(res, by="gen")
 
-## Summarize population by generation (=trend) and location 1
-(ret <- summary(res, by="loc.gen"))
+## Plot the partitions
+p <- plot(ret, ylab=c("BV for trait 1", "BV for trait 2"), xlab="Generation")
+#savePlot(x = p, filename="test", type="png")
 
-## Summarize population by generation (=trend) but only for location 1
-(ret <- summary(res, by="gen", subset=res[[1]]$loc == 1))
 
-## --- Partition additive genetic values by loc and sex ---
-
-AlphaPart.ped$loc.sex <- with(AlphaPart.ped, paste(loc, sex, sep="-"))
-(res <- AlphaPart(x=AlphaPart.ped, colPath="loc.sex", colAGV=c("agv1", "agv2")))
-
-## Summarize population by generation (=trend)
-(ret <- summary(res, by="gen"))
-
-## Summarize population by generation (=trend) and location 1
-(ret <- summary(res, by="loc.gen"))
-
-## Summarize population by generation (=trend) but only for location 1
-(ret <- summary(res, by="gen", subset=res[[1]]$loc == 1))
 }
 \seealso{
 \code{\link[grDevices]{savePlot}} help page on the default \code{savePlot}

@@ -35,7 +35,7 @@ ped <- data.frame(  id=c(  1,   2,   3,   4,   5,   6),
                  trt2=c(100, 110, 105, 100,  85, 110))
 
 ## Partition additive genetic values
-(tmp <- AlphaPart(x=ped, colAGV=c("trt1", "trt2")))
+(tmp <- AlphaPart(x=ped, colBV=c("trt1", "trt2")))
 
 ## Keep some partitions (working on object of class AlphaPart)
 (tmp2 <- AlphaPartSubset(x=tmp, paths="A"))

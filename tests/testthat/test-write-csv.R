@@ -8,8 +8,6 @@ test_that("Check writing input for write.csv.AlphaPart", {
 })
 
 test_that("Check writing process for write.csv.AlphaPart", {
-  ## Load an example data
-  data("AlphaPart.ped")
 
   ## Partition additive genetic values
   res <- AlphaPart(x=AlphaPart.ped, colPath="country", colBV="bv1")
@@ -44,8 +42,6 @@ test_that("Check writing input for write.csv.summaryAlphaPart", {
 })
 
 test_that("Check writing process for write.csv.summaryAlphaPart", {
-  ## Load an example data
-  data("AlphaPart.ped")
 
   ## Partition additive genetic values
   res <- AlphaPart(x=AlphaPart.ped, colPath="country", colBV=c("bv1"))

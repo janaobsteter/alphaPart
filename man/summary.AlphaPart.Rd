@@ -59,9 +59,6 @@ birth or some other classification. Function \code{summary.AlphaPart} provides
 a way to ease the computation of such summaries on partitions of breeding values.
 }
 \examples{
-## Load an example data
-data("AlphaPart.ped")
-
 ## --- Partition additive genetic values by loc ---
 res <- AlphaPart(x=AlphaPart.ped, colPath="country", colBV=c("bv1", "bv2"))
 

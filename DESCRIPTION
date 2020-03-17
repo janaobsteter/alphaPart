@@ -1,6 +1,6 @@
 Package: AlphaPart
 Title: Partition/Decomposition of Breeding Values by Paths of Information
-Description: AlphaPart implements a method for partitioning genetic trends to
+Description: A software that implements a method for partitioning genetic trends to
     quantify the sources of genetic gain in breeding programmes.
     The partitioning method is described in Garcia-Cortes et al.
     (2008) <doi:10.1017/S175173110800205X>. The package includes the
@@ -22,4 +22,5 @@ Packaged: 2019-06-10 05:22:37 UTC
 VignetteBuilder: knitr
 RoxygenNote: 7.0.2
 Encoding: UTF-8
+LazyData: true
 

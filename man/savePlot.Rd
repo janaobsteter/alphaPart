@@ -58,9 +58,6 @@ permanent storage.
 }}
 
 \examples{
-## Load an example data
-data("AlphaPart.ped")
-
 ## Partition additive genetic values
 res <- AlphaPart(x=AlphaPart.ped, colPath="country", colBV=c("bv1", "bv2"))
 

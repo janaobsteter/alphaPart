@@ -19,9 +19,6 @@ Print method for objects of the class \code{summaryAlphaPart} (result of
 \code{summary(AlphaPart(...))}).
 }
 \examples{
-## Load an example data
-data("AlphaPart.ped")
-
 ## --- Partition additive genetic values by loc ---
 res <- AlphaPart(x=AlphaPart.ped, colPath="country", colBV=c("bv1", "bv2"))
 

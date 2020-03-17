@@ -5,12 +5,23 @@
 \alias{savePlot.plotSummaryAlphaPart}
 \title{savePlot.plotSummaryAlphaPart.R}
 \usage{
-savePlot(x, filename = paste("Rplot", type, sep = "."), type = c("pdf",
-  "png", "jpeg", "tiff", "bmp"), device = dev.cur(), ...)
+savePlot(
+  x,
+  filename = paste("Rplot", type, sep = "."),
+  type = c("pdf", "png", "jpeg", "tiff", "bmp"),
+  device = dev.cur(),
+  ...
+)
 
-\method{savePlot}{plotSummaryAlphaPart}(x, filename = paste("Rplot",
-  type, sep = "."), type = c("pdf", "png", "jpeg", "tiff", "bmp"),
-  device = dev.cur(), pre.hook = NULL, traitsAsDir = FALSE, ...)
+\method{savePlot}{plotSummaryAlphaPart}(
+  x,
+  filename = paste("Rplot", type, sep = "."),
+  type = c("pdf", "png", "jpeg", "tiff", "bmp"),
+  device = dev.cur(),
+  pre.hook = NULL,
+  traitsAsDir = FALSE,
+  ...
+)
 }
 \arguments{
 \item{x}{Object on which to chose savePLot method.}

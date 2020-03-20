@@ -210,7 +210,7 @@ fit2MCMC <- mcmcsamp(fit2, n=1000, saveb=TRUE)
 ###-----------------------------------------------------------------------------
 
 ## Compute partitions by location
-(res <- AlphaPart(x=ped, colPath="loc", colAGV=c("agv1", "agv2")))
+(res <- AlphaPart(x=ped, colPath="loc", colBV=c("agv1", "agv2")))
 
 ## Summarize whole population
 (ret <- summary(res))
@@ -233,7 +233,7 @@ plot(ret)
 
 ## Compute partitions by location and sex
 ped$loc.sex <- with(ped, paste(loc, sex, sep="-"))
-(res <- AlphaPart(x=ped, colPath="loc.sex", colAGV=c("agv1", "agv2")))
+(res <- AlphaPart(x=ped, colPath="loc.sex", colBV=c("agv1", "agv2")))
 
 ## Summarize and plot by generation (=trend)
 (ret <- summary(res, by="gen"))

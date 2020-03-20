@@ -5,13 +5,7 @@
 \alias{savePlot.plotSummaryAlphaPart}
 \title{savePlot.plotSummaryAlphaPart.R}
 \usage{
-savePlot(
-  x,
-  filename = paste("Rplot", type, sep = "."),
-  type = c("pdf", "png", "jpeg", "tiff", "bmp"),
-  device = dev.cur(),
-  ...
-)
+savePlot(...)
 
 \method{savePlot}{plotSummaryAlphaPart}(
   x,
@@ -24,6 +18,9 @@ savePlot(
 )
 }
 \arguments{
+\item{...}{Arguments passed to \code{type} specific methods, say
+\code{width} and \code{height} for \code{type="pdf"} etc.}
+
 \item{x}{Object on which to chose savePLot method.}
 
 \item{filename}{Character, filename to save to.}
@@ -31,9 +28,6 @@ savePlot(
 \item{type}{Character, file/device type.}
 
 \item{device}{Device, the device to save from. TODO}
-
-\item{...}{Arguments passed to \code{type} specific methods, say
-\code{width} and \code{height} for \code{type="pdf"} etc.}
 
 \item{pre.hook}{Function, call some code before calling print method for plots (see examples).}
 
@@ -67,10 +61,10 @@ ret <- summary(res, by="gen")
 ## Plot the partitions
 p <- plot(ret, ylab=c("BV for trait 1", "BV for trait 2"), xlab="Generation")
 
-\donttest{
+# \donttest{
 ## Save the plots
 savePlot(x = p, filename="test", type="png")
-}
+# }
 
 }
 \seealso{

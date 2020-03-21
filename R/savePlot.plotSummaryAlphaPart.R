@@ -10,7 +10,7 @@
 #' help page on the method for the objects of \code{plotSummaryAlphaPart} class; and
 #' \code{\link[AlphaPart]{plot.summaryAlphaPart}} for ploting results of summaryAlphaPart object.
 #'
-#' @param x Object on which to chose savePLot method DDDDD.
+#' @param x Object on which to chose savePLot method.
 #' @param filename Character, filename to save to.
 #' @param type  Character, file/device type.
 #' @param device Device, the device to save from.
@@ -31,18 +31,21 @@
 #' @importFrom grDevices dev.cur
 #' @importFrom grDevices dev.off
 
-savePlot  <- function (...)    {
-  UseMethod("savePlot")
+
+#' @export
+savePlot  <- function ( ...)    {
+    UseMethod("savePlot")
 }
 
 
-# Default savePlot method
+#' @describeIn savePlot Default \code{savePlot} method.
 savePlot.default <- function(...) {
-
+  
   ##seealso<< \code{\link[grDevices]{savePlot}} help page on the default \code{savePlot}
   ## method in the \pkg{grDevices} package
+  
   grDevices::savePlot(...)
-
+  
   ##value<< See \code{\link[grDevices]{savePlot}} for details.
 
 }

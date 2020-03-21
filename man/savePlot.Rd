@@ -2,10 +2,13 @@
 % Please edit documentation in R/savePlot.plotSummaryAlphaPart.R
 \name{savePlot}
 \alias{savePlot}
+\alias{savePlot.default}
 \alias{savePlot.plotSummaryAlphaPart}
 \title{savePlot.plotSummaryAlphaPart.R}
 \usage{
 savePlot(...)
+
+\method{savePlot}{default}(...)
 
 \method{savePlot}{plotSummaryAlphaPart}(
   x,
@@ -27,7 +30,7 @@ savePlot(...)
 
 \item{type}{Character, file/device type.}
 
-\item{device}{Device, the device to save from. TODO}
+\item{device}{Device, the device to save from.}
 
 \item{pre.hook}{Function, call some code before calling print method for plots (see examples).}
 
@@ -47,6 +50,8 @@ needs.
 }
 \section{Methods (by class)}{
 \itemize{
+\item \code{default}: Default \code{savePlot} method.
+
 \item \code{plotSummaryAlphaPart}: Save plot objects of class \code{plotSummaryAlphaPart} on the disk for
 permanent storage.
 }}
@@ -61,10 +66,8 @@ ret <- summary(res, by="gen")
 ## Plot the partitions
 p <- plot(ret, ylab=c("BV for trait 1", "BV for trait 2"), xlab="Generation")
 
-# \donttest{
 ## Save the plots
 savePlot(x = p, filename="test", type="png")
-# }
 
 }
 \seealso{

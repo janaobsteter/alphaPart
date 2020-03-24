@@ -67,7 +67,10 @@ ret <- summary(res, by="gen")
 p <- plot(ret, ylab=c("BV for trait 1", "BV for trait 2"), xlab="Generation")
 
 ## Save the plots
-savePlot(x = p, filename="test", type="png")
+tmp <- savePlot(x = p, filename="test", type="png")
+
+## Remove the files
+unlink(tmp)
 
 }
 \seealso{

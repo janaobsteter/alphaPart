@@ -108,14 +108,19 @@
 
 AlphaPart <- function (x, pathNA=FALSE, recode=TRUE, unknown=NA, sort=TRUE, verbose=1, profile=FALSE,
   printProfile="end", pedType="IPP", colId=1, colFid=2, colMid=3, colPath=4, colBV=5:ncol(x),
-  colBy=NULL) {
+  colBy=NULL, UPGnames = NULL, UPGmeans = NULL) {
 
   # TODO: move BV to another object (to simplif y work with McMC or some other
   # TODO: sortPedigree: A rabimo tole nujno za to funkcijo ali samo za summarizing? Hmm, za sortiranje, kajne? Vidis, to nisem lepo sprogramiral – ena funkcija naj bi pocela samo eno stvar na enkrat – to poenostavi kodo. Pusti za sedaj. Future work. Lahko das v TODO file v paketu;)
 
   ## --- Setup ---
+  testInput <- all((class(x) == "data.frame"))
+  if (!testInput) {
+    stop("Input data is not of class data.frame.")
+  }
 
-  test <- (length(colId) > 1 | length(colFid) > 1 | length(colMid) > 1 | length(colPath) > 1 | length(colBy) > 1)
+
+  test <- any(length(colId) > 1, length(colFid) > 1, length(colMid) > 1, length(colPath) > 1, length(colBy) > 1)
   if (test) {
     stop("arguments 'colId', 'colFid', 'colMid', 'colPath', and 'colBy' must be of length 1")
   }
@@ -185,9 +190,17 @@ AlphaPart <- function (x, pathNA=FALSE, recode=TRUE, unknown=NA, sort=TRUE, verb
 
   ## Recode all ids to 1:n
   if (recode) {
-    y <- cbind( id=1:nrow(x),
-               fid=match(x[, colFid], x[, colId], nomatch=0),
-               mid=match(x[, colMid], x[, colId], nomatch=0))
+    if (!is.null(UPGnames)) {
+      y <- cbind( id=1:nrow(x),
+                 fid=match(x[, colFid], x[, colId], nomatch=0),
+                 mid=match(x[, colMid], x[, colId], nomatch=0))
+    } else {
+      y <- cbind( id=1:nrow(x),
+                  fid=match(x[, colFid], x[, colId], nomatch=0),
+                  mid=match(x[, colMid], x[, colId], nomatch=0))
+      }
+    }
+      }
   } else {
     y <- as.matrix(x[, c(colId, colFid, colMid)])
     ## Make sure we have 0 when recoded data is provided
@@ -292,9 +305,31 @@ AlphaPart <- function (x, pathNA=FALSE, recode=TRUE, unknown=NA, sort=TRUE, verb
   c1 <- c2 <- 0.5
   if (pedType == "IPG") c2 <- 0.25
 
-  ## Add "zero" row (simplif ies computations with missing parents!)
-  y <- rbind(y[1, ], y)
-  y[1, ] <- 0
+  ## Check whether both UPGnames and UPGmeans are provided / both NULL
+  test <- any(all(is.null(UPGnames), is.null(UPGmeans)), all(is.vector(UPGnames), is.vector(UPGmeans)))
+  if (!test) {
+    stop("When specifying UPGs, you should provide both the `UPGnames` and the `UPGmeans` parameters.")
+  }
+  ## Check if the length of UPGnames equals the name of UPGmeans
+  test <- length(UPGnames) == length(UPGmeans)
+  if (!test) {
+    stop("The parameter vector 'UPGnames' should be the same length as parameter vector 'UPGmeans'")
+  }
+  
+  ## Add "zero" row (simplify ies computations with missing parents!) if UPGnames and UPGmeans are NULL
+  ## Otherwise add one row for each UPG and a mean EBV
+  if (all(is.null(UPGnames), is.null(UPGmeans))) {
+    y <- rbind(y[1, ], y)
+    y[1, ] <- 0
+  } else {
+    for (upgNum in 1:length(UPGnames)) {
+      y <- rbind(y[1, ], y)
+      y[1,1] <- UPGnames[upgNum]
+      y[1,4] <- UPGmeans[upgNum]
+    }
+  }
+  
+  
   P <- c(0, P)
   if (groupSummary) g <- c(0, g)
 
